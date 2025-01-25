@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 373150291821362589}
   - component: {fileID: 6599888135444936394}
   - component: {fileID: 8563061626591163644}
-  - component: {fileID: 5608370435191940260}
+  - component: {fileID: 1570235776239491203}
   m_Layer: 0
   m_Name: ShortPlatform
   m_TagString: Untagged
@@ -331,8 +331,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4241104026941628569}
   m_Mesh: {fileID: 0}
---- !u!64 &5608370435191940260
-MeshCollider:
+--- !u!65 &1570235776239491203
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -349,7 +349,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 2, y: 0.4, z: 2}
+  m_Center: {x: 0.99999976, y: 0.2, z: 1}

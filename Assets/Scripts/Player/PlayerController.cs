@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour, ILife
 	public static Transform Transform { get { return _transform; } } 
 	public static Action<int> OnHit;
 	public static Action<int> OnPlayerHeal;
-	public const int TotalHealth = 100;
+	public int TotalHealth = 100;
 
 	[Header("Properties")]
 	[SerializeField] private float _movementSpeed;
