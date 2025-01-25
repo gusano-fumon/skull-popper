@@ -13,6 +13,7 @@ public class Bubble : Bullet
 		_startPos = transform.position;
 		_targetTag = "Enemy";
 		_forwardDirection = direction;
+		_sineProgress = Random.Range(0, 10);
 
 		_sineDirection = Vector3.Cross(Vector3.left, _forwardDirection);
 	}

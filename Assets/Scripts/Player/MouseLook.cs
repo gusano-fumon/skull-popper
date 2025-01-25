@@ -36,7 +36,6 @@ public class MouseLook : MonoBehaviour
 
 	private void Shoot()
 	{
-		Debug.Log("Pium");
 		var bubble = Instantiate(_bubble, transform.position, transform.rotation);
 		bubble.Init(transform.forward);
 	}
