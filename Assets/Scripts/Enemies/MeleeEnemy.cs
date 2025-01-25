@@ -1,13 +1,10 @@
 
-
-public class BaseEnemy : Enemy
+public class MeleeEnemy : Enemy
 {
-	public EnergyBall bulletPrefab;
-
-	public void Awake()
+	private void Awake()
 	{
-		_distanceToTarget = 5;
-		_deadZone = .2f;
+		_distanceToTarget = 1;
+		_deadZone = .1f;
 	}
 
 	protected override void Move()
@@ -25,9 +22,8 @@ public class BaseEnemy : Enemy
 			_aiAgent.destination = transform.position + (transform.position - _target.position).normalized * _distanceToTarget;
 	}
 
-    protected override void Attack()
-    {
-        var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-		bullet.Init(_target.position);
-    }
+	protected override void Attack()
+	{
+		// Melee Attack
+	}
 }
