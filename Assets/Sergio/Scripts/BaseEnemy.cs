@@ -35,7 +35,7 @@ public class BaseEnemy : MonoBehaviour
 				_aiAgent.destination = transform.position + (transform.position - _target.position).normalized * _distanceToTarget;
 		}
 
-		if (Time.frameCount % 50 == 0)
+		if (Time.frameCount % 200 == 0)
 		{
 			var bullet = Instantiate(_energyBall, transform.position, transform.rotation);
 			bullet.Init(_target.position);
