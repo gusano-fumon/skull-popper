@@ -163,6 +163,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: cb791c606e5d4bd4c890d361944b42b8, type: 3}
   - {fileID: 2800000, guid: 3daeeb7ecc223bb45a704f2e8c376afc, type: 3}
   _shootSprite: {fileID: 2800000, guid: 408aa1afabf8d2c48be5333ac3370381, type: 3}
+  _deadSprite: {fileID: 2800000, guid: cb82fde4963e0c94f8d3a7e4df4d720b, type: 3}
   _hurtSprite: {fileID: 2800000, guid: 2948f5cbd619f0b47b2d01b27d49518a, type: 3}
   _idleSprite: {fileID: 2800000, guid: 2362c11b7555b3144b600c348ede482b, type: 3}
 --- !u!195 &2694535378968053273
