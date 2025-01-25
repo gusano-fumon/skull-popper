@@ -12,7 +12,7 @@ public class Bullet : Sprite
 	private readonly int _timeToDelete = 5000;
 	protected string _targetTag;
 
-	private void Awake()
+	protected virtual void Awake()
 	{
 		PlayerController.OnPlayerDeath += InstantDestroy;
 		DeleteBullet().Forget();

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3710298867037483489}
   - component: {fileID: 7756806509988849409}
   m_Layer: 7
-  m_Name: Plane
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshRenderer: {fileID: 7756806509988849409}
-  _forwardSpeed: 4
+  _forwardSpeed: 7
   _sineSpeed: 5
   _sineMultiplier: 0.2
   _sprites:
