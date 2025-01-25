@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6988723856706005652}
   - component: {fileID: 6833568879967054034}
   - component: {fileID: 4726617108584957274}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: MeleeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ MonoBehaviour:
   _meshRenderer: {fileID: 4250721121823163689}
   _aiAgent: {fileID: 6833568879967054034}
   _distanceToTarget: 1
-  _deadZone: 0.1
+  _deadZone: 0.2
   totalHealth: 5
   _walkingSprites:
   - {fileID: 2800000, guid: 694bda4b6bf7f1643b431e0b80d4e2a3, type: 3}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 7273441654101678385}
   - component: {fileID: 4211255015564610054}
   - component: {fileID: 4250721121823163689}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

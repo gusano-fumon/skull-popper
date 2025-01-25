@@ -17,7 +17,7 @@ public class Bubble : Bullet
 	protected override void Awake()
 	{
 		base.Awake();
-		_meshRenderer.transform.DOScale(0.2f, 5f).From(0);
+		_meshRenderer.transform.DOScale(.2f, 6f).From(0);
 		_meshRenderer.transform.DOLocalMoveY(RandomY, 1f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
 		_meshRenderer.transform.DOLocalMoveX(RandomX, 1f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
 	}
@@ -51,7 +51,6 @@ public class Bubble : Bullet
 		{
 			baseEnemy.TakeDamage(1);
 		}
-		Destroy(gameObject);
     }
 
 	protected override void CheckSprite()
