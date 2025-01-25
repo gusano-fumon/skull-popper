@@ -20,7 +20,7 @@ public class Enemy : Sprite, ILife
 
 	public int totalHealth = 5;
 	public int Health { get; set; }
-	[SerializeField] private Texture2D[] _walkingSprites;
+	[SerializeField] protected Texture2D[] _walkingSprites;
 	[SerializeField] protected Texture2D _attackSprite;
 	[SerializeField] private Texture2D _deadSprite;
 	[SerializeField] private Texture2D _hurtSprite;
@@ -85,11 +85,12 @@ public class Enemy : Sprite, ILife
 	{
 		_isDead = true;
 		_meshRenderer.material.mainTexture = _deadSprite;
-		Destroy(this);
 	}
 
 	public void TakeDamage(int damage)
 	{
+		if (_isDead) return;
+
 		Health -= damage;
 		if (Health <= 0)
 		{
@@ -117,6 +118,8 @@ public class Enemy : Sprite, ILife
 		}
 
 		_spriteCounter++;
-		_meshRenderer.material.mainTexture = _walkingSprites[_spriteCounter % 2];
+		SetWalkingSprite();
 	}
+
+	protected virtual void SetWalkingSprite() { }
 }

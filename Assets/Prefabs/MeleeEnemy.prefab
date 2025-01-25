@@ -98,9 +98,9 @@ MonoBehaviour:
   _deadZone: 0.1
   totalHealth: 5
   _walkingSprites:
-  - {fileID: 2800000, guid: a5d925dfaf9f12c4c9e5a237657af5f8, type: 3}
   - {fileID: 2800000, guid: 694bda4b6bf7f1643b431e0b80d4e2a3, type: 3}
-  _shootSprite: {fileID: 2800000, guid: 3acc0768e86f7a14a99cce627e17c3d4, type: 3}
+  _attackSprite: {fileID: 2800000, guid: 3acc0768e86f7a14a99cce627e17c3d4, type: 3}
+  _deadSprite: {fileID: 2800000, guid: 63fdf9c5cc861cb4499142641058053b, type: 3}
   _hurtSprite: {fileID: 2800000, guid: 5b80233da29f038449ec242f5d05f05b, type: 3}
   _idleSprite: {fileID: 2800000, guid: a5d925dfaf9f12c4c9e5a237657af5f8, type: 3}
 --- !u!1 &8855468089294073585

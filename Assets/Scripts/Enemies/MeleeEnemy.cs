@@ -27,8 +27,17 @@ public class MeleeEnemy : Enemy
 
 	protected override void Attack()
 	{
+		if (_remainingDistance > _distanceToTarget + 1) return;
+
 		// Melee Attack
 		_meshRenderer.material.mainTexture = _attackSprite;
 		_state = EnemyState.Attacking;
+
+		PlayerController.OnHit(1);
+	}
+
+	protected override void SetWalkingSprite()
+	{
+		_meshRenderer.material.mainTexture = _walkingSprites[0];
 	}
 }

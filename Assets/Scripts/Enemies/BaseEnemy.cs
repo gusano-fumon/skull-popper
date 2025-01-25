@@ -36,4 +36,9 @@ public class BaseEnemy : Enemy
 		var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 		bullet.Init(_target.position);
 	}
+
+	protected override void SetWalkingSprite()
+	{
+		_meshRenderer.material.mainTexture = _walkingSprites[_spriteCounter % 2];
+	}
 }

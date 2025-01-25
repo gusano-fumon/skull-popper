@@ -35,7 +35,7 @@ public class Bubble : Bullet
     public override void ExecuteCollision(Collider target)
     {
         base.ExecuteCollision(target);
-		if (target.TryGetComponent<BaseEnemy>(out var baseEnemy))
+		if (target.TryGetComponent<Enemy>(out var baseEnemy))
 		{
 			baseEnemy.TakeDamage(1);
 		}
