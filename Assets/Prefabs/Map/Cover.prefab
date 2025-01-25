@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 506843035670214796}
   - component: {fileID: 7874395863714370575}
   - component: {fileID: 1662555497819790236}
+  - component: {fileID: 5048080270299895727}
   - component: {fileID: 8984877386986549652}
-  - component: {fileID: 3062315821838402027}
   - component: {fileID: -5923498697120189716}
   m_Layer: 0
   m_Name: Cover
@@ -324,16 +324,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &8984877386986549652
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4350655591631380117}
-  m_Mesh: {fileID: 0}
---- !u!64 &3062315821838402027
-MeshCollider:
+--- !u!65 &5048080270299895727
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -350,9 +342,16 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
+  serializedVersion: 3
+  m_Size: {x: 2.0000014, y: 1.4, z: 0.40000024}
+  m_Center: {x: 1.0000007, y: 0.7, z: 0.19999988}
+--- !u!33 &8984877386986549652
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4350655591631380117}
   m_Mesh: {fileID: 0}
 --- !u!208 &-5923498697120189716
 NavMeshObstacle:
