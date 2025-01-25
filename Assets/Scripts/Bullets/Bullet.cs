@@ -14,7 +14,13 @@ public class Bullet : Sprite
 
 	private void Awake()
 	{
+		PlayerController.OnPlayerDeath += InstantDestroy;
 		DeleteBullet().Forget();
+	}
+
+	void OnDestroy()
+	{
+		PlayerController.OnPlayerDeath -= InstantDestroy;
 	}
 
 	private void OnTriggerEnter(Collider target)
@@ -36,6 +42,13 @@ public class Bullet : Sprite
 	{
 		_cts = new CancellationTokenSource();
 		await UniTask.Delay(_timeToDelete, cancellationToken: _cts.Token);
+		Destroy(gameObject);
+	}
+
+	private void InstantDestroy()
+	{
+		Debug.Log("Bullet destroyed");
+		_cts.Cancel();
 		Destroy(gameObject);
 	}
 }

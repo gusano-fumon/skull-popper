@@ -26,6 +26,8 @@ public class MouseLook : MonoBehaviour
 
 	private void Update()
 	{
+		if (PlayerController.IsDead) return;
+		
 		var scaledSesitivity = sensitivity * Time.deltaTime;
 		var mouseY = Input.GetAxis("Mouse Y") * scaledSesitivity;
 
@@ -111,6 +113,7 @@ public class MouseLook : MonoBehaviour
 
 	private void Shoot()
 	{
+		if (_recharging) return;
 		var bubble = Instantiate(_bubble, transform.position, transform.rotation);
 		bubble.Init(transform.forward);
 

@@ -28,6 +28,8 @@ public class Enemy : Sprite
 	{
 		base.Update();
 
+		if (PlayerController.IsDead) return;
+
 		if (Time.frameCount % 3 == 0) Move();
 
 		if (Time.frameCount % 300 == 0)
