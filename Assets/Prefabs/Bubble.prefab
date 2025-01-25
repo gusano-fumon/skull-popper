@@ -182,3 +182,6 @@ MonoBehaviour:
   _forwardSpeed: 4
   _sineSpeed: 5
   _sineMultiplier: 0.2
+  _sprites:
+  - {fileID: 2800000, guid: 18fb132687527ee449df0451dcc8c77d, type: 3}
+  - {fileID: 2800000, guid: 9e56700fb1c705f48b05ced4eb3532a1, type: 3}

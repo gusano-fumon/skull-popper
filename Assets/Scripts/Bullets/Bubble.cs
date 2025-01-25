@@ -6,6 +6,7 @@ public class Bubble : Bullet
 	private Vector3 _forwardDirection, _sineDirection, _startPos;
 	private float _forwardProgress, _sineProgress;
 	[SerializeField] private float _forwardSpeed, _sineSpeed, _sineMultiplier;
+	[SerializeField] private Texture2D[] _sprites;
 
 	public void Init(Vector3 direction)
 	{
@@ -40,4 +41,13 @@ public class Bubble : Bullet
 		}
 		Destroy(gameObject);
     }
+
+	protected override void CheckSprite()
+	{
+		_spriteCounter++;
+		_meshRenderer.sharedMaterial.SetTexture(
+			"_MainTex",
+			_spriteCounter % 2 == 0 ? _sprites[0] : _sprites[1]
+		);
+	}
 }
