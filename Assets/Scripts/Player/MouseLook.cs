@@ -8,6 +8,7 @@ public class MouseLook : MonoBehaviour
 	public PlayerController player;
 	public float sensitivity = 100f;
 	[SerializeField] private Bubble _bubble;
+	[SerializeField] private Transform _initialPos; 
 	private float _rotationX;
 
 	public int rechargeTimeWindow = 3000;
@@ -114,7 +115,7 @@ public class MouseLook : MonoBehaviour
 	private void Shoot()
 	{
 		if (_recharging) return;
-		var bubble = Instantiate(_bubble, transform.position, transform.rotation);
+		var bubble = Instantiate(_bubble, _initialPos.position, transform.rotation);
 		bubble.Init(transform.forward);
 
 		player.audioController.PlayShotClip(bubble.transform);

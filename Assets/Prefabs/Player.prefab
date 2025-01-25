@@ -47,10 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5faa603ca742748a2812d6829bb94e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 10
-  _gravity: -9.81
-  groundCheck: {fileID: 0}
-  jumpForce: 1.5
+  TotalHealth: 100
+  _movementSpeed: 15
+  _gravity: -50
+  jumpForce: 3
   groundMask:
     serializedVersion: 2
     m_Bits: 256
@@ -76,12 +76,12 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
+  m_Height: 1
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.01
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &873220515353899763
 MonoBehaviour:
@@ -106,6 +106,37 @@ MonoBehaviour:
   shotClips:
   - {fileID: 8300000, guid: 90c2300ab71a5cd4dba5023cfda9c4cc, type: 3}
   _prefab: {fileID: 7809965271467892392, guid: 7dc49f8c52e29854fb4411e2e3436380, type: 3}
+--- !u!1 &3346268301382314540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4491780566571167590}
+  m_Layer: 0
+  m_Name: DummyGun
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4491780566571167590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3346268301382314540}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6320304901239883849}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8157544381296245912
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +168,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4491780566571167590}
   m_Father: {fileID: 1739465484594812716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &7252038624003267332
@@ -214,4 +246,7 @@ MonoBehaviour:
   player: {fileID: 8971079509820256023}
   sensitivity: 200
   _bubble: {fileID: 625153044786506450, guid: 55212d3fc7393514eb6d09201c108193, type: 3}
-  rechargeTime: 3000
+  _initialPos: {fileID: 4491780566571167590}
+  rechargeTimeWindow: 3000
+  requiredMovements: 3
+  movementThreshold: 50
