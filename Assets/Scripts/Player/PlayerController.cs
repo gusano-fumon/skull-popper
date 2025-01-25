@@ -70,7 +70,6 @@ public class PlayerController : MonoBehaviour, ILife
 
 		if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
 		{
-			Debug.Log("Jump");
 			velocity.y = Mathf.Sqrt(jumpForce * -2 *_gravity);
 		}
 

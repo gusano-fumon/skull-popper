@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnergyBall : Bullet
 {
 	[SerializeField] private float _speed = 5;
+	[SerializeField] private Texture2D[] _sprites;
 	private Vector3 _direction;
 
 	private void FixedUpdate()
@@ -30,5 +31,14 @@ public class EnergyBall : Bullet
 		base.ExecuteCollision(target);
 		PlayerController.OnHit(1);
 		Destroy(gameObject);
+	}
+
+	protected override void CheckSprite()
+	{
+		_spriteCounter++;
+		_meshRenderer.sharedMaterial.SetTexture(
+			"_MainTex",
+			_spriteCounter % 2 == 0 ? _sprites[0] : _sprites[1]
+		);
 	}
 }

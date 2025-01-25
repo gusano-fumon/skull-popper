@@ -67,7 +67,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a24eb6ef65aaf4444bdb2c12f8df9785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 6274207469970572915}
   _speed: 5
+  _sprites:
+  - {fileID: 2800000, guid: aba541a1c4f42314a8b1a1a95b7f2b83, type: 3}
+  - {fileID: 2800000, guid: aa181a5851db63f44ba77449f3f1f37c, type: 3}
 --- !u!1 &7191021358610284724
 GameObject:
   m_ObjectHideFlags: 0
