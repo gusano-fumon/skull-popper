@@ -1,8 +1,9 @@
 
 
-public class BaseEnemy : Enemy
+public class BaseEnemy : Enemy, ILife
 {
 	public EnergyBall bulletPrefab;
+	public int Health { get; set; }
 
 	public void Awake()
 	{
@@ -30,4 +31,18 @@ public class BaseEnemy : Enemy
         var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 		bullet.Init(_target.position);
     }
+
+	public void TakeDamage(int damage)
+	{
+		Health -= damage;
+		if (Health <= 0)
+		{
+			Destroy(gameObject);
+		}
+	}
+
+	public void RestoreHealth(int health)
+	{
+		Health += health;
+	}
 }

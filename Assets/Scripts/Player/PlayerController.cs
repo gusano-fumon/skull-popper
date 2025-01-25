@@ -17,11 +17,8 @@ public class PlayerController : MonoBehaviour, ILife
 	[Header("References")]
 	[SerializeField] private CharacterController _character;
 	[SerializeField] private PlayerUI _playerUI;
+	public AudioController audioController;
 
-	[Header("Sounds")]
-	public AudioClip playerHitSound;
-	public AudioClip playerDieSound;
-	public AudioClip playerHealSound;
 
 	public int Health { get; set; }
 
@@ -83,8 +80,13 @@ public class PlayerController : MonoBehaviour, ILife
 	public void TakeDamage(int damage)
 	{
 		Health -= damage;
-		Debug.Log("Player hit! Health: " + Health);
 		_playerUI.UpdateHealth(Health);
+		if (Health > 0)
+		{
+			audioController.PlayHitClip(transform);
+			return;
+		}
+		Debug.Log($"You died!");
 	}
 
 	public void RestoreHealth(int health)
