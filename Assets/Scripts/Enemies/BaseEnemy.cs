@@ -10,6 +10,7 @@ public class BaseEnemy : Enemy, ILife
 	public int Health { get; set; }
 	[SerializeField] private Texture2D[] _walkingSprites;
 	[SerializeField] private Texture2D _shootSprite;
+	[SerializeField] private Texture2D _hurtSprite;
 	[SerializeField] private Texture2D _idleSprite;
 
 	public void Awake()
@@ -21,15 +22,7 @@ public class BaseEnemy : Enemy, ILife
 
 	protected override void Move()
 	{
-		if (_state == EnemyState.Attacking)
-		{
-			UniTask.Void(async () => {
-				await UniTask.Delay(200);
-			});
-		}
-
-		var remainingDistance = (_target.position - transform.position).magnitude;
-		if (_distanceToTarget + _deadZone > remainingDistance && remainingDistance > _distanceToTarget - _deadZone)
+		if (_distanceToTarget + _deadZone > _remainingDistance && _remainingDistance > _distanceToTarget - _deadZone)
 		{
 			_state = EnemyState.Idle;
 			_aiAgent.destination = transform.position;
@@ -38,7 +31,7 @@ public class BaseEnemy : Enemy, ILife
 
 		_state = EnemyState.Walking;
 
-		if (remainingDistance > _distanceToTarget)
+		if (_remainingDistance > _distanceToTarget)
 			_aiAgent.destination = _target.position;
 		else
 			_aiAgent.destination = transform.position + (transform.position - _target.position).normalized * _distanceToTarget;
@@ -70,6 +63,8 @@ public class BaseEnemy : Enemy, ILife
 		Health -= damage;
 		if (Health <= 0)
 		{
+			_state = EnemyState.ReceivingDamage;
+			_meshRenderer.sharedMaterial.mainTexture = _hurtSprite;
 			Destroy(gameObject);
 		}
 	}

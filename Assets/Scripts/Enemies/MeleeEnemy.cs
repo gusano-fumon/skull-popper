@@ -9,14 +9,13 @@ public class MeleeEnemy : Enemy
 
 	protected override void Move()
 	{
-		var remainingDistance = (_target.position - transform.position).magnitude;
-		if (_distanceToTarget + _deadZone > remainingDistance && remainingDistance > _distanceToTarget - _deadZone)
+		if (_distanceToTarget + _deadZone > _remainingDistance && _remainingDistance > _distanceToTarget - _deadZone)
 		{
 			_aiAgent.destination = transform.position;
 			return;
 		}
 
-		if (remainingDistance > _distanceToTarget)
+		if (_remainingDistance > _distanceToTarget)
 			_aiAgent.destination = _target.position;
 		else
 			_aiAgent.destination = transform.position + (transform.position - _target.position).normalized * _distanceToTarget;
