@@ -9,7 +9,7 @@ public class Sprite : MonoBehaviour
 
 	protected virtual void Update()
 	{
-		transform.LookAt(PlayerController.Transform);
+		transform.LookAt(PlayerController.CameraTransform);
 		if (Time.frameCount % 40 == 0) CheckSprite();
 	}
 

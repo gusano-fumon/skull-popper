@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 
 public class MeleeEnemy : Enemy
 {
@@ -36,6 +38,13 @@ public class MeleeEnemy : Enemy
 		PlayerController.OnHit(1);
 	}
 
+	protected override void Die()
+	{
+		base.Die();
+		_aiAgent.baseOffset = .5f;
+		Destroy(_aiAgent);
+	}
+	
 	protected override void SetWalkingSprite()
 	{
 		_meshRenderer.material.mainTexture = _walkingSprites[0];

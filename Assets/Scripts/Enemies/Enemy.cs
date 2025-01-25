@@ -1,4 +1,6 @@
 
+using System;
+
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +20,7 @@ public class Enemy : Sprite, ILife
 	[SerializeField] protected float _distanceToTarget;
 	[SerializeField] protected float _deadZone;
 
+	public Action<int> OnDeath;
 	public int totalHealth = 5;
 	public int Health { get; set; }
 	[SerializeField] protected Texture2D[] _walkingSprites;
@@ -29,7 +32,7 @@ public class Enemy : Sprite, ILife
 	protected Transform _target;
 	protected EnemyState _state;
 	protected float _remainingDistance;
-	protected bool _isDead = false;
+	public bool isDead = false;
 	private bool _alredySeen = false;
 
 	private void Start()
@@ -43,7 +46,7 @@ public class Enemy : Sprite, ILife
 	{
 		base.Update();
 
-		if (PlayerController.GameEnd || _isDead) return;
+		if (PlayerController.GameEnd || isDead) return;
 
 		_remainingDistance = (_target.position - transform.position).magnitude;
 		if (_remainingDistance > 50) return;
@@ -62,7 +65,7 @@ public class Enemy : Sprite, ILife
 			if (_state is EnemyState.Attacking or EnemyState.ReceivingDamage)
 			{
 				await UniTask.Delay(500);
-				if (_isDead) return;
+				if (isDead) return;
 			}
 
 			if (Time.frameCount % 3 == 0) Move();
@@ -83,13 +86,15 @@ public class Enemy : Sprite, ILife
 	protected virtual void Attack() { }
 	protected virtual void Die()
 	{
-		_isDead = true;
+		isDead = true;
+		OnDeath?.Invoke(1);
 		_meshRenderer.material.mainTexture = _deadSprite;
+		Destroy(GetComponent<CapsuleCollider>());
 	}
 
 	public void TakeDamage(int damage)
 	{
-		if (_isDead) return;
+		if (isDead) return;
 
 		Health -= damage;
 		if (Health <= 0)
@@ -109,7 +114,7 @@ public class Enemy : Sprite, ILife
 
 	protected override void CheckSprite()
 	{
-		if (_isDead) return;
+		if (isDead) return;
 
 		if (_state == EnemyState.Idle)
 		{

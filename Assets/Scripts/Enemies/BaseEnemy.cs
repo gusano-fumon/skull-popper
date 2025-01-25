@@ -1,6 +1,4 @@
 
-using UnityEngine;
-
 
 public class BaseEnemy : Enemy
 {
@@ -35,6 +33,13 @@ public class BaseEnemy : Enemy
 
 		var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 		bullet.Init(_target.position);
+	}
+
+	protected override void Die()
+	{
+		base.Die();
+		_aiAgent.baseOffset = .8f;
+		Destroy(_aiAgent);
 	}
 
 	protected override void SetWalkingSprite()

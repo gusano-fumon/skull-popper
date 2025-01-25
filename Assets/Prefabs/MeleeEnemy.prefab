@@ -77,7 +77,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.5
+  m_BaseOffset: 1.8
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &4726617108584957274
@@ -103,6 +103,7 @@ MonoBehaviour:
   _deadSprite: {fileID: 2800000, guid: 63fdf9c5cc861cb4499142641058053b, type: 3}
   _hurtSprite: {fileID: 2800000, guid: 5b80233da29f038449ec242f5d05f05b, type: 3}
   _idleSprite: {fileID: 2800000, guid: a5d925dfaf9f12c4c9e5a237657af5f8, type: 3}
+  isDead: 0
 --- !u!1 &8855468089294073585
 GameObject:
   m_ObjectHideFlags: 0

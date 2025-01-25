@@ -1,11 +1,13 @@
+
 using System;
+
 using UnityEngine;
 
 
 public class PlayerController : MonoBehaviour, ILife
 {
-	private static Transform _transform;
-	public static Transform Transform { get { return _transform; } } 
+	private static Transform _cameraTransform;
+	public static Transform CameraTransform { get { return _cameraTransform; } } 
 	public static Action<int> OnHit;
 	public static Action<int> OnPlayerHeal;
 	public static Action OnPlayerDeath;
@@ -32,7 +34,7 @@ public class PlayerController : MonoBehaviour, ILife
 	private void Awake()
 	{
 		GameEnd = false;
-		_transform = transform;
+		_cameraTransform = Camera.main.transform;
 		OnHit += TakeDamage;
 		OnPlayerHeal += RestoreHealth;
 		VictoryZone.OnVictory += () => GameEnd = true;
