@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour, ILife
 	public static Transform Transform { get { return _transform; } } 
 	public static Action<int> OnHit;
 	public static Action<int> OnPlayerHeal;
+	public static Action OnPlayerDeath;
+	public static bool IsDead { get; private set; }
 	public int TotalHealth = 100;
 
 	[Header("Properties")]
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour, ILife
 
 	private void Awake()
 	{
+		IsDead = false;
 		_transform = transform;
 		OnHit += TakeDamage;
 		OnPlayerHeal += RestoreHealth;
@@ -43,13 +46,10 @@ public class PlayerController : MonoBehaviour, ILife
 
 	private void Update()
 	{
+		if (PlayerController.IsDead) return;
+		
 		MoveXZ();
 		TiltCamera();
-
-		if (Health <= 0)
-		{
-			Die();
-		}
 	}
 
 	private void MoveXZ()
@@ -74,6 +74,8 @@ public class PlayerController : MonoBehaviour, ILife
 	{
 		Health = 0;
 		_playerUI.UpdateHealth(Health);
+		IsDead = true;
+		OnPlayerDeath?.Invoke();
 	}
 
 	public void TakeDamage(int damage)
@@ -85,12 +87,22 @@ public class PlayerController : MonoBehaviour, ILife
 			audioController.PlayHitClip(transform);
 			return;
 		}
-		Debug.Log($"You died!");
+
+		if (Health <= 0)
+		{
+			Die();
+		}
 	}
 
 	public void RestoreHealth(int health)
 	{
 		Health += health;
+
+		if (Health > TotalHealth)
+		{
+			Health = TotalHealth;
+		}
+
 		_playerUI.UpdateHealth(Health);
 	}
 }
