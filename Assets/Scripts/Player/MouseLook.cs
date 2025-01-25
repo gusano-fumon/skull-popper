@@ -1,9 +1,6 @@
 using System;
-using System.Threading;
 
 using UnityEngine;
-
-using Cysharp.Threading.Tasks;
 
 
 public class MouseLook : MonoBehaviour
@@ -13,25 +10,14 @@ public class MouseLook : MonoBehaviour
 	[SerializeField] private Bubble _bubble;
 	private float _rotationX;
 
-	[SerializeField] private int rechargeTime = 3000;
-	private bool _recharging = false;
-	public bool Recharging { 
-		get { return _recharging; }
-		set {
-			_recharging = value;
-			if (_recharging)
-			{
-				StartRecharging().Forget();
-			}
-			else
-			{
-				Debug.Log("Stopped Recharging");
-				_cts.Cancel();
-			}
-		}
-	}
+	public int rechargeTimeWindow = 3000;
+	public int requiredMovements = 3;
+	public float movementThreshold = 50f;
 
-	private CancellationTokenSource _cts;
+	private int currentMovementCount = 0;
+	private float lastMovementTime = 0f;
+	private bool expectingUpMovement = true;
+	private bool _recharging = false;
 
 	private void Start()
 	{
@@ -40,22 +26,45 @@ public class MouseLook : MonoBehaviour
 
 	private void Update()
 	{
-		if (!Recharging)
-		{
-			var scaledSesitivity = sensitivity * Time.deltaTime;
-			var mouseX = Input.GetAxis("Mouse X") * scaledSesitivity;
-			var mouseY = Input.GetAxis("Mouse Y") * scaledSesitivity;
+		var scaledSesitivity = sensitivity * Time.deltaTime;
+		var mouseY = Input.GetAxis("Mouse Y") * scaledSesitivity;
 
-		player.transform.Rotate(mouseX * Vector3.up);
+		if (!_recharging)
+		{
+			var mouseX = Input.GetAxis("Mouse X") * scaledSesitivity;
+
+			player.transform.Rotate(mouseX * Vector3.up);
 
 			_rotationX -= mouseY;
 			_rotationX = Math.Clamp(_rotationX, -90, 90);
 
 			transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
 		}
+		else
+		{
+			if (Time.time - lastMovementTime > rechargeTimeWindow)
+			{
+				ResetRecharge();
+			}
 
-		if (Input.GetMouseButtonDown(1)) Recharging = true;
-		if (Input.GetMouseButtonUp(1)) Recharging = false;
+			// Detect significant mouse movement
+			if (Mathf.Abs(mouseY) > movementThreshold / 100f)
+			{
+				// Check for up movement when expecting up
+				if (expectingUpMovement && mouseY > 0)
+				{
+					UpdateMovementCount(true);
+				}
+				// Check for down movement when not expecting up
+				else if (!expectingUpMovement && mouseY < 0)
+				{
+					UpdateMovementCount(false);
+				}
+			}
+		}
+
+		if (Input.GetMouseButtonDown(1)) _recharging = true;
+		if (Input.GetMouseButtonUp(1)) _recharging = false;
 
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -63,14 +72,41 @@ public class MouseLook : MonoBehaviour
 		}
 	}
 
-	private async UniTaskVoid StartRecharging()
+	private void UpdateMovementCount(bool isUpMovement)
 	{
-		_cts = new CancellationTokenSource();
-		Debug.Log("StartRecharging");
-		
-		await UniTask.Delay(rechargeTime, cancellationToken: _cts.Token);
+		// Update last movement time
+		lastMovementTime = Time.time;
 
-		Debug.Log("Finish Recharging");
+		// Toggle expected movement direction
+		expectingUpMovement = !isUpMovement;
+
+		// Increment movement count
+		currentMovementCount++;
+
+		// Check if recharge is complete
+		if (currentMovementCount >= requiredMovements * 2)
+		{
+			PerformRecharge();
+		}
+	}
+
+	private void ResetRecharge()
+	{
+		Debug.Log("Reset Recharge!");
+		currentMovementCount = 0;
+		expectingUpMovement = true;
+	}
+
+	private void PerformRecharge()
+	{
+		Debug.Log("Recharge Complete!");
+		// Add your recharge logic here
+		// For example:
+		// playerHealth.Recharge();
+		// energySystem.FullyRecharge();
+
+		// Reset for next recharge attempt
+		ResetRecharge();
 	}
 
 	private void Shoot()
