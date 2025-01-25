@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, ILife
 {
+	private static Transform _transform;
+	public static Transform Transform { get { return _transform; } } 
 	public static Action<int> OnHit;
 	public static Action<int> OnPlayerHeal;
 	public const int TotalHealth = 100;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour, ILife
 
 	private void Awake()
 	{
+		_transform = transform;
 		OnHit += TakeDamage;
 		OnPlayerHeal += RestoreHealth;
 	}

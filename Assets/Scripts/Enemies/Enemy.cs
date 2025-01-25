@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class Enemy : MonoBehaviour
+public class Enemy : Sprite
 {
 	[SerializeField] protected NavMeshAgent _aiAgent;
 	[SerializeField] protected float _distanceToTarget;
@@ -19,8 +19,6 @@ public class Enemy : MonoBehaviour
 
 	private void Update()
 	{
-		transform.LookAt(_target);
-
 		if (Time.frameCount % 3 == 0) Move();
 
 		if (Time.frameCount % 200 == 0)

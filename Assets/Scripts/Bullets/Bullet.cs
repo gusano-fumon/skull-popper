@@ -6,12 +6,12 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 
 
-public class Bullet : MonoBehaviour
+public class Bullet : Sprite
 {
 	private CancellationTokenSource _cts;
 	private readonly int _timeToDelete = 5000;
 	protected string _targetTag;
-	
+
 	private void Awake()
 	{
 		DeleteBullet().Forget();
