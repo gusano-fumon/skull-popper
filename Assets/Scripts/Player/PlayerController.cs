@@ -39,12 +39,13 @@ public class PlayerController : MonoBehaviour, ILife
 	private void Start()
 	{
 		Health = TotalHealth;
-		_playerUI.UpdateHealth(Health);
+		// _playerUI.UpdateHealth(Health);
 	}
 
 	private void Update()
 	{
 		MoveXZ();
+		TiltCamera();
 
 		if (Health <= 0)
 		{
@@ -59,8 +60,15 @@ public class PlayerController : MonoBehaviour, ILife
 
 		var move = transform.right * horizontal + transform.forward * vertical;
 		_character.Move(_movementSpeed * Time.deltaTime * move);
-
 		_character.Move(new Vector3(0, _gravity, 0) * Time.deltaTime);
+	}
+
+	private void TiltCamera()
+	{
+		float z = Input.GetAxis("Horizontal") * -2f;
+		Vector3 euler = transform.localEulerAngles;
+		euler.z = z;
+		transform.localEulerAngles = euler;
 	}
 
 	public void Die()
