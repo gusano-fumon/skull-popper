@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour, ILife
 	private void Start()
 	{
 		Health = TotalHealth;
-		// _playerUI.UpdateHealth(Health);
+		_playerUI.UpdateHealth(Health);
 	}
 
 	private void Update()
