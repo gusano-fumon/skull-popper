@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3522593331657130937}
   - component: {fileID: 87496696950681188}
   - component: {fileID: 7068426035473618806}
-  - component: {fileID: 5256892246948972632}
+  - component: {fileID: 6387975784846551492}
   m_Layer: 6
-  m_Name: Bullet
+  m_Name: EnergyBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,13 +100,13 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5256892246948972632
+--- !u!114 &6387975784846551492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,9 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6636569345375564833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8d3b5dd631562a42af9cf116ebf7a44, type: 3}
+  m_Script: {fileID: 11500000, guid: a24eb6ef65aaf4444bdb2c12f8df9785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _forwardSpeed: 3
-  _sineSpeed: 1
-  _sineMultiplier: 0.5
+  _speed: 5

@@ -24,4 +24,10 @@ public class EnergyBall : Bullet
 	{
 		transform.localPosition += _speed * Time.deltaTime * _direction;
 	}
+
+	public override void ExecuteCollision()
+	{
+		base.ExecuteCollision();
+		PlayerController.OnHit.Invoke(1);
+	}
 }

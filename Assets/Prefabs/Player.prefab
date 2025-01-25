@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1739465484594812716}
   - component: {fileID: 8971079509820256023}
   - component: {fileID: 914083471213553244}
-  - component: {fileID: 8478448985688632923}
+  - component: {fileID: 2793662322005817546}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -48,7 +48,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 10
+  _gravity: -9.81
   _character: {fileID: 914083471213553244}
+  _playerUI: {fileID: 0}
+  playerHitSound: {fileID: 0}
+  playerDieSound: {fileID: 0}
+  playerHealSound: {fileID: 0}
 --- !u!143 &914083471213553244
 CharacterController:
   m_ObjectHideFlags: 0
@@ -75,29 +80,28 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.01
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &8478448985688632923
-CapsuleCollider:
+--- !u!195 &2793662322005817546
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2857501442880099291}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  m_AgentTypeID: 0
   m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
   m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8157544381296245912
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +130,7 @@ Transform:
   m_GameObject: {fileID: 8157544381296245912}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -142,7 +146,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.3220007, g: 0.3948914, b: 0.509434, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

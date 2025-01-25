@@ -17,21 +17,19 @@ public class Bullet : MonoBehaviour
 		DeleteBullet().Forget();
 	}
 
-	private void OnCollisionEnter(Collision target)
+	private void OnTriggerEnter(Collider target)
 	{
-		if (target.collider.CompareTag(_targetTag))
+		if (target.CompareTag(_targetTag))
 		{
 			_cts.Cancel();
-
 			ExecuteCollision();
-			Destroy(gameObject);
 		}
 	}
 
 	public virtual void ExecuteCollision()
 	{
 		// Player receives damage.
-		Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		Destroy(gameObject);
 	}
 
 	public async UniTaskVoid DeleteBullet()
