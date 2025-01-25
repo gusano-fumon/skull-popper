@@ -27,7 +27,7 @@ public class MouseLook : MonoBehaviour
 
 	private void Update()
 	{
-		if (PlayerController.IsDead) return;
+		if (PlayerController.GameEnd) return;
 		
 		var scaledSesitivity = sensitivity * Time.deltaTime;
 		var mouseY = Input.GetAxis("Mouse Y") * scaledSesitivity;

@@ -17,11 +17,13 @@ public class GameMenu : MonoBehaviour
     private void Awake()
     {
         PlayerController.OnPlayerDeath += PlayerDeath;
+        VictoryZone.OnVictory += Victory;
     }
 
     private void OnDestroy()
     {
         PlayerController.OnPlayerDeath -= PlayerDeath;
+        VictoryZone.OnVictory -= Victory;
     }
 
     private void Start()

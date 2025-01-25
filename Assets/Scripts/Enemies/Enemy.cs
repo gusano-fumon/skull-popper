@@ -33,7 +33,7 @@ public class Enemy : Sprite
 	{
 		base.Update();
 
-		if (PlayerController.IsDead) return;
+		if (PlayerController.GameEnd) return;
 
 		_remainingDistance = (_target.position - transform.position).magnitude;
 		if (_remainingDistance > 50) return;
