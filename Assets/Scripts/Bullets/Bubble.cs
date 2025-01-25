@@ -5,7 +5,7 @@ using DG.Tweening;
 public class Bubble : Bullet
 {
 	private Vector3 _forwardDirection, _startPos;
-	private float _forwardProgress, _velocity;
+	private float _forwardProgress;
 	[SerializeField] private float _forwardSpeed, _sineSpeed, _sineMultiplier;
 	[SerializeField] private Texture2D[] _sprites;
 
@@ -39,7 +39,7 @@ public class Bubble : Bullet
 		base.Update();
 
 		_forwardProgress += _forwardSpeed * Time.deltaTime;
-		Vector3 position = _startPos + _forwardProgress * _forwardDirection * _velocity;
+		Vector3 position = _startPos + _forwardProgress * _forwardDirection;
 
 		transform.position = position;
 	}
