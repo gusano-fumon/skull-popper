@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1739465484594812716}
   - component: {fileID: 8971079509820256023}
   - component: {fileID: 914083471213553244}
-  - component: {fileID: 2793662322005817546}
   - component: {fileID: 873220515353899763}
   m_Layer: 0
   m_Name: Player
@@ -79,28 +78,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.01
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &2793662322005817546
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2857501442880099291}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &873220515353899763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +129,7 @@ Transform:
   m_GameObject: {fileID: 8157544381296245912}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -232,3 +209,4 @@ MonoBehaviour:
   player: {fileID: 8971079509820256023}
   sensitivity: 200
   _bubble: {fileID: 625153044786506450, guid: 55212d3fc7393514eb6d09201c108193, type: 3}
+  rechargeTime: 3000

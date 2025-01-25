@@ -3,6 +3,11 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
+public enum EnemyState {
+	Idle,
+	Walking
+}
+
 public class Enemy : Sprite
 {
 	[SerializeField] protected NavMeshAgent _aiAgent;
@@ -10,6 +15,7 @@ public class Enemy : Sprite
 	[SerializeField] protected float _deadZone;
 
 	protected Transform _target;
+	protected EnemyState _state;
 
 	private void Start()
 	{
