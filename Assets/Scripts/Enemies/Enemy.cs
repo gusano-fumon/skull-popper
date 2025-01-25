@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public enum EnemyState {
 	Idle,
-	Walking
+	Walking,
+	Attacking
 }
 
 public class Enemy : Sprite
@@ -29,7 +30,7 @@ public class Enemy : Sprite
 
 		if (Time.frameCount % 3 == 0) Move();
 
-		if (Time.frameCount % 200 == 0)
+		if (Time.frameCount % 300 == 0)
 		{
 			Attack();
 		}

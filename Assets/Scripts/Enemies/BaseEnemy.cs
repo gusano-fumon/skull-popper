@@ -1,9 +1,16 @@
 
+using Cysharp.Threading.Tasks;
+using UnityEngine;
+
 
 public class BaseEnemy : Enemy, ILife
 {
 	public EnergyBall bulletPrefab;
 	public int Health { get; set; }
+	[SerializeField] private MeshRenderer _meshRenderer;
+	[SerializeField] private Texture2D[] _walkingSprites;
+	[SerializeField] private Texture2D _shootSprite;
+	[SerializeField] private Texture2D _idleSprite;
 
 	public void Awake()
 	{
@@ -13,6 +20,13 @@ public class BaseEnemy : Enemy, ILife
 
 	protected override void Move()
 	{
+		if (_state == EnemyState.Attacking)
+		{
+			UniTask.Void(async () => {
+				await UniTask.Delay(200);
+			});
+		}
+
 		var remainingDistance = (_target.position - transform.position).magnitude;
 		if (_distanceToTarget + _deadZone > remainingDistance && remainingDistance > _distanceToTarget - _deadZone)
 		{
@@ -31,6 +45,9 @@ public class BaseEnemy : Enemy, ILife
 
     protected override void Attack()
     {
+		_meshRenderer.sharedMaterial.SetTexture("_MainTex", _shootSprite);
+		_state = EnemyState.Attacking;
+
         var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 		bullet.Init(_target.position);
     }
@@ -39,13 +56,15 @@ public class BaseEnemy : Enemy, ILife
 	{
 		if (_state == EnemyState.Idle)
 		{
-
+			_meshRenderer.sharedMaterial.SetTexture("_MainTex", _idleSprite);
 			return;
 		}
 
 		_spriteCounter++;
-
-		// if (_spriteCounter % 2 == 0)
+		_meshRenderer.sharedMaterial.SetTexture(
+			"_MainTex",
+			_spriteCounter % 2 == 0 ? _walkingSprites[0] : _walkingSprites[1]
+		);
 	}
 
 	public void TakeDamage(int damage)
