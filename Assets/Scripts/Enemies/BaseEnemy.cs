@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BaseEnemy : Enemy, ILife
 {
+	public int totalHealth = 5;
 	public EnergyBall bulletPrefab;
 	public int Health { get; set; }
 	[SerializeField] private MeshRenderer _meshRenderer;
@@ -15,6 +16,7 @@ public class BaseEnemy : Enemy, ILife
 	public void Awake()
 	{
 		_distanceToTarget = 5;
+		Health = totalHealth;
 		_deadZone = .2f;
 	}
 

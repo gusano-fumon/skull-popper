@@ -16,6 +16,7 @@ public class Bullet : Sprite
 	{
 		PlayerController.OnPlayerDeath += InstantDestroy;
 		DeleteBullet().Forget();
+		Debug.Log(gameObject.name);
 	}
 
 	void OnDestroy()
@@ -25,17 +26,19 @@ public class Bullet : Sprite
 
 	private void OnTriggerEnter(Collider target)
 	{
+		Debug.Log("tag: " + target.tag);
+		Debug.Log("targettag: " + _targetTag);
+		
 		if (target.CompareTag(_targetTag))
 		{
 			_cts.Cancel();
-			ExecuteCollision();
+			ExecuteCollision(target);
 		}
 	}
 
-	public virtual void ExecuteCollision()
+	public virtual void ExecuteCollision(Collider target)
 	{
 		// Player receives damage.
-		Destroy(gameObject);
 	}
 
 	public async UniTaskVoid DeleteBullet()

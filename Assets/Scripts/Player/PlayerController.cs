@@ -14,7 +14,13 @@ public class PlayerController : MonoBehaviour, ILife
 
 	[Header("Properties")]
 	[SerializeField] private float _movementSpeed;
-	[SerializeField] private float _gravity = -9.81f;
+	[SerializeField] private float _gravity = -15f;
+
+	private Vector3 velocity;
+	public float jumpForce = 1.5f;
+	public LayerMask groundMask;
+	private bool _isGrounded;
+
 
 	[Header("References")]
 	[SerializeField] private CharacterController _character;
@@ -40,26 +46,46 @@ public class PlayerController : MonoBehaviour, ILife
 
 	private void Start()
 	{
+		Debug.Log("PlayerController Start");
 		Health = TotalHealth;
 		_playerUI.UpdateHealth(Health);
 	}
 
 	private void Update()
 	{
+<<<<<<< Updated upstream
 		if (PlayerController.IsDead) return;
 		
 		MoveXZ();
+=======
+		Movement();
+>>>>>>> Stashed changes
 		TiltCamera();
 	}
 
-	private void MoveXZ()
+	private void Movement()
 	{
+		_isGrounded = Physics.Raycast(transform.position, Vector3.down, 1, groundMask);
+
+		if (_isGrounded && velocity.y < -10)
+		{
+			velocity.y = -10;
+		}
+
+		if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+		{
+			Debug.Log("Jump");
+			velocity.y = Mathf.Sqrt(jumpForce * -2 *_gravity);
+		}
+
 		float horizontal = Input.GetAxis("Horizontal");
 		float vertical = Input.GetAxis("Vertical");
 
 		var move = transform.right * horizontal + transform.forward * vertical;
 		_character.Move(_movementSpeed * Time.deltaTime * move);
-		_character.Move(new Vector3(0, _gravity, 0) * Time.deltaTime);
+
+		velocity.y += _gravity * Time.deltaTime;
+		_character.Move(velocity * Time.deltaTime);
 	}
 
 	private void TiltCamera()
@@ -70,6 +96,7 @@ public class PlayerController : MonoBehaviour, ILife
 		transform.localEulerAngles = euler;
 	}
 
+<<<<<<< Updated upstream
 	public void Die()
 	{
 		Health = 0;
@@ -78,6 +105,8 @@ public class PlayerController : MonoBehaviour, ILife
 		OnPlayerDeath?.Invoke();
 	}
 
+=======
+>>>>>>> Stashed changes
 	public void TakeDamage(int damage)
 	{
 		Health -= damage;

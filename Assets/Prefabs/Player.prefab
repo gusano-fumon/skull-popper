@@ -49,6 +49,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementSpeed: 10
   _gravity: -9.81
+  groundCheck: {fileID: 0}
+  jumpForce: 1.5
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
   _character: {fileID: 914083471213553244}
   _playerUI: {fileID: 0}
   audioController: {fileID: 873220515353899763}

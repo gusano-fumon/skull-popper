@@ -20,6 +20,7 @@ public class Bubble : Bullet
 	protected override void Update()
 	{
 		base.Update();
+
 		_forwardProgress += _forwardSpeed * Time.deltaTime;
 		Vector3 position = _startPos + _forwardProgress * _forwardDirection;
 
@@ -29,4 +30,14 @@ public class Bubble : Bullet
 
 		transform.position = position;
 	}
+
+    public override void ExecuteCollision(Collider target)
+    {
+        base.ExecuteCollision(target);
+		if (target.TryGetComponent<BaseEnemy>(out var baseEnemy))
+		{
+			baseEnemy.TakeDamage(1);
+		}
+		Destroy(gameObject);
+    }
 }
