@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sprite : MonoBehaviour
 {
-	private void Update()
+	protected virtual void Update()
 	{
 		transform.LookAt(PlayerController.Transform);
 	}

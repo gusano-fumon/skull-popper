@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour, ILife
 	[SerializeField] private PlayerUI _playerUI;
 	public AudioController audioController;
 
-
 	public int Health { get; set; }
 
 	private void Awake()

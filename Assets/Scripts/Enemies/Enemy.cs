@@ -17,8 +17,10 @@ public class Enemy : Sprite
 		_aiAgent.destination = _target.position;
 	}
 
-	private void Update()
+	protected override void Update()
 	{
+		base.Update();
+
 		if (Time.frameCount % 3 == 0) Move();
 
 		if (Time.frameCount % 200 == 0)
