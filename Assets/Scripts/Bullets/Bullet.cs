@@ -8,7 +8,7 @@ using Cysharp.Threading.Tasks;
 
 public class Bullet : MonoBehaviour
 {
-	private CancellationTokenSource  _cts;
+	private CancellationTokenSource _cts;
 	private readonly int _timeToDelete = 5000;
 	protected string _targetTag;
 	
