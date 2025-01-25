@@ -1,15 +1,10 @@
 
-using System.Threading;
-
 using UnityEngine;
 
-using Cysharp.Threading.Tasks;
 
-
-public class EnergyBall : MonoBehaviour
+public class EnergyBall : Bullet
 {
 	[SerializeField] private float _speed = 5;
-	private CancellationTokenSource  _cts;
 	private Vector3 _direction;
 
 	private void FixedUpdate()
@@ -17,34 +12,16 @@ public class EnergyBall : MonoBehaviour
 		Move();
 	}
 
-	private void OnCollisionEnter(Collision target)
-	{
-		if (target.collider.CompareTag("Player"))
-		{
-			_cts.Cancel();
-
-			// Player receives damage.
-			Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-			Destroy(gameObject);
-		}
-	}
-
 	public void Init(Vector3 target)
 	{
-		_cts = new CancellationTokenSource();
-		DeleteBullet().Forget();
-		transform.LookAt(target);
+		_targetTag = "Player";
 		_direction = (target - transform.position).normalized;
+
+		transform.LookAt(target);
 	}
 
 	private void Move()
 	{
 		transform.localPosition += _speed * Time.deltaTime * _direction;
-	}
-
-	private async UniTaskVoid DeleteBullet()
-	{
-		await UniTask.Delay(3000, cancellationToken: _cts.Token);
-		Destroy(gameObject);
 	}
 }

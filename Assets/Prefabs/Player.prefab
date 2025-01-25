@@ -205,3 +205,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 1739465484594812716}
   sensitivity: 200
+  _bubble: {fileID: 625153044786506450, guid: 55212d3fc7393514eb6d09201c108193, type: 3}

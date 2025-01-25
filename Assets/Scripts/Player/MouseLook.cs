@@ -7,6 +7,7 @@ public class MouseLook : MonoBehaviour
 {
 	public Transform playerBody;
 	public float sensitivity = 100f;
+	[SerializeField] private Bubble _bubble;
 	private float _rotationX;
 
 	private void Start()
@@ -16,8 +17,9 @@ public class MouseLook : MonoBehaviour
 
 	private void Update()
 	{
-		var mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-		var mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+		var scaledSesitivity = sensitivity * Time.deltaTime;
+		var mouseX = Input.GetAxis("Mouse X") * scaledSesitivity;
+		var mouseY = Input.GetAxis("Mouse Y") * scaledSesitivity;
 
 		playerBody.Rotate(mouseX * Vector3.up);
 
@@ -25,5 +27,17 @@ public class MouseLook : MonoBehaviour
 		_rotationX = Math.Clamp(_rotationX, -90, 90);
 
 		transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
+
+		if (Input.GetMouseButtonDown(0))
+		{
+			Shoot();
+		}
+	}
+
+	private void Shoot()
+	{
+		Debug.Log("Pium");
+		var bubble = Instantiate(_bubble, transform.position, transform.rotation);
+		bubble.Init(transform.forward);
 	}
 }
