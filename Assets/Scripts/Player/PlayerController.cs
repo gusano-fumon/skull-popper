@@ -53,13 +53,9 @@ public class PlayerController : MonoBehaviour, ILife
 
 	private void Update()
 	{
-<<<<<<< Updated upstream
-		if (PlayerController.IsDead) return;
+		if (IsDead) return;
 		
-		MoveXZ();
-=======
 		Movement();
->>>>>>> Stashed changes
 		TiltCamera();
 	}
 
@@ -96,7 +92,6 @@ public class PlayerController : MonoBehaviour, ILife
 		transform.localEulerAngles = euler;
 	}
 
-<<<<<<< Updated upstream
 	public void Die()
 	{
 		Health = 0;
@@ -105,8 +100,6 @@ public class PlayerController : MonoBehaviour, ILife
 		OnPlayerDeath?.Invoke();
 	}
 
-=======
->>>>>>> Stashed changes
 	public void TakeDamage(int damage)
 	{
 		Health -= damage;
