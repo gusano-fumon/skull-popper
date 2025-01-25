@@ -46,7 +46,7 @@ public class BaseEnemy : Enemy, ILife
 
 	protected override void Attack()
 	{
-		_meshRenderer.sharedMaterial.SetTexture("_MainTex", _shootSprite);
+		_meshRenderer.sharedMaterial.mainTexture = _shootSprite;
 		_state = EnemyState.Attacking;
 
 		var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
@@ -57,15 +57,12 @@ public class BaseEnemy : Enemy, ILife
 	{
 		if (_state == EnemyState.Idle)
 		{
-			_meshRenderer.sharedMaterial.SetTexture("_MainTex", _idleSprite);
+			_meshRenderer.sharedMaterial.mainTexture = _idleSprite;
 			return;
 		}
 
 		_spriteCounter++;
-		_meshRenderer.sharedMaterial.SetTexture(
-			"_MainTex",
-			_spriteCounter % 2 == 0 ? _walkingSprites[0] : _walkingSprites[1]
-		);
+		_meshRenderer.sharedMaterial.mainTexture = _walkingSprites[_spriteCounter % 2];
 	}
 
 	public void TakeDamage(int damage)

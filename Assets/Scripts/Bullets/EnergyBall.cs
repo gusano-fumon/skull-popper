@@ -36,9 +36,6 @@ public class EnergyBall : Bullet
 	protected override void CheckSprite()
 	{
 		_spriteCounter++;
-		_meshRenderer.sharedMaterial.SetTexture(
-			"_MainTex",
-			_spriteCounter % 2 == 0 ? _sprites[0] : _sprites[1]
-		);
+		_meshRenderer.sharedMaterial.mainTexture = _sprites[_spriteCounter % 2];
 	}
 }
