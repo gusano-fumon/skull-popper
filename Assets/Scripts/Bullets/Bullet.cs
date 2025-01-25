@@ -18,24 +18,24 @@ public class Bullet : Sprite
 		DeleteBullet().Forget();
 	}
 
-	void OnDestroy()
+	private void OnDestroy()
 	{
 		PlayerController.OnPlayerDeath -= InstantDestroy;
 	}
 
 	private void OnTriggerEnter(Collider target)
 	{
+		_cts.Cancel();
+
 		if (target.CompareTag(_targetTag))
 		{
-			_cts.Cancel();
 			ExecuteCollision(target);
 		}
+
+		Destroy(gameObject);
 	}
 
-	public virtual void ExecuteCollision(Collider target)
-	{
-		// Player receives damage.
-	}
+	public virtual void ExecuteCollision(Collider target) { }
 
 	public async UniTaskVoid DeleteBullet()
 	{
