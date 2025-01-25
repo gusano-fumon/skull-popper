@@ -1,8 +1,9 @@
 
 
-public class BaseEnemy : Enemy
+public class BaseEnemy : Enemy, ILife
 {
 	public EnergyBall bulletPrefab;
+	public int Health { get; set; }
 
 	public void Awake()
 	{
@@ -15,9 +16,12 @@ public class BaseEnemy : Enemy
 		var remainingDistance = (_target.position - transform.position).magnitude;
 		if (_distanceToTarget + _deadZone > remainingDistance && remainingDistance > _distanceToTarget - _deadZone)
 		{
+			_state = EnemyState.Idle;
 			_aiAgent.destination = transform.position;
 			return;
 		}
+
+		_state = EnemyState.Walking;
 
 		if (remainingDistance > _distanceToTarget)
 			_aiAgent.destination = _target.position;
@@ -30,4 +34,31 @@ public class BaseEnemy : Enemy
         var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 		bullet.Init(_target.position);
     }
+
+	protected override void CheckSprite()
+	{
+		if (_state == EnemyState.Idle)
+		{
+
+			return;
+		}
+
+		_spriteCounter++;
+
+		// if (_spriteCounter % 2 == 0)
+	}
+
+	public void TakeDamage(int damage)
+	{
+		Health -= damage;
+		if (Health <= 0)
+		{
+			Destroy(gameObject);
+		}
+	}
+
+	public void RestoreHealth(int health)
+	{
+		Health += health;
+	}
 }

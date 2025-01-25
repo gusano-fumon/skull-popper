@@ -8,7 +8,7 @@ using Cysharp.Threading.Tasks;
 
 public class MouseLook : MonoBehaviour
 {
-	public Transform playerBody;
+	public PlayerController player;
 	public float sensitivity = 100f;
 	[SerializeField] private Bubble _bubble;
 	private float _rotationX;
@@ -46,7 +46,7 @@ public class MouseLook : MonoBehaviour
 			var mouseX = Input.GetAxis("Mouse X") * scaledSesitivity;
 			var mouseY = Input.GetAxis("Mouse Y") * scaledSesitivity;
 
-			playerBody.Rotate(mouseX * Vector3.up);
+		player.transform.Rotate(mouseX * Vector3.up);
 
 			_rotationX -= mouseY;
 			_rotationX = Math.Clamp(_rotationX, -90, 90);
@@ -77,5 +77,7 @@ public class MouseLook : MonoBehaviour
 	{
 		var bubble = Instantiate(_bubble, transform.position, transform.rotation);
 		bubble.Init(transform.forward);
+
+		player.audioController.PlayShotClip(bubble.transform);
 	}
 }

@@ -122,10 +122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _aiAgent: {fileID: 2694535378968053273}
-  _target: {fileID: 0}
   _distanceToTarget: 5
   _deadZone: 0.2
-  _energyBall: {fileID: 6387975784846551492, guid: aa40400441924f442857c1cae4697497, type: 3}
+  bulletPrefab: {fileID: 6387975784846551492, guid: aa40400441924f442857c1cae4697497, type: 3}
 --- !u!195 &2694535378968053273
 NavMeshAgent:
   m_ObjectHideFlags: 0

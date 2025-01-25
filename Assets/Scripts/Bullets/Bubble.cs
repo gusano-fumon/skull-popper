@@ -17,8 +17,9 @@ public class Bubble : Bullet
 		_sineDirection = Vector3.Cross(Vector3.left, _forwardDirection);
 	}
 
-	private void Update()
+	protected override void Update()
 	{
+		base.Update();
 		_forwardProgress += _forwardSpeed * Time.deltaTime;
 		Vector3 position = _startPos + _forwardProgress * _forwardDirection;
 
