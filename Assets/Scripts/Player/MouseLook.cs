@@ -56,17 +56,30 @@ public class MouseLook : MonoBehaviour
 				if (expectingUpMovement && mouseY > 0)
 				{
 					UpdateMovementCount(true);
+					player.ReloadDirection(true);
 				}
 				// Check for down movement when not expecting up
 				else if (!expectingUpMovement && mouseY < 0)
 				{
 					UpdateMovementCount(false);
+					player.ReloadDirection(false);
 				}
 			}
 		}
 
-		if (Input.GetMouseButtonDown(1)) _recharging = true;
-		if (Input.GetMouseButtonUp(1)) _recharging = false;
+		if (Input.GetMouseButtonDown(1))
+		{
+			_recharging = true;
+			player.defaultState.gameObject.SetActive(false);
+			player.reloadingState.gameObject.SetActive(true);
+ 		}
+
+		if (Input.GetMouseButtonUp(1))
+		{
+			_recharging = false;
+			player.defaultState.gameObject.SetActive(true);
+			player.reloadingState.gameObject.SetActive(false);
+		}
 
 		if (Input.GetMouseButtonDown(0))
 		{
