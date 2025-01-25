@@ -8,14 +8,13 @@ public class BaseEnemy : Enemy, ILife
 	public int totalHealth = 5;
 	public EnergyBall bulletPrefab;
 	public int Health { get; set; }
-	[SerializeField] private MeshRenderer _meshRenderer;
 	[SerializeField] private Texture2D[] _walkingSprites;
 	[SerializeField] private Texture2D _shootSprite;
 	[SerializeField] private Texture2D _idleSprite;
 
 	public void Awake()
 	{
-		_distanceToTarget = 5;
+		_distanceToTarget = 10;
 		Health = totalHealth;
 		_deadZone = .2f;
 	}
@@ -45,14 +44,14 @@ public class BaseEnemy : Enemy, ILife
 			_aiAgent.destination = transform.position + (transform.position - _target.position).normalized * _distanceToTarget;
 	}
 
-    protected override void Attack()
-    {
+	protected override void Attack()
+	{
 		_meshRenderer.sharedMaterial.SetTexture("_MainTex", _shootSprite);
 		_state = EnemyState.Attacking;
 
-        var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+		var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 		bullet.Init(_target.position);
-    }
+	}
 
 	protected override void CheckSprite()
 	{

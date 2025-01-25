@@ -93,8 +93,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1634299449711784480}
   - component: {fileID: 813047445555677245}
-  - component: {fileID: 625153044786506450}
   - component: {fileID: 6026130544750508155}
+  - component: {fileID: 625153044786506450}
   m_Layer: 7
   m_Name: Bubble
   m_TagString: Untagged
@@ -113,7 +113,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1731048394499844962}
   m_Father: {fileID: 0}
@@ -139,21 +139,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &625153044786506450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4665657560099549606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8d3b5dd631562a42af9cf116ebf7a44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _forwardSpeed: 4
-  _sineSpeed: 5
-  _sineMultiplier: 0.2
 --- !u!54 &6026130544750508155
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -181,3 +166,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &625153044786506450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665657560099549606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8d3b5dd631562a42af9cf116ebf7a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 7756806509988849409}
+  _forwardSpeed: 4
+  _sineSpeed: 5
+  _sineMultiplier: 0.2
