@@ -1,4 +1,5 @@
 
+using DG.Tweening;
 using UnityEngine;
 
 
@@ -8,6 +9,7 @@ public class MeleeEnemy : Enemy
 	{
 		_distanceToTarget = 1;
 		_deadZone = .1f;
+		LevitateAnimation();
 	}
 
 	protected override void Move()
@@ -27,6 +29,11 @@ public class MeleeEnemy : Enemy
 			_aiAgent.destination = transform.position + (transform.position - _target.position).normalized * _distanceToTarget;
 	}
 
+	private void LevitateAnimation()
+	{
+		_meshRenderer.transform.DOLocalMoveY(.5f, 1f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+	}
+
 	protected override void Attack()
 	{
 		if (_remainingDistance > _distanceToTarget + 1) return;
@@ -42,6 +49,7 @@ public class MeleeEnemy : Enemy
 	{
 		base.Die();
 		_aiAgent.baseOffset = .5f;
+		_meshRenderer.transform.DOKill();
 		Destroy(_aiAgent);
 	}
 	
