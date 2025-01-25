@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4726617108584957274}
   m_Layer: 6
   m_Name: MeleeEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de373241dd5bf4c41928551c043b0d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 0}
   _aiAgent: {fileID: 6833568879967054034}
   _distanceToTarget: 1
   _deadZone: 0.1
