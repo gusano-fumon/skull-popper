@@ -16,7 +16,6 @@ public class Bullet : Sprite
 	{
 		PlayerController.OnPlayerDeath += InstantDestroy;
 		DeleteBullet().Forget();
-		Debug.Log(gameObject.name);
 	}
 
 	void OnDestroy()
@@ -26,9 +25,6 @@ public class Bullet : Sprite
 
 	private void OnTriggerEnter(Collider target)
 	{
-		Debug.Log("tag: " + target.tag);
-		Debug.Log("targettag: " + _targetTag);
-		
 		if (target.CompareTag(_targetTag))
 		{
 			_cts.Cancel();
@@ -50,7 +46,6 @@ public class Bullet : Sprite
 
 	private void InstantDestroy()
 	{
-		Debug.Log("Bullet destroyed");
 		_cts.Cancel();
 		Destroy(gameObject);
 	}
