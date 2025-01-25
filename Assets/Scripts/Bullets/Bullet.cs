@@ -27,7 +27,6 @@ public class Bullet : Sprite
 	{
 		_cts.Cancel();
 
-		Debug.Log(target.name);
 		if (target.CompareTag(_targetTag))
 		{
 			ExecuteCollision(target);
