@@ -30,12 +30,14 @@ public class GatedArea : MonoBehaviour
 
     private void OpenArea()
     {
+        AudioController.OnOpenGate?.Invoke(transform);
         foreach (var gate in _openGates)
             gate.Play("Open");
     }
 
     private void CloseArea()
     {
+        AudioController.OnOpenGate?.Invoke(transform);
         foreach (var gate in _closeGates)
             gate.Play("Close");
     }   

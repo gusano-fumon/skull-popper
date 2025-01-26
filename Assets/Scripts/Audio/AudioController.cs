@@ -17,6 +17,7 @@ public class AudioController : MonoBehaviour
 	public AudioClip popBubbleClip;
 	public AudioClip musicClip;
 	public AudioClip musicClip2;
+	public AudioClip openGateClip;
 	public AudioSource _prefab;
 
 	private bool _onHitSound = false;
@@ -27,6 +28,7 @@ public class AudioController : MonoBehaviour
 	public static Action<EnemyType, Transform> OnEnemyDieSound;
 	public static Action<Transform> OnPopBubbleSound;
 	public static Action<Transform> OnRecargaSound;
+	public static Action<Transform> OnOpenGate;
 
 
 	public void Awake()
@@ -35,6 +37,7 @@ public class AudioController : MonoBehaviour
 		OnEnemyHitSound += PlayEnemyHitClip;
 		OnPopBubbleSound += PlayPopBubbleClip;
 		OnEnemyDieSound += PlayEnemyDie;
+		OnOpenGate += PlayOpenGate;
 
 		PlayMusic();
 	}
@@ -44,6 +47,8 @@ public class AudioController : MonoBehaviour
 		OnShotSound -= PlayShotClip;
 		OnEnemyHitSound -= PlayEnemyHitClip;
 		OnPopBubbleSound -= PlayPopBubbleClip;
+		OnEnemyDieSound -= PlayEnemyDie;
+		OnOpenGate -= PlayOpenGate;
 	}
 
 	public void PlayMusic()
@@ -58,6 +63,14 @@ public class AudioController : MonoBehaviour
 		audio2.clip = musicClip2;
 		audio2.Play();
 		audio2.loop = true;
+	}
+	
+	public void PlayOpenGate(Transform transform)
+	{
+		var audio = Instantiate(_prefab, transform);
+		audio.clip = openGateClip;
+		audio.Play();
+		Destroy(audio.gameObject, 5f);
 	}
 
 	public void PlayPocion(Transform transform)
