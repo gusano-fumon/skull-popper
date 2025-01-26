@@ -2,6 +2,7 @@
 using System;
 
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 
@@ -56,7 +57,6 @@ public class PlayerController : MonoBehaviour, ILife
 		if (GameEnd) return;
 
 		Movement();
-		TiltCamera();
 	}
 
 	void OnDrawGizmos()
@@ -87,19 +87,21 @@ public class PlayerController : MonoBehaviour, ILife
 		float horizontal = Input.GetAxis("Horizontal");
 		float vertical = Input.GetAxis("Vertical");
 
+		TiltCamera(horizontal * -2f);
+
 		var move = transform.right * horizontal + transform.forward * vertical;
 		_character.Move(_movementSpeed * Time.deltaTime * move);
 
 		velocity.y += _gravity * Time.deltaTime;
 		_character.Move(velocity * Time.deltaTime);
+
 	}
 
-	private void TiltCamera()
+	private void TiltCamera(float pos)
 	{
-		float z = Input.GetAxis("Horizontal") * -2f;
-		Vector3 euler = transform.localEulerAngles;
-		euler.z = z;
-		transform.localEulerAngles = euler;
+		Vector3 euler = CameraTransform.localEulerAngles;
+		euler.z = pos;
+		CameraTransform.localEulerAngles = euler;
 	}
 
 	public void TakeDamage(int damage)
