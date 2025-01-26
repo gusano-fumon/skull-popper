@@ -29,7 +29,7 @@ public class MeleeEnemy : Enemy
 		if (_remainingDistance > _distanceToTarget)
 			_aiAgent.destination = _target.position;
 		else
-			_aiAgent.destination = transform.position + (transform.position - _target.position).normalized * _distanceToTarget;
+			_aiAgent.destination = transform.position + (transform.position - _target.position).normalized * (_distanceToTarget + 1);
 	}
 
 	private void LevitateAnimation()

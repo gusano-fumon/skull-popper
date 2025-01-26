@@ -52,7 +52,9 @@ public class Enemy : MonoBehaviour, ILife
 
 		if (Time.frameCount % 40 == 0) CheckSprite();
 
-		_remainingDistance = (_target.position - transform.position).magnitude;
+		var horizontalDistance = new Vector3(_target.position.x - transform.position.x, 0, _target.position.z - transform.position.z);
+		_remainingDistance = horizontalDistance.magnitude;
+
 		if (_remainingDistance > 50) return;
 
 		if (!_alredySeen)
