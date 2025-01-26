@@ -9,6 +9,8 @@ public class PlayerUI : MonoBehaviour
 {
 	public Slider healthSlider;
 	public TMP_Text healthText;
+	public Slider ammoSlider;
+	public TMP_Text ammoText;
 
 	[SerializeField] private Image _damageImage;
 	[SerializeField] private Camera _playerCamera;
@@ -39,6 +41,12 @@ public class PlayerUI : MonoBehaviour
 			return;
 		}
 		healthText.text = health.ToString();
+	}
+
+	public void UpdateAmmo(int ammo)
+	{
+		ammoSlider.value = ammo;
+		ammoText.text = ammo.ToString();
 	}
 
 	public void TakeDamage()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MouseLook : MonoBehaviour
 {
 	public PlayerController player;
+	public PlayerUI playerUI;
 	public float sensitivity = 100f;
 	[SerializeField] private Bubble _bubble;
 	[SerializeField] private Transform _initialPos; 
@@ -82,6 +83,7 @@ public class MouseLook : MonoBehaviour
 		if (Input.GetMouseButtonUp(1))
 		{
 			_recharging = false;
+			ResetRecharge();
 			player.defaultState.gameObject.SetActive(true);
 			player.reloadingState.gameObject.SetActive(false);
 		}
@@ -119,6 +121,7 @@ public class MouseLook : MonoBehaviour
 	private void PerformRecharge()
 	{
 		_currentAmmo = _maxAmmo;
+		playerUI.UpdateAmmo(_currentAmmo);
 		ResetRecharge();
 	}
 
@@ -127,6 +130,10 @@ public class MouseLook : MonoBehaviour
 		if (_recharging || _currentAmmo == 0) return;
 
 		_currentAmmo--;
+		ResetRecharge();
+		
+		playerUI.UpdateAmmo(_currentAmmo);
+
 		var bubble = Instantiate(_bubble, _initialPos.position, transform.rotation);
 		bubble.Init(transform.forward);
 
