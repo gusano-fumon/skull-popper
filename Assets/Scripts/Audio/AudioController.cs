@@ -116,7 +116,6 @@ public class AudioController : MonoBehaviour
 
 	public void PlayEnemyHitClip(EnemyType type, Transform transform)
 	{
-		Debug.Log("PlayEnemyHitClip");
 		if (type == EnemyType.Melee)
 		{
 			PlayMeleeEnemyHitClip(transform);
