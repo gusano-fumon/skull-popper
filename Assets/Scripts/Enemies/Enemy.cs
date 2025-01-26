@@ -20,7 +20,9 @@ public class Enemy : MonoBehaviour, ILife
 	[SerializeField] protected float _distanceToTarget;
 	[SerializeField] protected float _deadZone;
 
-	public Action<int> OnDeath;
+	public static Action<int> OnDeath;
+	[SerializeField] private int _gatedAreaId = 0;
+	
 	public int totalHealth = 5;
 	public int Health { get; set; }
 
@@ -89,7 +91,7 @@ public class Enemy : MonoBehaviour, ILife
 	protected virtual void Die()
 	{
 		isDead = true;
-		OnDeath?.Invoke(1);
+		OnDeath?.Invoke(_gatedAreaId);
 		_meshRenderer.material.mainTexture = _deadSprite;
 		Destroy(GetComponent<CapsuleCollider>());
 		Destroy(_aiAgent);
