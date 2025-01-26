@@ -60,12 +60,14 @@ public class MouseLook : MonoBehaviour
 				{
 					UpdateMovementCount(true);
 					player.ReloadDirection(true);
+					player.audioController.PlayRecarga(player.transform);
 				}
 				// Check for down movement when not expecting up
 				else if (!expectingUpMovement && mouseY < 0)
 				{
 					UpdateMovementCount(false);
 					player.ReloadDirection(false);
+					player.audioController.PlayRecarga(player.transform);
 				}
 			}
 		}

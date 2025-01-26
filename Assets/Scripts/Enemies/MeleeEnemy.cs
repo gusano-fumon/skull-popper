@@ -13,6 +13,7 @@ public class MeleeEnemy : Enemy
 		_distanceToTarget = 1;
 		_deadZone = .1f;
 		LevitateAnimation();
+		enemyType = EnemyType.Melee;
 	}
 
 	protected override void Move()
@@ -29,7 +30,7 @@ public class MeleeEnemy : Enemy
 		if (_remainingDistance > _distanceToTarget)
 			_aiAgent.destination = _target.position;
 		else
-			_aiAgent.destination = transform.position + (transform.position - _target.position).normalized * _distanceToTarget;
+			_aiAgent.destination = transform.position + (transform.position - _target.position).normalized * (_distanceToTarget + 1);
 	}
 
 	private void LevitateAnimation()

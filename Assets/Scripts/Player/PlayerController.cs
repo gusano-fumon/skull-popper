@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour, ILife
 
 	private void Start()
 	{
-		Debug.Log("PlayerController Start");
 		Health = TotalHealth;
 		_playerUI.UpdateHealth(Health);
 	}
@@ -71,17 +70,28 @@ public class PlayerController : MonoBehaviour, ILife
 		TiltCamera();
 	}
 
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawRay(transform.position, Vector3.down * 0.9f);
+	}
+
 	private void Movement()
 	{
-		_isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.9f, groundMask);
+		_isGrounded = Physics.Raycast(transform.position, Vector3.down, .9f, groundMask);
 		// Aplicar gravedad
 		if (!_isGrounded)
 		{
 			velocity.y += _gravity * Time.deltaTime;
 		}
+		else 
+		{
+			velocity.y = 0;
+		}
 
 		if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
 		{
+			_isGrounded = false;
 			velocity.y = Mathf.Sqrt(jumpForce * -2f * _gravity);
 		}
 
@@ -131,6 +141,8 @@ public class PlayerController : MonoBehaviour, ILife
 	public void RestoreHealth(int health)
 	{
 		Health += health;
+
+		audioController.PlayPocion(transform);
 
 		if (Health > TotalHealth)
 		{

@@ -7,6 +7,7 @@ public class BaseEnemy : Enemy
 	{
 		_distanceToTarget = 10;
 		_deadZone = .2f;
+		enemyType = EnemyType.Shooter;
 	}
 
 	protected override void Move()

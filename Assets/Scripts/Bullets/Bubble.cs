@@ -46,6 +46,8 @@ public class Bubble : Bullet
     public override void ExecuteCollision(Collider target)
     {
         base.ExecuteCollision(target);
+		AudioController.OnPopBubbleSound?.Invoke(transform);
+
 		if (target.TryGetComponent<Enemy>(out var baseEnemy))
 		{
 			baseEnemy.TakeDamage(1);
