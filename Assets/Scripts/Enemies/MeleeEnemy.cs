@@ -39,7 +39,7 @@ public class MeleeEnemy : Enemy
 
 	protected override void Attack()
 	{
-		if (_remainingDistance > _distanceToTarget + 1) return;
+		if (_remainingDistance > _distanceToTarget + 1.5f) return;
 
 		// Melee Attack
 		_meshRenderer.material.mainTexture = _attackSprite;
