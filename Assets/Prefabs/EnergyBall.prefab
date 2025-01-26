@@ -115,6 +115,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: aa181a5851db63f44ba77449f3f1f37c, type: 3}
   _damage: 10
   _speed: 7
+  _collisionSprite: {fileID: 2800000, guid: c9c29cc51be5a8741972ec802f8827e8, type: 3}
 --- !u!1 &7191021358610284724
 GameObject:
   m_ObjectHideFlags: 0

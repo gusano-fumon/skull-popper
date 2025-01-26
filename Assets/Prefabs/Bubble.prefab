@@ -199,3 +199,4 @@ MonoBehaviour:
   _forwardSpeed: 7
   _sineSpeed: 5
   _sineMultiplier: 0.2
+  _collisionSprite: {fileID: 2800000, guid: 520a8b463b68ba14c91c953ce51e7406, type: 3}

@@ -38,6 +38,7 @@ public class BaseEnemy : Enemy
 
 	protected override void Die()
 	{
+		_deadPS.Play();
 		_aiAgent.baseOffset = .8f;
 		_aiAgent.destination = transform.position;
 		base.Die();

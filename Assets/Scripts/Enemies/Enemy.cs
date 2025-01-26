@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour, ILife
 	[SerializeField] protected MeshRenderer _meshRenderer;
 	[SerializeField] protected Texture2D[] _walkingSprites;
 	[SerializeField] protected Texture2D _attackSprite;
+	[SerializeField] protected ParticleSystem _deadPS;
 	[SerializeField] private Texture2D _deadSprite;
 	[SerializeField] private Texture2D _hurtSprite;
 	[SerializeField] private Texture2D _idleSprite;

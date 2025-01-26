@@ -27,13 +27,7 @@ public class Bullet : SpriteAnimation
 	private void OnTriggerEnter(Collider target)
 	{
 		_cts.Cancel();
-
-		if (target.CompareTag(_targetTag))
-		{
-			ExecuteCollision(target);
-		}
-
-		Destroy(gameObject);
+		ExecuteCollision(target);
 	}
 
 	public virtual void ExecuteCollision(Collider target) { }
@@ -42,7 +36,7 @@ public class Bullet : SpriteAnimation
 	{
 		_cts = new CancellationTokenSource();
 		await UniTask.Delay(_timeToDelete, cancellationToken: _cts.Token);
-		Destroy(gameObject);
+		Destroy(gameObject, .5f);
 	}
 	private void InstantDestroy()
 	{
