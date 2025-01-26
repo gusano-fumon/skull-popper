@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2675214497177152349}
   - component: {fileID: 7533603794229648383}
+  - component: {fileID: 5704411475203926107}
   - component: {fileID: 3445467594496650217}
   - component: {fileID: 2694535378968053273}
   m_Layer: 9
@@ -141,6 +142,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5704411475203926107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044911973322332394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8916476549696a4a980505bd0e29ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3445467594496650217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,11 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee77edce1f60ab94f91e2ab505ad00ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meshRenderer: {fileID: 7303447788069478239}
   _aiAgent: {fileID: 2694535378968053273}
   _distanceToTarget: 5
   _deadZone: 0.2
   totalHealth: 5
+  _meshRenderer: {fileID: 7303447788069478239}
   _walkingSprites:
   - {fileID: 2800000, guid: cb791c606e5d4bd4c890d361944b42b8, type: 3}
   - {fileID: 2800000, guid: 3daeeb7ecc223bb45a704f2e8c376afc, type: 3}

@@ -60,8 +60,8 @@ MonoBehaviour:
   audioController: {fileID: 873220515353899763}
   defaultState: {fileID: 0}
   reloadingState: {fileID: 0}
-  upReload: {fileID: 0}
-  downReload: {fileID: 0}
+  upReload: {fileID: 21300000, guid: 7fd7132002501e8458d82114c2fb194b, type: 3}
+  downReload: {fileID: 21300000, guid: 615389951d438e142b13af5743683b7a, type: 3}
 --- !u!143 &914083471213553244
 CharacterController:
   m_ObjectHideFlags: 0

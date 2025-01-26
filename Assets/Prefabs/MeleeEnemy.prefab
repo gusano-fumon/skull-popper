@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 869440568501551288}
   - component: {fileID: 6988723856706005652}
   - component: {fileID: 6833568879967054034}
+  - component: {fileID: 2662112220611431626}
   - component: {fileID: 4726617108584957274}
   m_Layer: 9
   m_Name: MeleeEnemy
@@ -80,6 +81,18 @@ NavMeshAgent:
   m_BaseOffset: 1.8
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2662112220611431626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930277980863205550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8916476549696a4a980505bd0e29ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4726617108584957274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,11 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de373241dd5bf4c41928551c043b0d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meshRenderer: {fileID: 4250721121823163689}
   _aiAgent: {fileID: 6833568879967054034}
   _distanceToTarget: 1
   _deadZone: 0.2
   totalHealth: 5
+  _meshRenderer: {fileID: 4250721121823163689}
   _walkingSprites:
   - {fileID: 2800000, guid: 694bda4b6bf7f1643b431e0b80d4e2a3, type: 3}
   _attackSprite: {fileID: 2800000, guid: 3acc0768e86f7a14a99cce627e17c3d4, type: 3}
