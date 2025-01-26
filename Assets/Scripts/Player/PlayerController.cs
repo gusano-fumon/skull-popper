@@ -115,6 +115,7 @@ public class PlayerController : MonoBehaviour, ILife
 	{
 		Health -= damage;
 		_playerUI.UpdateHealth(Health);
+		_playerUI.TakeDamage();
 		if (Health > 0)
 		{
 			audioController.PlayHitClip(transform);
