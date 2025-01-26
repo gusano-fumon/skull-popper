@@ -1,10 +1,10 @@
 using System;
+using System.Threading.Tasks;
 
 using UnityEngine;
 using UnityEngine.UI;
 
 using Cysharp.Threading.Tasks;
-using TMPro;
 
 
 public class GameMenu : Singleton<GameMenu>
@@ -60,10 +60,11 @@ public class GameMenu : Singleton<GameMenu>
 
 	private void Retry()
 	{
-		Debug.Log("Retry");	
-		_retryPanel.SetActive(false);
-		SceneController.LoadScene(1).Forget();
-		playerUI.Init();
+		UniTask.Void(async () => {
+			await SceneController.LoadScene(1);
+			playerUI.Init();
+			_retryPanel.SetActive(false);
+		});
 	}
 
 	private void ReturnToMainMenu()
