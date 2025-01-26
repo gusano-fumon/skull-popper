@@ -8,6 +8,8 @@ public class MouseLook : MonoBehaviour
 	public float sensitivity = 100f;
 	[SerializeField] private Bubble _bubble;
 	[SerializeField] private Transform _initialPos; 
+	[SerializeField] private int _maxAmmo = 12;
+	[SerializeField] private int _currentAmmo; 
 	private float _rotationX;
 
 	public int rechargeTimeWindow = 3000;
@@ -21,6 +23,7 @@ public class MouseLook : MonoBehaviour
 
 	private void Start()
 	{
+		_currentAmmo = _maxAmmo;
 		Cursor.lockState = CursorLockMode.Locked;
 	}
 
@@ -115,18 +118,15 @@ public class MouseLook : MonoBehaviour
 	private void PerformRecharge()
 	{
 		Debug.Log("Recharge Complete!");
-		// Add your recharge logic here
-		// For example:
-		// playerHealth.Recharge();
-		// energySystem.FullyRecharge();
-
-		// Reset for next recharge attempt
+		_currentAmmo = _maxAmmo;
 		ResetRecharge();
 	}
 
 	private void Shoot()
 	{
-		if (_recharging) return;
+		if (_recharging || _currentAmmo == 0) return;
+
+		_currentAmmo--;
 		var bubble = Instantiate(_bubble, _initialPos.position, transform.rotation);
 		bubble.Init(transform.forward);
 
