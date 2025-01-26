@@ -28,6 +28,7 @@ public class AudioController : MonoBehaviour
 	public void PlayShotClip(Transform transform)
 	{
 		var audio = Instantiate(_prefab, transform);
+		audio.pitch = Random.Range(0.8f, 1.2f);
 		audio.clip = shotClips[Random.Range(0, shotClips.Count)];
 		audio.Play();
 		Destroy(audio.gameObject, 5f);
