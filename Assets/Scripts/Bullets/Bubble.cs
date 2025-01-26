@@ -4,9 +4,11 @@ using DG.Tweening;
 
 public class Bubble : Bullet
 {
+	private Sprite _spriteScript;
 	private Vector3 _forwardDirection, _startPos;
 	private float _forwardProgress;
 	[SerializeField] private float _forwardSpeed, _sineSpeed, _sineMultiplier;
+	[SerializeField] private Texture2D _collisionSprite;
 
 	private const float RANDOM = 0.4f;
 
@@ -45,12 +47,17 @@ public class Bubble : Bullet
 
     public override void ExecuteCollision(Collider target)
     {
-        base.ExecuteCollision(target);
+		Destroy(_spriteScript);
 		AudioController.OnPopBubbleSound?.Invoke(transform);
+		_meshRenderer.material.mainTexture = _collisionSprite;
 
-		if (target.TryGetComponent<Enemy>(out var baseEnemy))
+		if(target.CompareTag(_targetTag))
 		{
-			baseEnemy.TakeDamage(1);
+			if (target.TryGetComponent<Enemy>(out var baseEnemy))
+			{
+				baseEnemy.TakeDamage(1);
+			}
 		}
+		Destroy(gameObject, .5f);
     }
 }

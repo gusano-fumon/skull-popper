@@ -51,6 +51,7 @@ public class MeleeEnemy : Enemy
 
 	protected override void Die()
 	{
+		_deadPS.Play();
 		_aiAgent.baseOffset = .5f;
 		_aiAgent.destination = transform.position;
 

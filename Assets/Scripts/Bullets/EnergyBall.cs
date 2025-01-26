@@ -6,6 +6,8 @@ public class EnergyBall : Bullet
 {
 	[SerializeField] private int _damage = 5;
 	[SerializeField] private float _speed = 5;
+	[SerializeField] private Texture2D _collisionSprite;
+	private Sprite _spriteScript;
 	private Vector3 _direction;
 
 	private void FixedUpdate()
@@ -28,8 +30,14 @@ public class EnergyBall : Bullet
 
 	public override void ExecuteCollision(Collider target)
 	{
-		base.ExecuteCollision(target);
-		PlayerController.OnHit(_damage);
-		Destroy(gameObject);
+		Destroy(_spriteScript);
+		_meshRenderer.material.mainTexture = _collisionSprite;
+
+		if (target.CompareTag(_targetTag))
+		{
+			PlayerController.OnHit(_damage);	
+		}
+
+		Destroy(gameObject, 5f);
 	}
 }
