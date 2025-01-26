@@ -55,12 +55,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _character: {fileID: 914083471213553244}
-  _playerUI: {fileID: 0}
   audioController: {fileID: 873220515353899763}
-  defaultState: {fileID: 0}
-  reloadingState: {fileID: 0}
-  upReload: {fileID: 21300000, guid: 7fd7132002501e8458d82114c2fb194b, type: 3}
-  downReload: {fileID: 21300000, guid: 615389951d438e142b13af5743683b7a, type: 3}
 --- !u!143 &914083471213553244
 CharacterController:
   m_ObjectHideFlags: 0
@@ -116,10 +111,16 @@ MonoBehaviour:
   recargaClip: {fileID: 8300000, guid: 125de8bf832734547b30e55812a8e0cd, type: 3}
   jumpClip: {fileID: 8300000, guid: 96745cda5fc24744a8f86e155060715c, type: 3}
   pocionClip: {fileID: 8300000, guid: 094826556da40af40ae91cf545bb9aa8, type: 3}
-  popBubbleClip: {fileID: 8300000, guid: a6a39a7876ee7c046aca005025c43217, type: 3}
   musicClip: {fileID: 8300000, guid: 44b4db53abe422043a5c5eb3004eb2b5, type: 3}
   musicClip2: {fileID: 8300000, guid: ae5551130489e5b47aa18b22dd2447bb, type: 3}
   openGateClip: {fileID: 8300000, guid: 9556e4910a6bbbb45b4918528b86cdc5, type: 3}
+  clickClip: {fileID: 0}
+  popBubbleClips:
+  - {fileID: 8300000, guid: 05ba7e85bd488c44b9b9659b26c95c20, type: 3}
+  - {fileID: 8300000, guid: 831a10e21f83c8c48b8e7144aec21f94, type: 3}
+  - {fileID: 8300000, guid: 7d10bf8117e25d54e8aaa1549e89c09f, type: 3}
+  - {fileID: 8300000, guid: a339813c52576e943948664a4391b53f, type: 3}
+  - {fileID: 8300000, guid: a3eb135a347f8dd4caee8d26a87fb46e, type: 3}
   _prefab: {fileID: 7809965271467892392, guid: 7dc49f8c52e29854fb4411e2e3436380, type: 3}
 --- !u!1 &3346268301382314540
 GameObject:
@@ -162,7 +163,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6320304901239883849}
   - component: {fileID: 7252038624003267332}
-  - component: {fileID: 5165149772000040677}
   - component: {fileID: 4356866377977161426}
   - component: {fileID: 1795191550389138181}
   m_Layer: 3
@@ -239,14 +239,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &5165149772000040677
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8157544381296245912}
-  m_Enabled: 1
 --- !u!114 &4356866377977161426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,6 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8971079509820256023}
+  playerUI: {fileID: 0}
   sensitivity: 200
   _bubble: {fileID: 625153044786506450, guid: 55212d3fc7393514eb6d09201c108193, type: 3}
   _initialPos: {fileID: 4491780566571167590}
