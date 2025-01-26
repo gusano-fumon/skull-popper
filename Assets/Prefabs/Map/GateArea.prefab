@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 229228128978697884}
   - component: {fileID: 5894783437275312301}
   - component: {fileID: 1618707601211844656}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GateArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb98c56ae32c6e74b9d76529cb62619a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _openGate: {fileID: 0}
-  _closeGate: {fileID: 0}
+  _openGates: []
+  _closeGates: []
   _enemiesToKill: 1
   _gatedAreaId: 0
