@@ -84,7 +84,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -147,8 +147,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 4805635698710709320}
+  m_Children: []
   m_Father: {fileID: 1535982325147013042}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &5028261758431744042
@@ -176,6 +175,7 @@ GameObject:
   - component: {fileID: 8273173677796089532}
   - component: {fileID: 4341378647871638507}
   - component: {fileID: 2217051706226405789}
+  - component: {fileID: 6986689951863631014}
   m_Layer: 0
   m_Name: TorchSprite
   m_TagString: Untagged
@@ -191,13 +191,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3577228803086714560}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.02614049, y: -0.051597077, z: -0.8905562, w: 0.45118064}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 500913740600230846}
-  m_Father: {fileID: 8227446004078154852}
+  m_Father: {fileID: 1535982325147013042}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &8273173677796089532
 MeshFilter:
@@ -271,6 +271,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &6986689951863631014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577228803086714560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e7ba715f72485479c243c2d8523fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 4341378647871638507}
+  _sprites:
+  - {fileID: 2800000, guid: f214d0460b7d6f94895b0052557cb594, type: 3}
+  - {fileID: 2800000, guid: b600e1fc7b5acd04f861f9bee705f640, type: 3}
 --- !u!1 &8716705899200752000
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,5 +317,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8227446004078154852}
+  - {fileID: 4805635698710709320}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
