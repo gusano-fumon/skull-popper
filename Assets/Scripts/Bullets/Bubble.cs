@@ -7,7 +7,6 @@ public class Bubble : Bullet
 	private Vector3 _forwardDirection, _startPos;
 	private float _forwardProgress;
 	[SerializeField] private float _forwardSpeed, _sineSpeed, _sineMultiplier;
-	[SerializeField] private Texture2D[] _sprites;
 
 	private const float RANDOM = 0.4f;
 
@@ -52,10 +51,4 @@ public class Bubble : Bullet
 			baseEnemy.TakeDamage(1);
 		}
     }
-
-	protected override void CheckSprite()
-	{
-		_spriteCounter++;
-		_meshRenderer.sharedMaterial.mainTexture = _sprites[_spriteCounter % 2];
-	}
 }

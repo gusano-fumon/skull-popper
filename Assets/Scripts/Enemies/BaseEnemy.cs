@@ -37,9 +37,9 @@ public class BaseEnemy : Enemy
 
 	protected override void Die()
 	{
-		base.Die();
 		_aiAgent.baseOffset = .8f;
-		Destroy(_aiAgent);
+		_aiAgent.destination = transform.position;
+		base.Die();
 	}
 
 	protected override void SetWalkingSprite()

@@ -1,22 +1,20 @@
-using System.Collections;
 
 using UnityEngine;
 
+
 public class AcidZone : MonoBehaviour
 {
-    [SerializeField] private int _damage = 1;
-    [SerializeField] private float _damageDelayFrames = 5;
+	[SerializeField] private int _damage = 1;
+	[SerializeField] private float _damageDelayFrames = 5;
 
-    public Coroutine _cr;
-
-    private void OnTriggerStay(Collider other) 
-    {
-        if (other.GetComponent<ILife>() != null)
-        {
-            if (Time.frameCount % _damageDelayFrames == 0)
-            {
-                other.GetComponent<ILife>().TakeDamage(_damage);
-            }
-        }
-    }
+	private void OnTriggerStay(Collider other) 
+	{
+		if (other.TryGetComponent<ILife>(out var life))
+		{
+			if (Time.frameCount % _damageDelayFrames == 0)
+			{
+				life.TakeDamage(_damage);
+			}
+		}
+	}
 }

@@ -14,15 +14,19 @@ public enum EnemyState {
 	ReceivingDamage
 }
 
-public class Enemy : Sprite, ILife
+public class Enemy : MonoBehaviour, ILife
 {
 	[SerializeField] protected NavMeshAgent _aiAgent;
 	[SerializeField] protected float _distanceToTarget;
 	[SerializeField] protected float _deadZone;
 
-	public Action<int> OnDeath;
+	public static Action<int> OnDeath;
+	[SerializeField] private int _gatedAreaId = 0;
+	
 	public int totalHealth = 5;
 	public int Health { get; set; }
+
+	[SerializeField] protected MeshRenderer _meshRenderer;
 	[SerializeField] protected Texture2D[] _walkingSprites;
 	[SerializeField] protected Texture2D _attackSprite;
 	[SerializeField] private Texture2D _deadSprite;
@@ -42,11 +46,11 @@ public class Enemy : Sprite, ILife
 		_aiAgent.destination = transform.position;
 	}
 
-	protected override void Update()
+	protected void Update()
 	{
-		base.Update();
-
 		if (PlayerController.GameEnd || isDead) return;
+
+		if (Time.frameCount % 40 == 0) CheckSprite();
 
 		_remainingDistance = (_target.position - transform.position).magnitude;
 		if (_remainingDistance > 50) return;
@@ -87,9 +91,11 @@ public class Enemy : Sprite, ILife
 	protected virtual void Die()
 	{
 		isDead = true;
-		OnDeath?.Invoke(1);
+		OnDeath?.Invoke(_gatedAreaId);
 		_meshRenderer.material.mainTexture = _deadSprite;
 		Destroy(GetComponent<CapsuleCollider>());
+		Destroy(_aiAgent);
+		Destroy(this);
 	}
 
 	public void TakeDamage(int damage)
@@ -112,7 +118,8 @@ public class Enemy : Sprite, ILife
 		Health += health;
 	}
 
-	protected override void CheckSprite()
+	protected int _spriteCounter = 0;
+	private void CheckSprite()
 	{
 		if (isDead) return;
 
