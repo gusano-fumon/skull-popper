@@ -69,8 +69,11 @@ public class GameMenu : Singleton<GameMenu>
 
 	private void ReturnToMainMenu()
 	{
-		_retryPanel.SetActive(false);
-		SceneController.LoadScene(0).Forget();
+		UniTask.Void(async () => {
+			_retryPanel.SetActive(false);
+			_mainMenu.SetActive(true);
+			await SceneController.LoadScene(0);
+		});
 	}
 
 	public void OpenControlsPanel()
