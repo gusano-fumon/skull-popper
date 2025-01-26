@@ -141,6 +141,8 @@ public class PlayerController : MonoBehaviour, ILife
 	{
 		Health += health;
 
+		audioController.PlayPocion(transform);
+
 		if (Health > TotalHealth)
 		{
 			Health = TotalHealth;

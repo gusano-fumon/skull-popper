@@ -13,6 +13,7 @@ public class MeleeEnemy : Enemy
 		_distanceToTarget = 1;
 		_deadZone = .1f;
 		LevitateAnimation();
+		enemyType = EnemyType.Melee;
 	}
 
 	protected override void Move()

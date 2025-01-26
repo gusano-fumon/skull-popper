@@ -14,6 +14,11 @@ public enum EnemyState {
 	ReceivingDamage
 }
 
+public enum EnemyType {
+	Melee,
+	Shooter,
+}
+
 public class Enemy : MonoBehaviour, ILife
 {
 	[SerializeField] protected NavMeshAgent _aiAgent;
@@ -23,6 +28,9 @@ public class Enemy : MonoBehaviour, ILife
 	public static Action<int> OnDeath;
 	[SerializeField] private int _gatedAreaId = 0;
 	
+
+	protected EnemyType enemyType;
+
 	public int totalHealth = 5;
 	public int Health { get; set; }
 
@@ -108,7 +116,12 @@ public class Enemy : MonoBehaviour, ILife
 		if (Health <= 0)
 		{
 			Die();
+			AudioController.OnEnemyDieSound?.Invoke(enemyType, transform);
 			return;
+		}
+		else
+		{
+			AudioController.OnEnemyHitSound?.Invoke(enemyType, transform);
 		}
 
 		_state = EnemyState.ReceivingDamage;

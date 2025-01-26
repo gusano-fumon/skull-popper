@@ -105,10 +105,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8b1eaebd1d1799a489d914db382391f5, type: 3}
   - {fileID: 8300000, guid: b473137ceb4df7441a8210d7d8a5d716, type: 3}
   - {fileID: 8300000, guid: 8d48089cea0149f4cac786d60c943bea, type: 3}
-  - {fileID: 8300000, guid: 96745cda5fc24744a8f86e155060715c, type: 3}
   - {fileID: 8300000, guid: f20de4e083655f1428ca51e928c42d25, type: 3}
-  shotClips:
-  - {fileID: 8300000, guid: 90c2300ab71a5cd4dba5023cfda9c4cc, type: 3}
+  shotClip: {fileID: 8300000, guid: 90c2300ab71a5cd4dba5023cfda9c4cc, type: 3}
+  enemyHitClips:
+  - {fileID: 8300000, guid: d45511669a18ed0469fdc30a25bef3d8, type: 3}
+  - {fileID: 8300000, guid: c706c8ffb546d934480a365775671e96, type: 3}
+  enemyDieClips:
+  - {fileID: 8300000, guid: d02117e2d596e9142a9e18e1033d8b1a, type: 3}
+  - {fileID: 8300000, guid: 351efb05b83ba1949b79628e6ffad9ef, type: 3}
+  recargaClip: {fileID: 8300000, guid: 125de8bf832734547b30e55812a8e0cd, type: 3}
+  jumpClip: {fileID: 8300000, guid: 96745cda5fc24744a8f86e155060715c, type: 3}
+  pocionClip: {fileID: 8300000, guid: 094826556da40af40ae91cf545bb9aa8, type: 3}
+  popBubbleClip: {fileID: 8300000, guid: a6a39a7876ee7c046aca005025c43217, type: 3}
+  musicClip: {fileID: 8300000, guid: 44b4db53abe422043a5c5eb3004eb2b5, type: 3}
+  musicClip2: {fileID: 8300000, guid: ae5551130489e5b47aa18b22dd2447bb, type: 3}
   _prefab: {fileID: 7809965271467892392, guid: 7dc49f8c52e29854fb4411e2e3436380, type: 3}
 --- !u!1 &3346268301382314540
 GameObject:
