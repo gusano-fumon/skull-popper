@@ -148,6 +148,7 @@ public class AudioController : MonoBehaviour
 
 		var audio = Instantiate(_prefab, transform);
 		audio.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+		audio.volume= 0.3f;
 		audio.clip = enemyDieClips[0];
 		audio.Play();
 		Destroy(audio.gameObject, 5f);
@@ -158,6 +159,7 @@ public class AudioController : MonoBehaviour
 		var audio = Instantiate(_prefab, transform);
 		audio.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
 		audio.clip = enemyDieClips[1];
+		audio.volume= 0.3f;
 		audio.Play();
 		Destroy(audio.gameObject, 5f);
 	}
