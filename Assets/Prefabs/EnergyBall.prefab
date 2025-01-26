@@ -113,7 +113,8 @@ MonoBehaviour:
   _sprites:
   - {fileID: 2800000, guid: aba541a1c4f42314a8b1a1a95b7f2b83, type: 3}
   - {fileID: 2800000, guid: aa181a5851db63f44ba77449f3f1f37c, type: 3}
-  _speed: 5
+  _damage: 10
+  _speed: 7
 --- !u!1 &7191021358610284724
 GameObject:
   m_ObjectHideFlags: 0
