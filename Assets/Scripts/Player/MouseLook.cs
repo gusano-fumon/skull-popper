@@ -60,14 +60,14 @@ public class MouseLook : MonoBehaviour
 				if (expectingUpMovement && mouseY > 0)
 				{
 					UpdateMovementCount(true);
-					player.ReloadDirection(true);
+					GameMenu.Instance.playerUI.ReloadDirection(true);
 					player.audioController.PlayRecarga(player.transform);
 				}
 				// Check for down movement when not expecting up
 				else if (!expectingUpMovement && mouseY < 0)
 				{
 					UpdateMovementCount(false);
-					player.ReloadDirection(false);
+					GameMenu.Instance.playerUI.ReloadDirection(false);
 					player.audioController.PlayRecarga(player.transform);
 				}
 			}
@@ -76,16 +76,16 @@ public class MouseLook : MonoBehaviour
 		if (Input.GetMouseButtonDown(1))
 		{
 			_recharging = true;
-			player.defaultState.gameObject.SetActive(false);
-			player.reloadingState.gameObject.SetActive(true);
+			GameMenu.Instance.playerUI.defaultState.gameObject.SetActive(false);
+			GameMenu.Instance.playerUI.reloadingState.gameObject.SetActive(true);
  		}
 
 		if (Input.GetMouseButtonUp(1))
 		{
 			_recharging = false;
 			ResetRecharge();
-			player.defaultState.gameObject.SetActive(true);
-			player.reloadingState.gameObject.SetActive(false);
+			GameMenu.Instance.playerUI.defaultState.gameObject.SetActive(true);
+			GameMenu.Instance.playerUI.reloadingState.gameObject.SetActive(false);
 		}
 
 		if (Input.GetMouseButtonDown(0))
@@ -121,7 +121,7 @@ public class MouseLook : MonoBehaviour
 	private void PerformRecharge()
 	{
 		_currentAmmo = _maxAmmo;
-		playerUI.UpdateAmmo(_currentAmmo);
+		PlayerUI.OnReload?.Invoke(_currentAmmo);
 		ResetRecharge();
 	}
 
@@ -131,8 +131,8 @@ public class MouseLook : MonoBehaviour
 
 		_currentAmmo--;
 		ResetRecharge();
-		
-		playerUI.UpdateAmmo(_currentAmmo);
+
+		PlayerUI.OnReload?.Invoke(_currentAmmo);
 
 		var bubble = Instantiate(_bubble, _initialPos.position, transform.rotation);
 		bubble.Init(transform.forward);

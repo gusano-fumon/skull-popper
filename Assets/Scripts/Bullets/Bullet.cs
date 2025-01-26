@@ -15,13 +15,13 @@ public class Bullet : SpriteAnimation
 
 	protected virtual void Awake()
 	{
-		PlayerController.OnPlayerDeath += InstantDestroy;
+		GameMenu.OnPlayerDeath += InstantDestroy;
 		DeleteBullet().Forget();
 	}
 
 	private void OnDestroy()
 	{
-		PlayerController.OnPlayerDeath -= InstantDestroy;
+		GameMenu.OnPlayerDeath -= InstantDestroy;
 	}
 
 	private void OnTriggerEnter(Collider target)

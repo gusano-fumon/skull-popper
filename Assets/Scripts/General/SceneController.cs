@@ -1,11 +1,15 @@
+
 using UnityEngine;
-using  UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
+
+using Cysharp.Threading.Tasks;
+
 
 public static class SceneController 
 {
-    public static void LoadScene(int index)
+    public static async UniTask LoadScene(int index)
     {
-       SceneManager.LoadSceneAsync(index);
+       await SceneManager.LoadSceneAsync(index);
     }
 
     public static void ReloadScene()

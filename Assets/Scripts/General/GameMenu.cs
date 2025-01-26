@@ -1,36 +1,51 @@
+using System;
+
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameMenu : MonoBehaviour
+using Cysharp.Threading.Tasks;
+using TMPro;
+
+
+public class GameMenu : Singleton<GameMenu>
 {
-    [SerializeField] private GameObject _retryPanel;
     [SerializeField] private Image _endImage;
     [SerializeField] private UnityEngine.Sprite _winSprite;
     [SerializeField] private UnityEngine.Sprite _gameOverSprite;
-    [SerializeField] private Button _retryButton;
-    [SerializeField] private Button _mainMenuButton;
-    [SerializeField] private Button _quitButton;
+	public static Action OnVictory;
+	public static Action OnPlayerDeath;
+	[SerializeField] private GameObject _mainMenu;
+	[SerializeField] private GameObject _controlsPanel;
+	[SerializeField] private GameObject _retryPanel;
+	public PlayerUI playerUI;
 
-    private void Awake()
-    {
-        PlayerController.OnPlayerDeath += PlayerDeath;
-        VictoryZone.OnVictory += Victory;
-    }
+	[Space]
+	[SerializeField] private Button _playButton;
+	[SerializeField] private Button _retryButton;
+	[SerializeField] private Button _mainMenuButton;
+	[SerializeField] private Button _quitButton;
 
-    private void OnDestroy()
-    {
-        PlayerController.OnPlayerDeath -= PlayerDeath;
-        VictoryZone.OnVictory -= Victory;
-    }
+	public override void Awake()
+	{
+		base.Awake();
+		DontDestroyOnLoad(gameObject);
+		
+		_retryButton.onClick.AddListener(Retry);
+		_mainMenuButton.onClick.AddListener(ReturnToMainMenu);
 
-    private void Start()
-    {
-        _retryButton.onClick.AddListener(Retry);
-        _mainMenuButton.onClick.AddListener(ReturnToMainMenu);
-        _quitButton.onClick.AddListener(Quit);
-    }
+        _playButton.onClick.AddListener(async () => {
+            await SceneController.LoadScene(1);
+			playerUI.Init();
+            _mainMenu.SetActive(false);
+        });
 
-    private void PlayerDeath()
+        _quitButton.onClick.AddListener(() => SceneController.QuitGame());
+
+		OnVictory += Victory;
+		OnPlayerDeath += PlayerDeath;
+	}
+    
+	private void PlayerDeath()
     {
         Cursor.lockState = CursorLockMode.None;
         _retryPanel.SetActive(true);
@@ -41,23 +56,34 @@ public class GameMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         _retryPanel.SetActive(true);
-        _endImage.sprite = _winSprite;
+	}
+
+	private void Retry()
+	{
+		Debug.Log("Retry");	
+		_retryPanel.SetActive(false);
+		SceneController.LoadScene(1).Forget();
+		playerUI.Init();
+	}
+
+	private void ReturnToMainMenu()
+	{
+		_retryPanel.SetActive(false);
+		SceneController.LoadScene(0).Forget();
+	}
+
+	public void OpenControlsPanel()
+    {
+        _controlsPanel.SetActive(true);
     }
 
-    private void Retry()
+    public void CloseControlsPanel()
     {
-        _retryPanel.SetActive(false);
-        SceneController.LoadScene(1);
+        _controlsPanel.SetActive(false);
     }
 
-    private void ReturnToMainMenu()
-    {
-        _retryPanel.SetActive(false);
-        SceneController.LoadScene(0);
-    }
-
-    private void Quit()
-    {
-        SceneController.QuitGame();
-    }
+	private void Quit()
+	{
+		SceneController.QuitGame();
+	}
 }

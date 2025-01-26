@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour, ILife
 	public static Transform CameraTransform { get { return _cameraTransform; } } 
 	public static Action<int> OnHit;
 	public static Action<int> OnPlayerHeal;
-	public static Action OnPlayerDeath;
 	public static bool GameEnd { get; private set; }
 	public int TotalHealth = 100;
 
@@ -26,11 +25,7 @@ public class PlayerController : MonoBehaviour, ILife
 
 	[Header("References")]
 	[SerializeField] private CharacterController _character;
-	[SerializeField] private PlayerUI _playerUI;
 	public AudioController audioController;
-
-	public Image defaultState, reloadingState;
-	public UnityEngine.Sprite upReload, downReload;
 
 	public int Health { get; set; }
 
@@ -40,26 +35,20 @@ public class PlayerController : MonoBehaviour, ILife
 		_cameraTransform = Camera.main.transform;
 		OnHit += TakeDamage;
 		OnPlayerHeal += RestoreHealth;
-		VictoryZone.OnVictory += () => GameEnd = true;
+		GameMenu.OnVictory += () => GameEnd = true;
 	}
 
 	private void OnDestroy()
 	{
 		OnHit -= TakeDamage;
 		OnPlayerHeal -= RestoreHealth;
-		VictoryZone.OnVictory -= () => GameEnd = true;
-	}
-
-	public void ReloadDirection(bool up)
-	{
-		reloadingState.sprite = up ? upReload : downReload;
+		GameMenu.OnVictory -= () => GameEnd = true;
 	}
 
 
 	private void Start()
 	{
 		Health = TotalHealth;
-		_playerUI.UpdateHealth(Health);
 	}
 
 	private void Update()
@@ -113,29 +102,19 @@ public class PlayerController : MonoBehaviour, ILife
 		transform.localEulerAngles = euler;
 	}
 
-	public void Die()
-	{
-		Health = 0;
-		_playerUI.UpdateHealth(Health);
-		GameEnd = true;
-		OnPlayerDeath?.Invoke();
-	}
-
 	public void TakeDamage(int damage)
 	{
 		Health -= damage;
-		_playerUI.UpdateHealth(Health);
-		_playerUI.TakeDamage();
-		if (Health > 0)
-		{
-			audioController.PlayHitClip(transform);
-			return;
-		}
+		audioController.PlayHitClip(transform);
 
 		if (Health <= 0)
 		{
-			Die();
+			Health = 0;
+			GameEnd = true;
+			GameMenu.OnPlayerDeath?.Invoke();
 		}
+
+		PlayerUI.OnHit?.Invoke(Health, true);
 	}
 
 	public void RestoreHealth(int health)
@@ -149,6 +128,6 @@ public class PlayerController : MonoBehaviour, ILife
 			Health = TotalHealth;
 		}
 
-		_playerUI.UpdateHealth(Health);
+		PlayerUI.OnHit?.Invoke(Health, false);
 	}
 }
