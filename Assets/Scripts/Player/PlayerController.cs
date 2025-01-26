@@ -2,6 +2,7 @@
 using System;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class PlayerController : MonoBehaviour, ILife
@@ -16,18 +17,20 @@ public class PlayerController : MonoBehaviour, ILife
 
 	[Header("Properties")]
 	[SerializeField] private float _movementSpeed;
-	[SerializeField] private float _gravity = -15f;
+	[SerializeField] private float _gravity;
 
 	private Vector3 velocity;
 	public float jumpForce = 1.5f;
 	public LayerMask groundMask;
 	private bool _isGrounded;
 
-
 	[Header("References")]
 	[SerializeField] private CharacterController _character;
 	[SerializeField] private PlayerUI _playerUI;
 	public AudioController audioController;
+
+	public Image defaultState, reloadingState;
+	public UnityEngine.Sprite upReload, downReload;
 
 	public int Health { get; set; }
 
@@ -47,6 +50,11 @@ public class PlayerController : MonoBehaviour, ILife
 		VictoryZone.OnVictory -= () => GameEnd = true;
 	}
 
+	public void ReloadDirection(bool up)
+	{
+		reloadingState.sprite = up ? upReload : downReload;
+	}
+
 
 	private void Start()
 	{
@@ -58,23 +66,23 @@ public class PlayerController : MonoBehaviour, ILife
 	private void Update()
 	{
 		if (GameEnd) return;
-		
+
 		Movement();
 		TiltCamera();
 	}
 
 	private void Movement()
 	{
-		_isGrounded = Physics.Raycast(transform.position, Vector3.down, 1, groundMask);
-
-		if (_isGrounded && velocity.y < -10)
+		_isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.9f, groundMask);
+		// Aplicar gravedad
+		if (!_isGrounded)
 		{
-			velocity.y = -10;
+			velocity.y += _gravity * Time.deltaTime;
 		}
 
-		if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+		if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
 		{
-			velocity.y = Mathf.Sqrt(jumpForce * -2 *_gravity);
+			velocity.y = Mathf.Sqrt(jumpForce * -2f * _gravity);
 		}
 
 		float horizontal = Input.GetAxis("Horizontal");

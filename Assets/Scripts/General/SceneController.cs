@@ -5,7 +5,7 @@ public static class SceneController
 {
     public static void LoadScene(int index)
     {
-       SceneManager.LoadScene(index);
+       SceneManager.LoadSceneAsync(index);
     }
 
     public static void ReloadScene()
