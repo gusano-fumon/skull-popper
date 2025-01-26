@@ -14,10 +14,11 @@ public class AudioController : MonoBehaviour
 	public AudioClip recargaClip;
 	public AudioClip jumpClip;
 	public AudioClip pocionClip;
-	public AudioClip popBubbleClip;
 	public AudioClip musicClip;
 	public AudioClip musicClip2;
 	public AudioClip openGateClip;
+	public AudioClip clickClip;
+	public List<AudioClip> popBubbleClips;
 	public AudioSource _prefab;
 
 	private bool _onHitSound = false;
@@ -29,6 +30,8 @@ public class AudioController : MonoBehaviour
 	public static Action<Transform> OnPopBubbleSound;
 	public static Action<Transform> OnRecargaSound;
 	public static Action<Transform> OnOpenGate;
+	public static Action OnClickMenu;
+	
 
 
 	public void Awake()
@@ -49,6 +52,15 @@ public class AudioController : MonoBehaviour
 		OnPopBubbleSound -= PlayPopBubbleClip;
 		OnEnemyDieSound -= PlayEnemyDie;
 		OnOpenGate -= PlayOpenGate;
+	}
+
+	public void PlayClick()
+	{
+		var audio = Instantiate(_prefab);
+		DontDestroyOnLoad(audio.gameObject);
+		audio.clip = clickClip;
+		audio.Play();
+		Destroy(audio.gameObject, 5f);
 	}
 
 	public void PlayMusic()
@@ -168,7 +180,7 @@ public class AudioController : MonoBehaviour
 	{
 		var audio = Instantiate(_prefab, transform);
 		audio.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
-		audio.clip = popBubbleClip;
+		audio.clip = popBubbleClips[UnityEngine.Random.Range(0, popBubbleClips.Count)];
 		audio.Play();
 		Destroy(audio.gameObject, 5f);
 	}
