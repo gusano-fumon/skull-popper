@@ -1,9 +1,13 @@
 
+using UnityEngine;
+
 using DG.Tweening;
 
 
 public class MeleeEnemy : Enemy
 {
+	[SerializeField] int _damage;
+
 	private void Awake()
 	{
 		_distanceToTarget = 1;
@@ -41,7 +45,7 @@ public class MeleeEnemy : Enemy
 		_meshRenderer.material.mainTexture = _attackSprite;
 		_state = EnemyState.Attacking;
 
-		PlayerController.OnHit(1);
+		PlayerController.OnHit(_damage);
 	}
 
 	protected override void Die()
