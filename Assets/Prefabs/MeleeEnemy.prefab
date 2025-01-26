@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8916476549696a4a980505bd0e29ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isBullet: 0
 --- !u!114 &4726617108584957274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +118,7 @@ MonoBehaviour:
   _hurtSprite: {fileID: 2800000, guid: 5b80233da29f038449ec242f5d05f05b, type: 3}
   _idleSprite: {fileID: 2800000, guid: a5d925dfaf9f12c4c9e5a237657af5f8, type: 3}
   isDead: 0
+  _damage: 5
 --- !u!1 &8855468089294073585
 GameObject:
   m_ObjectHideFlags: 0

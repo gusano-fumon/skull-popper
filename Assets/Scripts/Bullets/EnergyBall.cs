@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnergyBall : Bullet
 {
+	[SerializeField] private int _damage = 5;
 	[SerializeField] private float _speed = 5;
 	private Vector3 _direction;
 
@@ -28,7 +29,7 @@ public class EnergyBall : Bullet
 	public override void ExecuteCollision(Collider target)
 	{
 		base.ExecuteCollision(target);
-		PlayerController.OnHit(1);
+		PlayerController.OnHit(_damage);
 		Destroy(gameObject);
 	}
 }
