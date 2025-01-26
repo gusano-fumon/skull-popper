@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8091168430717992861}
   - component: {fileID: 7068426035473618806}
   - component: {fileID: 5299957116526865155}
+  - component: {fileID: 4078196325104919447}
   - component: {fileID: 6387975784846551492}
   m_Layer: 6
   m_Name: EnergyBall
@@ -83,6 +84,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4078196325104919447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6636569345375564833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8916476549696a4a980505bd0e29ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isBullet: 1
 --- !u!114 &6387975784846551492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,10 +110,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshRenderer: {fileID: 6274207469970572915}
-  _speed: 5
   _sprites:
   - {fileID: 2800000, guid: aba541a1c4f42314a8b1a1a95b7f2b83, type: 3}
   - {fileID: 2800000, guid: aa181a5851db63f44ba77449f3f1f37c, type: 3}
+  _speed: 5
 --- !u!1 &7191021358610284724
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +125,6 @@ GameObject:
   - component: {fileID: 6834619119556993801}
   - component: {fileID: 189813538138708392}
   - component: {fileID: 6274207469970572915}
-  - component: {fileID: 3914676838446086828}
   m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
@@ -184,25 +197,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3914676838446086828
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7191021358610284724}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
