@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GatedArea : MonoBehaviour
 {
     [SerializeField] private List<Animator> _openGates;
     [SerializeField] private List<Animator> _closeGates;
     [SerializeField] private int _enemiesToKill = 5;
-    [SerializeField] private  int _gatedAreaId = 0;
+    [SerializeField] private int _gatedAreaId = 0;
+    private Image _image;
+    private Sprite sprite;
     
     private void OnEnable()
     {
