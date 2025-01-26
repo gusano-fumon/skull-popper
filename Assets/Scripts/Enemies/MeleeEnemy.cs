@@ -46,12 +46,12 @@ public class MeleeEnemy : Enemy
 
 	protected override void Die()
 	{
-		base.Die();
-		
 		_aiAgent.baseOffset = .5f;
+		_aiAgent.destination = transform.position;
+
 		_meshRenderer.transform.DOKill();
 		_meshRenderer.transform.position = new (transform.position.x, .5f, transform.position.z);
-		Destroy(_aiAgent);
+		base.Die();
 	}
 	
 	protected override void SetWalkingSprite()
