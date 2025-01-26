@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _retryPanel;
-    [SerializeField] private TMP_Text _retryText;
+    [SerializeField] private Image _endImage;
+    [SerializeField] private UnityEngine.Sprite _winSprite;
+    [SerializeField] private UnityEngine.Sprite _gameOverSprite;
     [SerializeField] private Button _retryButton;
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _quitButton;
@@ -37,16 +34,14 @@ public class GameMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         _retryPanel.SetActive(true);
-        _retryText.text = "You died!";
-        _retryText.color = Color.red;
+        _endImage.sprite = _gameOverSprite;
     }
 
     private void Victory()
     {
         Cursor.lockState = CursorLockMode.None;
         _retryPanel.SetActive(true);
-        _retryText.text = "Victory!";
-        _retryText.color = Color.green;
+        _endImage.sprite = _winSprite;
     }
 
     private void Retry()
