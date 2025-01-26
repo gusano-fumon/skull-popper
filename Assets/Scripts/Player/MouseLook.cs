@@ -112,14 +112,12 @@ public class MouseLook : MonoBehaviour
 
 	private void ResetRecharge()
 	{
-		Debug.Log("Reset Recharge!");
 		currentMovementCount = 0;
 		expectingUpMovement = true;
 	}
 
 	private void PerformRecharge()
 	{
-		Debug.Log("Recharge Complete!");
 		_currentAmmo = _maxAmmo;
 		ResetRecharge();
 	}
