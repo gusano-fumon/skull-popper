@@ -5,6 +5,9 @@ public class VictoryZone : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-       GameMenu.OnVictory?.Invoke();
+        if (other.CompareTag("Player"))
+        {
+            GameMenu.OnVictory?.Invoke();
+        }
     }
 }
