@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8971079509820256023}
   - component: {fileID: 914083471213553244}
   - component: {fileID: 873220515353899763}
-  - component: {fileID: 4360856462463639364}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -81,7 +80,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1
+  m_Height: 1.62
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -111,33 +110,6 @@ MonoBehaviour:
   shotClips:
   - {fileID: 8300000, guid: 90c2300ab71a5cd4dba5023cfda9c4cc, type: 3}
   _prefab: {fileID: 7809965271467892392, guid: 7dc49f8c52e29854fb4411e2e3436380, type: 3}
---- !u!54 &4360856462463639364
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2857501442880099291}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &3346268301382314540
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +153,7 @@ GameObject:
   - component: {fileID: 7252038624003267332}
   - component: {fileID: 5165149772000040677}
   - component: {fileID: 4356866377977161426}
-  - component: {fileID: 2935145481405754786}
+  - component: {fileID: 1795191550389138181}
   m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -214,8 +186,8 @@ Camera:
   m_GameObject: {fileID: 8157544381296245912}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.3220007, g: 0.3948914, b: 0.509434, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.109177895, g: 0, b: 0.13207549, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -236,7 +208,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.2
   far clip plane: 1000
   field of view: 45
   orthographic: 0
@@ -280,10 +252,12 @@ MonoBehaviour:
   sensitivity: 200
   _bubble: {fileID: 625153044786506450, guid: 55212d3fc7393514eb6d09201c108193, type: 3}
   _initialPos: {fileID: 4491780566571167590}
+  _maxAmmo: 12
+  _currentAmmo: 0
   rechargeTimeWindow: 3000
   requiredMovements: 3
   movementThreshold: 50
---- !u!114 &2935145481405754786
+--- !u!114 &1795191550389138181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -306,7 +280,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0

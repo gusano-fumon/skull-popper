@@ -6,25 +6,17 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 
 
-public class Bullet : MonoBehaviour
+public class Bullet : SpriteAnimation
 {
-	[SerializeField] protected MeshRenderer _meshRenderer;
-	[SerializeField] private Texture2D[] _sprites;
 	protected string _targetTag;
 
 	private CancellationTokenSource _cts;
 	private readonly int _timeToDelete = 5000;
-	private int _spriteCounter = 0;
 
 	protected virtual void Awake()
 	{
 		PlayerController.OnPlayerDeath += InstantDestroy;
 		DeleteBullet().Forget();
-	}
-
-	protected virtual void Update()
-	{
-		if (Time.frameCount % 40 == 0) CheckSprite();
 	}
 
 	private void OnDestroy()
@@ -52,13 +44,6 @@ public class Bullet : MonoBehaviour
 		await UniTask.Delay(_timeToDelete, cancellationToken: _cts.Token);
 		Destroy(gameObject);
 	}
-
-	private void CheckSprite()
-	{
-		_spriteCounter++;
-		_meshRenderer.sharedMaterial.mainTexture = _sprites[_spriteCounter % 2];
-	}
-
 	private void InstantDestroy()
 	{
 		_cts.Cancel();
