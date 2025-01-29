@@ -17,7 +17,6 @@ public class ScoreController : MonoBehaviour
 			while (GameMenu.inGame)
 			{
 				RemoveScore(1);
-				Debug.Log("Score: " + _score);
 				await UniTask.Delay(1000);
 			}
 		});
