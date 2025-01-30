@@ -1,13 +1,24 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class MouseLook : MonoBehaviour
 {
+	private const string KEY = nameof(SliderType.Sensitivity);
 	public PlayerController player;
 	public PlayerUI playerUI;
-	public float sensitivity = 100f;
-	[SerializeField] private Bubble _bubble;
+	private static float _sensitivity;
+    public static float Sensitivity
+    {
+        get
+        {
+			_sensitivity = PlayerPrefs.GetFloat(KEY, 100);
+            return _sensitivity;
+        }
+        private set => _sensitivity = value;
+    }
+    [SerializeField] private Bubble _bubble;
 	[SerializeField] private Transform _initialPos; 
 	[SerializeField] private int _maxAmmo = 12;
 	[SerializeField] private int _currentAmmo; 
@@ -22,7 +33,7 @@ public class MouseLook : MonoBehaviour
 	private bool expectingUpMovement = true;
 	private bool _recharging = false;
 
-	private void Start()
+    private void Start()
 	{
 		_currentAmmo = _maxAmmo;
 		Cursor.lockState = CursorLockMode.Locked;
@@ -32,7 +43,7 @@ public class MouseLook : MonoBehaviour
 	{
 		if (PlayerController.GameEnd) return;
 		
-		var scaledSesitivity = sensitivity * Time.deltaTime;
+		var scaledSesitivity = Sensitivity * Time.deltaTime;
 		var mouseY = Input.GetAxis("Mouse Y") * scaledSesitivity;
 
 		if (!_recharging)
@@ -138,5 +149,10 @@ public class MouseLook : MonoBehaviour
 		bubble.Init(transform.forward);
 
 		player.audioController.PlayShotClip(bubble.transform);
+	}
+
+	public static void SetSensitive(float sensitivity)
+	{
+		Sensitivity = sensitivity;
 	}
 }

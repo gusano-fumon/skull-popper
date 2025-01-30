@@ -12,3 +12,11 @@ public enum AudioType
 	Gate = 9,
 	Click = 10,
 }
+
+public enum SliderType
+{
+	FOV = 0,
+	Sensitivity = 1,
+	Music = 2,
+	SFX = 3,
+}

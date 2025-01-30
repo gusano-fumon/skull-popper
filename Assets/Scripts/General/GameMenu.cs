@@ -26,7 +26,7 @@ public class GameMenu : Singleton<GameMenu>
 	[SerializeField] private Button _mainMenuButton;
 	[SerializeField] private Button _quitButton;
 
-	public override void Awake()
+	protected override void Awake()
 	{
 		base.Awake();
 		DontDestroyOnLoad(gameObject);
