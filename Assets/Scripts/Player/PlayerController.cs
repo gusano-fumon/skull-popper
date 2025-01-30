@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour, ILife
 	{
 		Health -= damage;
 		audioController.PlayHitClip(transform);
+		ScoreController.RemoveScore(damage);
 
 		if (Health <= 0)
 		{

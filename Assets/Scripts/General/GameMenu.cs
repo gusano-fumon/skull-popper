@@ -18,6 +18,8 @@ public class GameMenu : Singleton<GameMenu>
 	[SerializeField] private GameObject _retryPanel;
 	public PlayerUI playerUI;
 
+	public static bool inGame = false;
+
 	[Space]
 	[SerializeField] private Button _playButton;
 	[SerializeField] private Button _retryButton;
@@ -36,6 +38,9 @@ public class GameMenu : Singleton<GameMenu>
             await SceneController.LoadScene(1);
 			playerUI.Init();
             _mainMenu.SetActive(false);
+
+			inGame = true;
+			ScoreController.Init();
         });
 
         _quitButton.onClick.AddListener(() => SceneController.QuitGame());
@@ -46,6 +51,7 @@ public class GameMenu : Singleton<GameMenu>
     
 	private void PlayerDeath()
     {
+		inGame = false;
         Cursor.lockState = CursorLockMode.None;
         _retryPanel.SetActive(true);
         _endImage.sprite = _gameOverSprite;
@@ -53,6 +59,7 @@ public class GameMenu : Singleton<GameMenu>
 
     private void Victory()
     {
+		inGame = false;
         Cursor.lockState = CursorLockMode.None;
         _retryPanel.SetActive(true);
 	}
