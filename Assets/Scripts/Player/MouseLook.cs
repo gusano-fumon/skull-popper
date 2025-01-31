@@ -43,6 +43,11 @@ public class MouseLook : MonoBehaviour
 	private void Update()
 	{
 		if (PlayerController.GameEnd) return;
+
+		if (Input.GetKeyDown(KeyCode.Escape)) // Pause Game
+		{
+			GameMenu.Instance.Pause();
+		}
 		
 		var scaledSesitivity = sensitivity * Time.deltaTime;
 		var mouseY = Input.GetAxis("Mouse Y") * scaledSesitivity;
@@ -104,8 +109,7 @@ public class MouseLook : MonoBehaviour
 		{
 			if (_currentAmmo == 0)
 			{
-				// Add a sound effect here
-				AudioFactory.Instance.PlaySFX(AudioType.Empty);
+				AudioFactory.Instance.PlaySFX(AudioType.NoAmmo);
 				return;
 			}
 
@@ -113,6 +117,11 @@ public class MouseLook : MonoBehaviour
 			Invoke(nameof(Shoot), 0.2f);
 		}
 	}
+
+	private void CheckPause()
+	{
+
+	}	
 
 	private void UpdateMovementCount(bool isUpMovement)
 	{

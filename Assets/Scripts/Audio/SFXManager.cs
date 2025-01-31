@@ -4,12 +4,8 @@ using UnityEngine.Audio;
 
 public class SFXManager : IAudio<SFXManager>
 {
-	private const string SFXVolume = "SFX";
-
-
     public AudioSource AudioSource { get; set; }
     public AudioMixerGroup MixerGroup { get; set; }
-    public float Volume { get; set; }
 
     public SFXManager(AudioSource audio, Transform parent)
 	{

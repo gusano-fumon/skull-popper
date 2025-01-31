@@ -27,7 +27,7 @@ public class MusicSlider : SliderBase
 	public override void SaveChanges()
 	{
 		base.SaveChanges();
-		AudioFactory.Instance.SetMusicVolume(CurrentValue);
+		AudioFactory.Instance.SetMusicVolume(CurrentValue*0.01f);
 	}
 
 	public override void ResetToDefault()

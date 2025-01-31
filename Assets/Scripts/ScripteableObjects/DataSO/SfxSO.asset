@@ -10,10 +10,61 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e7cc3e4af39b82408820924470f6579, type: 3}
-  m_Name: SfxSO
+  m_Name: SFXSO
   m_EditorClassIdentifier: 
   audioObjects:
-  - type: 0
+  - type: 1
     multiple: 0
     clips:
-    - {fileID: 8300000, guid: ae5551130489e5b47aa18b22dd2447bb, type: 3}
+    - {fileID: 8300000, guid: 90c2300ab71a5cd4dba5023cfda9c4cc, type: 3}
+  - type: 2
+    multiple: 0
+    clips:
+    - {fileID: 8300000, guid: a6a39a7876ee7c046aca005025c43217, type: 3}
+  - type: 3
+    multiple: 0
+    clips:
+    - {fileID: 8300000, guid: 125de8bf832734547b30e55812a8e0cd, type: 3}
+  - type: 4
+    multiple: 1
+    clips:
+    - {fileID: 8300000, guid: fb0a10ea815cbee42876da4c74e8682d, type: 3}
+    - {fileID: 8300000, guid: 2dbe0497db2e2674e8378f59b3d0ed78, type: 3}
+    - {fileID: 8300000, guid: 8b1eaebd1d1799a489d914db382391f5, type: 3}
+    - {fileID: 8300000, guid: b473137ceb4df7441a8210d7d8a5d716, type: 3}
+    - {fileID: 8300000, guid: 8d48089cea0149f4cac786d60c943bea, type: 3}
+    - {fileID: 8300000, guid: 96745cda5fc24744a8f86e155060715c, type: 3}
+    - {fileID: 8300000, guid: f20de4e083655f1428ca51e928c42d25, type: 3}
+    - {fileID: 8300000, guid: c2c7b21bbf64b4c4fbfccd22f2c14bd5, type: 3}
+  - type: 5
+    multiple: 0
+    clips:
+    - {fileID: 8300000, guid: c706c8ffb546d934480a365775671e96, type: 3}
+  - type: 6
+    multiple: 0
+    clips:
+    - {fileID: 8300000, guid: d45511669a18ed0469fdc30a25bef3d8, type: 3}
+  - type: 7
+    multiple: 0
+    clips:
+    - {fileID: 8300000, guid: d02117e2d596e9142a9e18e1033d8b1a, type: 3}
+  - type: 8
+    multiple: 0
+    clips:
+    - {fileID: 8300000, guid: 351efb05b83ba1949b79628e6ffad9ef, type: 3}
+  - type: 9
+    multiple: 0
+    clips:
+    - {fileID: 8300000, guid: 094826556da40af40ae91cf545bb9aa8, type: 3}
+  - type: 10
+    multiple: 0
+    clips:
+    - {fileID: 8300000, guid: 9556e4910a6bbbb45b4918528b86cdc5, type: 3}
+  - type: 11
+    multiple: 0
+    clips:
+    - {fileID: 8300000, guid: ef7025b4e00f0cd4ca2b884f2ad3bef7, type: 3}
+  - type: 13
+    multiple: 0
+    clips:
+    - {fileID: 8300000, guid: 27110cb9a92c4c74d87c093b68481a9c, type: 3}

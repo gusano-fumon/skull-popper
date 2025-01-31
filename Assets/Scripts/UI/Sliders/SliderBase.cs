@@ -23,7 +23,7 @@ public abstract class SliderBase : MonoBehaviour, ISlider
 		}
 		set
 		{
-			PlayerPrefs.GetFloat($"{SliderType}", value);
+			PlayerPrefs.SetFloat($"{SliderType}", value);
 			PlayerPrefs.Save();
 		}
 	}

@@ -4,15 +4,12 @@ using UnityEngine.Audio;
 
 public class MusicManager : IAudio<MusicManager>
 {
-	private const string MusicVolume = "Music";
-	
 	private AudioClip audioClip;
 
 	[Range(0f, 1f)] public float volume = 1f;
 
 	public AudioSource AudioSource { get; set; }
 	public AudioMixerGroup MixerGroup { get; set; }
-	public float Volume { get; set; }
 
 	public MusicManager(AudioSource prefab)
 	{
@@ -27,11 +24,12 @@ public class MusicManager : IAudio<MusicManager>
 			audioClip = clip;
 			AudioSource.clip = audioClip;
 			AudioSource.loop = loop;
-			AudioSource.Play();
+			FadeInMusic(1f);
 		}
 
 		return this;
 	}
+
 	public MusicManager Destroy(float time)
 	{
 		MonoBehaviour.Destroy(AudioSource.gameObject, time);
@@ -43,10 +41,29 @@ public class MusicManager : IAudio<MusicManager>
 		AudioSource.Stop();
 	}
 
-	public MusicManager SetVolume(float value)
+	public void Stop(float time)
 	{
+		FadeOut(time).Forget();
+	}
 
-		return this;
+	public void FadeInMusic(float duration)
+	{
+		AudioSource.volume = 0;
+		AudioSource.Play();
+		FadeIn(duration).Forget();
+	}
+
+	private async UniTaskVoid FadeIn(float duration)
+	{
+		float startVolume = AudioSource.volume;
+		float elapsedTime = 0f;
+
+		while (AudioSource.volume < volume)
+		{
+			elapsedTime += Time.deltaTime;
+			AudioSource.volume = Mathf.Lerp(startVolume, volume, elapsedTime / duration);
+			await UniTask.Yield();
+		}
 	}
 
 	public void FadeOutMusic(float duration)
@@ -67,6 +84,6 @@ public class MusicManager : IAudio<MusicManager>
 		}
 
 		AudioSource.Stop();
-		AudioSource.volume = startVolume; // Restaurar el volumen original
+		Destroy(0f);
 	}
 }

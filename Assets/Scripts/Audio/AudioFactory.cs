@@ -9,6 +9,7 @@ public class AudioFactory : Singleton<AudioFactory>
 
 	[SerializeField] private AudioSource _sfxPrefab, _musicPrefab;
 	[SerializeField] private AudioMixer _audioMixer;
+	[SerializeField] private AudioMixerGroup _musicMixerGroup, _sfxMixerGroup;
 
 #endregion
 
@@ -24,18 +25,19 @@ public class AudioFactory : Singleton<AudioFactory>
 
 #region Methods
 
+	public MusicManager musicManager;
+
 	public void PlayMusic(AudioType clipName, bool loop = true)
 	{
 		var music = Instantiate(_musicPrefab);
-		new MusicManager(music)
-			.Play(clipName, loop)
-			.Destroy(5f);
+		musicManager = new MusicManager(music)
+			.Play(clipName, loop);
 	}
 
-	// public void StopMusic()
-	// {
-	// 	_musicManager.Stop();
-	// }
+	public void StopMusic()
+	{
+		Destroy(musicManager.AudioSource.gameObject);
+	}
 
 	public void PlaySFX(AudioType clipName)
 	{
@@ -57,7 +59,7 @@ public class AudioFactory : Singleton<AudioFactory>
 
 	public void SetMusicVolume(float value)
 	{
-		_musicPrefab.outputAudioMixerGroup.audioMixer
+		_musicMixerGroup.audioMixer
 			.SetFloat("Music", Mathf.Log10(value) * 20);
 
 		PlayerPrefs.SetFloat("Music", value);
@@ -66,7 +68,7 @@ public class AudioFactory : Singleton<AudioFactory>
 
 	public void SetSFXVolume(float value)
 	{
-		_sfxPrefab.outputAudioMixerGroup.audioMixer
+		_sfxMixerGroup.audioMixer
 			.SetFloat("SFX", Mathf.Log10(value) * 20);
 
 		PlayerPrefs.SetFloat("SFX", value);

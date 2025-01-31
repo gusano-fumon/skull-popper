@@ -11,7 +11,9 @@ public enum AudioType
 	ShooterEnemyDie = 8,
 	Potion = 9,
 	Gate = 10,
-	Empty = 11,
+	NoAmmo = 11,
+	PlayerDeath = 12,
+	Jump = 13,
 }
 
 public enum SliderType

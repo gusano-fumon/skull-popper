@@ -1,7 +1,8 @@
 
 using System;
-
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public class PlayerController : MonoBehaviour, ILife
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour, ILife
 	{
 		GameEnd = false;
 		_cameraTransform = Camera.main.transform;
+		AudioFactory.Instance.PlayMusic(AudioType.BackgroundMusic);
 		OnHit += TakeDamage;
 		OnPlayerHeal += RestoreHealth;
 		GameMenu.OnVictory += () => GameEnd = true;
@@ -76,7 +78,9 @@ public class PlayerController : MonoBehaviour, ILife
 
 		if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
 		{
+			AudioFactory.Instance.PlaySFX(AudioType.Jump);
 			_isGrounded = false;
+			InitJumpSound().Forget();
 			velocity.y = Mathf.Sqrt(jumpForce * -2f * _gravity);
 		}
 
@@ -91,6 +95,12 @@ public class PlayerController : MonoBehaviour, ILife
 		velocity.y += _gravity * Time.deltaTime;
 		_character.Move(velocity * Time.deltaTime);
 
+	}
+
+	private async UniTaskVoid InitJumpSound()
+	{
+		await UniTask.WaitUntil(() => _isGrounded);
+		// AudioFactory.Instance.PlaySFX(AudioType.Land);
 	}
 
 	private void TiltCamera(float pos)
@@ -111,6 +121,8 @@ public class PlayerController : MonoBehaviour, ILife
 			Health = 0;
 			GameEnd = true;
 			GameMenu.OnPlayerDeath?.Invoke();
+			AudioFactory.Instance.PlaySFX(AudioType.PlayerDeath);
+			AudioFactory.Instance.StopMusic();
 		}
 
 		PlayerUI.OnHit?.Invoke(Health, true);

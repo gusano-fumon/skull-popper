@@ -4,26 +4,13 @@ using UnityEngine.UI;
 
 public class OptionsPanel : MonoBehaviour
 {
-	public void ProcessChange(SliderType type, float value)
-	{
-		PlayerPrefs.SetFloat(type.ToString(), value);
-		PlayerPrefs.Save();
+	[SerializeField] private SliderBase[] sliders;
 
-		switch (type)
+	public void RevertChanges()
+	{
+		foreach (var slider in sliders)
 		{
-			case SliderType.Music:
-				AudioFactory.Instance.SetMusicVolume(value);
-				break;
-			case SliderType.SFX:
-				AudioFactory.Instance.SetSFXVolume(value);
-				break;
-			case SliderType.FOV:
-				Debug.Log("FOV: " + value);
-				Camera.main.fieldOfView = value;
-				break;
-			case SliderType.Sensitivity:
-				// MouseLook.SetSensitivity(value);// AAAAAAAAAAAAAAAAAAAAAA
-				break;
+			slider.ResetToDefault();
 		}
 	}
 }

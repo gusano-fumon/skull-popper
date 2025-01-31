@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
+using UnityEditor.Search;
+using UnityEngine.Audio;
 
 
 public class GameMenu : Singleton<GameMenu>
@@ -15,6 +17,7 @@ public class GameMenu : Singleton<GameMenu>
 	public static Action OnVictory;
 	public static Action OnPlayerDeath;
 	[SerializeField] private GameObject _mainMenu;
+	[SerializeField] private GameObject _pauseMenu;
 	[SerializeField] private GameObject _controlsPanel;
 	[SerializeField] private GameObject _optionsPanel;
 	[SerializeField] private GameObject _retryPanel;
@@ -45,10 +48,15 @@ public class GameMenu : Singleton<GameMenu>
 			ScoreController.Init();
         });
 
-        _quitButton.onClick.AddListener(() => SceneController.QuitGame());
+        _quitButton.onClick.AddListener(QuitGame);
 
 		OnVictory += Victory;
 		OnPlayerDeath += PlayerDeath;
+	}
+
+	public void QuitGame()
+	{
+		SceneController.QuitGame();
 	}
 
 	private void OnDestroy()
@@ -113,5 +121,23 @@ public class GameMenu : Singleton<GameMenu>
 	private void Quit()
 	{
 		SceneController.QuitGame();
+	}
+
+	public void Pause()
+	{
+		_pauseMenu.SetActive(true);
+		playerUI.gameObject.SetActive(false);
+		AudioFactory.Instance.StopMusic();
+		Time.timeScale = 0;
+		Cursor.lockState = CursorLockMode.None;
+	}
+
+	public void Resume()
+	{
+		playerUI.gameObject.SetActive(true);
+		_pauseMenu.SetActive(false);
+		Time.timeScale = 1;
+		AudioFactory.Instance.PlayMusic(AudioType.BackgroundMusic);
+		Cursor.lockState = CursorLockMode.Locked;
 	}
 }
