@@ -4,7 +4,7 @@ using DG.Tweening;
 
 public class Bubble : Bullet
 {
-	private Sprite _spriteScript;
+	private SpriteLookAt _spriteScript;
 	private Vector3 _forwardDirection, _startPos;
 	private float _forwardProgress;
 	[SerializeField] private float _forwardSpeed, _sineSpeed, _sineMultiplier;

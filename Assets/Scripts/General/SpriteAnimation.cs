@@ -8,6 +8,11 @@ public class SpriteAnimation : MonoBehaviour
 	[SerializeField] private Texture2D[] _sprites;
 	private int _spriteCounter = 0;
 
+	private void OnDestroy()
+	{
+		_meshRenderer.sharedMaterial.mainTexture = _sprites[0];
+	}
+
 	protected virtual void Update()
 	{
 		if (Time.frameCount % 40 == 0) CheckSprite();

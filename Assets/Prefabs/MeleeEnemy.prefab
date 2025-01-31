@@ -16,7 +16,7 @@ GameObject:
   m_Layer: 9
   m_Name: MeleeEnemy
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -110,16 +110,18 @@ MonoBehaviour:
   _aiAgent: {fileID: 6833568879967054034}
   _distanceToTarget: 1
   _deadZone: 0.2
-  _gatedAreaId: 0
+  _gatedAreaId:
+    _dynamicEnumData: {fileID: 11400000, guid: ebe126976a62d864faff020bba61fd0d, type: 2}
+    _areaId: 0
   totalHealth: 5
   _meshRenderer: {fileID: 4250721121823163689}
   _walkingSprites:
   - {fileID: 2800000, guid: 694bda4b6bf7f1643b431e0b80d4e2a3, type: 3}
   _attackSprite: {fileID: 2800000, guid: 3acc0768e86f7a14a99cce627e17c3d4, type: 3}
+  _deadPS: {fileID: 7791912138690597536}
   _deadSprite: {fileID: 2800000, guid: 63fdf9c5cc861cb4499142641058053b, type: 3}
   _hurtSprite: {fileID: 2800000, guid: 5b80233da29f038449ec242f5d05f05b, type: 3}
   _idleSprite: {fileID: 2800000, guid: a5d925dfaf9f12c4c9e5a237657af5f8, type: 3}
-  _deadPS: {fileID: 7791912138690597536}
   isDead: 0
   _damage: 5
 --- !u!1 &8855468089294073585

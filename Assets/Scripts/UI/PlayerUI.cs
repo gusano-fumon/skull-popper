@@ -9,7 +9,6 @@ using TMPro;
 
 public class PlayerUI : MonoBehaviour
 {
-	public static Action<int> OnReload;
 	public static Action<int, bool> OnHit;
 	public Slider healthSlider;
 	public TMP_Text healthText;
@@ -33,8 +32,14 @@ public class PlayerUI : MonoBehaviour
 
 	private void Awake()
 	{
-		OnReload += UpdateAmmo;
+		MouseLook.OnReload += UpdateAmmo;
 		OnHit += UpdateHealth;
+	}
+
+	void OnDestroy()
+	{
+		MouseLook.OnReload -= UpdateAmmo;
+		OnHit -= UpdateHealth;
 	}
 
 	public void Init()

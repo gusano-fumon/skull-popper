@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -8,16 +9,20 @@ public class GatedArea : MonoBehaviour
 	[SerializeField] private List<Animator> _openGates;
 	[SerializeField] private List<Animator> _closeGates;
 	[SerializeField] private int _enemiesToKill = 5;
-	[SerializeField] private int _gatedAreaId = 0;
+	[SerializeField] private GatedAreaEnum _gatedAreaId;
+
+	public static Action OnTutorialComplete;
 	
 	private void OnEnable()
 	{
 		Enemy.OnDeath += CheckEnemies;
+		if (_gatedAreaId.AreaId == GatedAreaEnum.Tutorial) MouseLook.OnReload += CheckTutorial;
 	}
 
 	private void OnDisable()
 	{
 		Enemy.OnDeath -= CheckEnemies;
+		if (_gatedAreaId.AreaId == GatedAreaEnum.Tutorial) MouseLook.OnReload += CheckTutorial;
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -25,7 +30,7 @@ public class GatedArea : MonoBehaviour
 		if (other.GetComponent<PlayerController>() != null)
 		{
 			CloseArea();
-			if (_gatedAreaId == -1) OpenArea();
+			if (_gatedAreaId.AreaId == GatedAreaEnum.None) OpenArea();
 			gameObject.GetComponent<Collider>().enabled = false;
 		}
 	}
@@ -44,15 +49,24 @@ public class GatedArea : MonoBehaviour
 		AudioFactory.Instance.PlaySFX(AudioType.Gate, transform);
 		foreach (var gate in _closeGates)
 			gate.Play("Close");
+	}
+
+	private void CheckTutorial(int magazine)
+	{
+		if (_enemiesToKill <= 0 && _gatedAreaId.AreaId == GatedAreaEnum.Tutorial && magazine == 12)
+		{
+			OpenArea();
+			OnTutorialComplete?.Invoke();
+		}
 	}   
 
-	private void CheckEnemies(int id)
+	private void CheckEnemies(GatedAreaEnum id)
 	{
-		if (id != _gatedAreaId) return;
+		if (id.AreaId != _gatedAreaId.AreaId) return;
 
 		_enemiesToKill--;
 
-		if (_enemiesToKill <= 0)
+		if (_enemiesToKill <= 0 && _gatedAreaId.AreaId != GatedAreaEnum.Tutorial)
 		{
 			OpenArea();
 		}

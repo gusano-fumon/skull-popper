@@ -27,7 +27,9 @@ public class MouseLook : MonoBehaviour
 	private bool expectingUpMovement = true;
 	private bool _recharging = false;
 
-    private void Awake()
+	public static Action<int> OnReload;
+
+	private void Awake()
 	{
 		_currentAmmo = _maxAmmo;
 		sensitivity = PlayerPrefs.GetFloat(KEY, 100);
@@ -150,7 +152,7 @@ public class MouseLook : MonoBehaviour
 	private void PerformRecharge()
 	{
 		_currentAmmo = _maxAmmo;
-		PlayerUI.OnReload?.Invoke(_currentAmmo);
+		OnReload?.Invoke(_currentAmmo);
 		ResetRecharge();
 	}
 
@@ -161,7 +163,7 @@ public class MouseLook : MonoBehaviour
 		_currentAmmo--;
 		ResetRecharge();
 
-		PlayerUI.OnReload?.Invoke(_currentAmmo);
+		OnReload?.Invoke(_currentAmmo);
 
 		var bubble = Instantiate(_bubble, _initialPos.position, transform.rotation);
 		bubble.Init(transform.forward);
