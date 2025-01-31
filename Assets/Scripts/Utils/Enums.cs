@@ -5,12 +5,13 @@ public enum AudioType
 	PopBubble = 2,
 	Recharge = 3,
 	PlayerHit = 4,
-	PlayerDie = 5,
-	EnemyHit = 6,
-	EnemyDie = 7,
-	Potion = 8,
-	Gate = 9,
-	Click = 10,
+	MeleeEnemyHit = 5,
+	ShooterEnemyHit = 6,
+	MeleeEnemyDie = 7,
+	ShooterEnemyDie = 8,
+	Potion = 9,
+	Gate = 10,
+	Empty = 11,
 }
 
 public enum SliderType
@@ -19,4 +20,5 @@ public enum SliderType
 	Sensitivity = 1,
 	Music = 2,
 	SFX = 3,
+	Master = 4,
 }

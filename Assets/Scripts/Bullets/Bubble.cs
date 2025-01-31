@@ -48,7 +48,10 @@ public class Bubble : Bullet
     public override void ExecuteCollision(Collider target)
     {
 		Destroy(_spriteScript);
-		AudioController.OnPopBubbleSound?.Invoke(transform);
+		Destroy(GetComponent<Collider>());
+
+		AudioFactory.Instance.PlaySFX(AudioType.PopBubble);
+
 		_meshRenderer.material.mainTexture = _collisionSprite;
 
 		if(target.CompareTag(_targetTag))

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -6,35 +7,8 @@ public class AudioFactory : Singleton<AudioFactory>
 
 #region Fields
 
-	private MusicManager _musicManager;
-	private SFXManager _sfxManager;
-
 	[SerializeField] private AudioSource _sfxPrefab, _musicPrefab;
 	[SerializeField] private AudioMixer _audioMixer;
-
-#endregion
-
-#region Properties
-
-	public MusicManager Music
-	{
-		get
-		{
-			_musicManager ??= new MusicManager(_musicPrefab);
-			return _musicManager;
-		}
-		set => _musicManager = value;
-	}
-
-	public SFXManager SFX
-	{
-		get
-		{
-			_sfxManager ??= new SFXManager(_sfxPrefab);
-			return _sfxManager;
-		}
-		set => _sfxManager = value;
-	}
 
 #endregion
 
@@ -43,8 +17,7 @@ public class AudioFactory : Singleton<AudioFactory>
 	protected override void Awake()
 	{
 		base.Awake();
-		_musicManager = new MusicManager(_musicPrefab);
-		_sfxManager = new SFXManager(_sfxPrefab);
+		DontDestroyOnLoad(gameObject);
 	}
 
 #endregion
@@ -53,27 +26,58 @@ public class AudioFactory : Singleton<AudioFactory>
 
 	public void PlayMusic(AudioType clipName, bool loop = true)
 	{
-		Music.Play(clipName, loop);
+		var music = Instantiate(_musicPrefab);
+		new MusicManager(music)
+			.Play(clipName, loop)
+			.Destroy(5f);
 	}
 
-	public void StopMusic()
-	{
-		Music.Stop();
-	}
+	// public void StopMusic()
+	// {
+	// 	_musicManager.Stop();
+	// }
 
 	public void PlaySFX(AudioType clipName)
 	{
-		SFX.Play(clipName);
+        var sfx = Instantiate(_sfxPrefab);
+		new SFXManager(sfx, transform)
+			.SetRandomPitch()
+			.Play(clipName)
+			.Destroy(5f);
 	}
 
-	public void SetMusicVolume(float volume)
+	public void PlaySFX(AudioType clipName, Transform point)
 	{
-		Music.SetVolume(volume);
+		var sfx = Instantiate(_sfxPrefab, point);
+		new SFXManager(sfx, point)
+			.SetRandomPitch()
+			.Play(clipName)
+			.Destroy(5f);
 	}
 
-	public void SetSFXVolume(float volume)
+	public void SetMusicVolume(float value)
 	{
-		SFX.SetVolume(volume);
+		_musicPrefab.outputAudioMixerGroup.audioMixer
+			.SetFloat("Music", Mathf.Log10(value) * 20);
+
+		PlayerPrefs.SetFloat("Music", value);
+		PlayerPrefs.Save();
+	}
+
+	public void SetSFXVolume(float value)
+	{
+		_sfxPrefab.outputAudioMixerGroup.audioMixer
+			.SetFloat("SFX", Mathf.Log10(value) * 20);
+
+		PlayerPrefs.SetFloat("SFX", value);
+		PlayerPrefs.Save();
+	}
+
+	public void SetMasterVolume(float value)
+	{
+		PlayerPrefs.SetFloat("Master", value);
+		_audioMixer.SetFloat("Master", Mathf.Log10(value) * 20);
+		PlayerPrefs.Save();
 	}
 
 #endregion

@@ -1,25 +1,5 @@
-
-using UnityEngine;
-using UnityEngine.Audio;
-
-
-public interface IAudio
+public interface IAudio<T>
 {
-
-#region Properties
-
-	public AudioSource AudioSource { get; set; }
-	public AudioMixerGroup MixerGroup { get; set; }
-	public float Volume { get; set; }
-
-#endregion
-
-#region Methods
-
-	public void Play(AudioType type, bool loop = false);
-	public void Stop();
-	public void SetVolume(float volume);
-
-#endregion
-
+	public T Play(AudioType type, bool loop = true);
+	public T Destroy(float time);
 }

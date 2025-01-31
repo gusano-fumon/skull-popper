@@ -2,67 +2,56 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class SFXManager : IAudio
+public class SFXManager : IAudio<SFXManager>
 {
+	private const string SFXVolume = "SFX";
 
-#region Properties
 
     public AudioSource AudioSource { get; set; }
     public AudioMixerGroup MixerGroup { get; set; }
     public float Volume { get; set; }
 
-#endregion
-
-#region Fields
-
-    public SFXManager(AudioSource prefab)
+    public SFXManager(AudioSource audio, Transform parent)
 	{
-		AudioSource = prefab;
+		AudioSource = audio;
+		AudioSource.transform.SetParent(parent);
 		MixerGroup = AudioSource.outputAudioMixerGroup;
 	}
 
-    public void Play(AudioType type, bool loop = false)
+    public SFXManager Play(AudioType type, bool loop = false)
 	{
 		if (AudioLoader.Instance.TryGetClip(type, out var clip))
 		{
 			AudioSource.clip = clip;
 			AudioSource.loop = loop;
-			AudioSource.volume = Volume;
-			AudioSource.Play();
+			AudioSource.PlayOneShot(clip);
 		}
+
+		return this;
 	}
 
-	public void FadeOutMusic(float duration)
+	public SFXManager SetRandomPitch()
 	{
-		FadeOut(duration).Forget();
+		AudioSource.pitch = Random.Range(0.8f, 1.2f);
+		return this;
 	}
 
-	private async UniTaskVoid FadeOut(float duration)
+	public void PlayInPoint(AudioType type, Vector3 point)
 	{
-		float startVolume = AudioSource.volume;
-		float elapsedTime = 0f;
-
-		while (AudioSource.volume > 0)
+		if (AudioLoader.Instance.TryGetClip(type, out var clip))
 		{
-			elapsedTime += Time.deltaTime;
-			AudioSource.volume = Mathf.Lerp(startVolume, 0, elapsedTime / duration);
-			await UniTask.Yield();
+			AudioSource.PlayOneShot(clip);
 		}
-
-		AudioSource.Stop();
-		AudioSource.volume = startVolume; // Restaurar el volumen original
 	}
 
-    public void Stop()
-    {
-        throw new System.NotImplementedException();
-    }
+	public SFXManager Destroy(float time)
+	{
+		MonoBehaviour.Destroy(AudioSource.gameObject, time);
+		return this;
+	}
 
-    public void SetVolume(float volume)
-    {
-		;
-    }
-
-    #endregion
-
+	public void Stop()
+	{
+		AudioSource.Stop();
+	}
 }

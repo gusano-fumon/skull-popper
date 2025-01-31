@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6087566626974274805}
   - component: {fileID: 965365050224596662}
-  - component: {fileID: 1066790888080496953}
   - component: {fileID: 4449545920086479895}
+  - component: {fileID: 1099901020410702213}
   m_Layer: 0
   m_Name: AudioFactory
   m_TagString: Untagged
@@ -42,20 +42,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6902680631571763806}
   m_Enabled: 1
---- !u!114 &1066790888080496953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6902680631571763806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78cdbc810e77703478a04c13a795c0da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickClip: {fileID: 8300000, guid: 7d10bf8117e25d54e8aaa1549e89c09f, type: 3}
-  _prefab: {fileID: 7809965271467892392, guid: 7dc49f8c52e29854fb4411e2e3436380, type: 3}
 --- !u!114 &4449545920086479895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,3 +57,17 @@ MonoBehaviour:
   _sfxPrefab: {fileID: 7809965271467892392, guid: 7dc49f8c52e29854fb4411e2e3436380, type: 3}
   _musicPrefab: {fileID: 7809965271467892392, guid: 1a2fe8bd61778ec4d87fb089ab4bfb3c, type: 3}
   _audioMixer: {fileID: 24100000, guid: 112f9f1c598816042a3d865c4a0209bf, type: 2}
+--- !u!114 &1099901020410702213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6902680631571763806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a43b1462f2c013d4b9e6ef1734e620b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sfxSO: {fileID: 11400000, guid: ea91672a647cd6d48ac7e3fd6b918774, type: 2}
+  _musicSO: {fileID: 11400000, guid: 7a99b3c0a49bf5e4394eb4a32c5b126e, type: 2}

@@ -2,39 +2,40 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class MusicManager : IAudio
+public class MusicManager : IAudio<MusicManager>
 {
-
-#region Fields
-
+	private const string MusicVolume = "Music";
+	
 	private AudioClip audioClip;
 
 	[Range(0f, 1f)] public float volume = 1f;
 
-    public AudioSource AudioSource { get; set; }
+	public AudioSource AudioSource { get; set; }
 	public AudioMixerGroup MixerGroup { get; set; }
-    public float Volume { get; set; }
+	public float Volume { get; set; }
 
-#endregion
-
-#region Methods
-
-    public MusicManager(AudioSource prefab)
+	public MusicManager(AudioSource prefab)
 	{
 		AudioSource = prefab;
 		MixerGroup = AudioSource.outputAudioMixerGroup;
 	}
 
-    public void Play(AudioType type, bool loop = true)
+	public MusicManager Play(AudioType type, bool loop = true)
 	{
 		if (AudioLoader.Instance.TryGetClip(type, out var clip))
 		{
 			audioClip = clip;
 			AudioSource.clip = audioClip;
 			AudioSource.loop = loop;
-			AudioSource.volume = volume;
 			AudioSource.Play();
 		}
+
+		return this;
+	}
+	public MusicManager Destroy(float time)
+	{
+		MonoBehaviour.Destroy(AudioSource.gameObject, time);
+		return this;
 	}
 
 	public void Stop()
@@ -42,10 +43,10 @@ public class MusicManager : IAudio
 		AudioSource.Stop();
 	}
 
-	public void SetVolume(float volume)
+	public MusicManager SetVolume(float value)
 	{
-		this.volume = Mathf.Clamp01(volume);
-		AudioSource.volume = this.volume;
+
+		return this;
 	}
 
 	public void FadeOutMusic(float duration)
@@ -68,7 +69,4 @@ public class MusicManager : IAudio
 		AudioSource.Stop();
 		AudioSource.volume = startVolume; // Restaurar el volumen original
 	}
-
-#endregion
-
 }

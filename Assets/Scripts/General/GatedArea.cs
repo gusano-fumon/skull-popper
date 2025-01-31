@@ -32,7 +32,7 @@ public class GatedArea : MonoBehaviour
 
 	private void OpenArea()
 	{
-		AudioController.OnOpenGate?.Invoke(transform);
+		AudioFactory.Instance.PlaySFX(AudioType.Gate, transform);
 		ScoreController.AddScore(100);
 
 		foreach (var gate in _openGates)
@@ -41,7 +41,7 @@ public class GatedArea : MonoBehaviour
 
 	private void CloseArea()
 	{
-		AudioController.OnOpenGate?.Invoke(transform);
+		AudioFactory.Instance.PlaySFX(AudioType.Gate, transform);
 		foreach (var gate in _closeGates)
 			gate.Play("Close");
 	}   

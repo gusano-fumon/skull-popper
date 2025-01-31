@@ -2,24 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OptionsManager : MonoBehaviour
+public class OptionsPanel : MonoBehaviour
 {
-
-#region Fields
-	
-#endregion
-
-#region Unity Methods
-
-	private void Start()
-	{
-		SliderBase.OnSliderChanged += ProcessChange;
-	}
-
-#endregion
-
-#region Methods
-
 	public void ProcessChange(SliderType type, float value)
 	{
 		PlayerPrefs.SetFloat(type.ToString(), value);
@@ -34,15 +18,12 @@ public class OptionsManager : MonoBehaviour
 				AudioFactory.Instance.SetSFXVolume(value);
 				break;
 			case SliderType.FOV:
+				Debug.Log("FOV: " + value);
 				Camera.main.fieldOfView = value;
 				break;
 			case SliderType.Sensitivity:
-				MouseLook.SetSensitivity(value);// AAAAAAAAAAAAAAAAAAAAAA
+				// MouseLook.SetSensitivity(value);// AAAAAAAAAAAAAAAAAAAAAA
 				break;
 		}
 	}
-
-
-#endregion
-
 }

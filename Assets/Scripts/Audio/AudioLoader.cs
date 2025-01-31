@@ -51,7 +51,14 @@ public class AudioLoader : Singleton<AudioLoader>
 		{
 			if (audioObject.type == clipName)
 			{
-				clip = audioObject.Clip;
+				if (audioObject.multiple)
+				{
+					clip = audioObject.clips[UnityEngine.Random.Range(0, audioObject.clips.Count)];
+				}
+				else
+				{
+					clip = audioObject.Clip;
+				}
 				return true;
 			}
 		}
