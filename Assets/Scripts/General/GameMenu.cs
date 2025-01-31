@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using Cysharp.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 
 public class GameMenu : Singleton<GameMenu>
@@ -15,6 +16,7 @@ public class GameMenu : Singleton<GameMenu>
 	public static Action OnPlayerDeath;
 	[SerializeField] private GameObject _mainMenu;
 	[SerializeField] private GameObject _controlsPanel;
+	[SerializeField] private GameObject _optionsPanel;
 	[SerializeField] private GameObject _retryPanel;
 	[SerializeField] private GameObject _tutorialPanel;
 	public PlayerUI playerUI;
@@ -27,7 +29,7 @@ public class GameMenu : Singleton<GameMenu>
 	[SerializeField] private Button _mainMenuButton;
 	[SerializeField] private Button _quitButton;
 
-	public override void Awake()
+	protected override void Awake()
 	{
 		base.Awake();
 		DontDestroyOnLoad(gameObject);
@@ -50,6 +52,12 @@ public class GameMenu : Singleton<GameMenu>
 		OnVictory += Victory;
 		OnPlayerDeath += PlayerDeath;
 		GatedArea.OnTutorialComplete += TutorialComplete;
+	}
+
+	private void OnDestroy()
+	{
+		OnVictory -= Victory;
+		OnPlayerDeath -= PlayerDeath;
 	}
     
 	private void PlayerDeath()
@@ -98,6 +106,16 @@ public class GameMenu : Singleton<GameMenu>
     public void CloseControlsPanel()
     {
         _controlsPanel.SetActive(false);
+    }
+
+	public void OpenOptionsPanel()
+    {
+        _optionsPanel.SetActive(true);
+    }
+
+	public void CloseOptionsPanel()
+    {
+        _optionsPanel.SetActive(false);
     }
 
 	private void Quit()

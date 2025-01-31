@@ -2,8 +2,6 @@
 using System;
 
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UI;
 
 
 public class PlayerController : MonoBehaviour, ILife
@@ -26,7 +24,6 @@ public class PlayerController : MonoBehaviour, ILife
 
 	[Header("References")]
 	[SerializeField] private CharacterController _character;
-	public AudioController audioController;
 
 	public int Health { get; set; }
 
@@ -45,7 +42,6 @@ public class PlayerController : MonoBehaviour, ILife
 		OnPlayerHeal -= RestoreHealth;
 		GameMenu.OnVictory -= () => GameEnd = true;
 	}
-
 
 	private void Start()
 	{
@@ -107,7 +103,7 @@ public class PlayerController : MonoBehaviour, ILife
 	public void TakeDamage(int damage)
 	{
 		Health -= damage;
-		audioController.PlayHitClip(transform);
+		AudioFactory.Instance.PlaySFX(AudioType.PlayerHit);
 		ScoreController.RemoveScore(damage);
 
 		if (Health <= 0)
@@ -124,7 +120,7 @@ public class PlayerController : MonoBehaviour, ILife
 	{
 		Health += health;
 
-		audioController.PlayPocion(transform);
+		AudioFactory.Instance.PlaySFX(AudioType.Potion);
 
 		if (Health > TotalHealth)
 		{

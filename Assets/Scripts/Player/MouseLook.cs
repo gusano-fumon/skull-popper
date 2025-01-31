@@ -1,13 +1,18 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UI;
 
 
 public class MouseLook : MonoBehaviour
 {
+	private const string KEY = nameof(SliderType.Sensitivity);
 	public PlayerController player;
 	public PlayerUI playerUI;
-	public float sensitivity = 100f;
-	[SerializeField] private Bubble _bubble;
+
+    public float sensitivity;
+
+    [SerializeField] private Bubble _bubble;
 	[SerializeField] private Transform _initialPos; 
 	[SerializeField] private int _maxAmmo = 12;
 	[SerializeField] private int _currentAmmo; 
@@ -24,10 +29,17 @@ public class MouseLook : MonoBehaviour
 
 	public static Action<int> OnReload;
 
-	private void Start()
+	private void Awake()
 	{
 		_currentAmmo = _maxAmmo;
+		sensitivity = PlayerPrefs.GetFloat(KEY, 100);
+		SensitivitySlider.OnValueChanged += SetSensitivity;
 		Cursor.lockState = CursorLockMode.Locked;
+	}
+
+	private void OnDestroy()
+	{
+		SensitivitySlider.OnValueChanged -= SetSensitivity;
 	}
 
 	private void Update()
@@ -63,14 +75,14 @@ public class MouseLook : MonoBehaviour
 				{
 					UpdateMovementCount(true);
 					GameMenu.Instance.playerUI.ReloadDirection(true);
-					player.audioController.PlayRecarga(player.transform);
+					AudioFactory.Instance.PlaySFX(AudioType.Recharge);
 				}
 				// Check for down movement when not expecting up
 				else if (!expectingUpMovement && mouseY < 0)
 				{
 					UpdateMovementCount(false);
 					GameMenu.Instance.playerUI.ReloadDirection(false);
-					player.audioController.PlayRecarga(player.transform);
+					AudioFactory.Instance.PlaySFX(AudioType.Recharge);
 				}
 			}
 		}
@@ -92,7 +104,15 @@ public class MouseLook : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0))
 		{
-			Shoot();
+			if (_currentAmmo == 0)
+			{
+				// Add a sound effect here
+				AudioFactory.Instance.PlaySFX(AudioType.Empty);
+				return;
+			}
+
+			// Efecto delay para el disparo de la burbuja
+			Invoke(nameof(Shoot), 0.2f);
 		}
 	}
 
@@ -139,6 +159,11 @@ public class MouseLook : MonoBehaviour
 		var bubble = Instantiate(_bubble, _initialPos.position, transform.rotation);
 		bubble.Init(transform.forward);
 
-		player.audioController.PlayShotClip(bubble.transform);
+		AudioFactory.Instance.PlaySFX(AudioType.Bubble);
+	}
+
+	private void SetSensitivity(float value)
+	{
+		sensitivity = value;
 	}
 }

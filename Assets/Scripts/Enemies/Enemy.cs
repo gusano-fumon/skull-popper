@@ -30,6 +30,8 @@ public class Enemy : MonoBehaviour, ILife
 	
 
 	protected EnemyType enemyType;
+	private AudioType HitEnemyType => enemyType == EnemyType.Melee ? AudioType.MeleeEnemyDie : AudioType.ShooterEnemyDie;
+	private AudioType DieEnemyType => enemyType == EnemyType.Melee ? AudioType.MeleeEnemyDie : AudioType.ShooterEnemyDie;
 
 	public int totalHealth = 5;
 	public int Health { get; set; }
@@ -117,14 +119,11 @@ public class Enemy : MonoBehaviour, ILife
 		if (Health <= 0)
 		{
 			Die();
-			AudioController.OnEnemyDieSound?.Invoke(enemyType, transform);
+			AudioFactory.Instance.PlaySFX(DieEnemyType);
 			return;
 		}
-		else
-		{
-			AudioController.OnEnemyHitSound?.Invoke(enemyType, transform);
-		}
 
+		AudioFactory.Instance.PlaySFX(HitEnemyType);
 		_state = EnemyState.ReceivingDamage;
 		_meshRenderer.material.mainTexture = _hurtSprite;
 	}
