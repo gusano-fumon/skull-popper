@@ -79,16 +79,16 @@ public class Enemy : MonoBehaviour, ILife
 		UniTask.Void(async () => {
 			if (_state is EnemyState.Attacking or EnemyState.ReceivingDamage)
 			{
-				await UniTask.Delay(500);
+				await UniTask.Delay(UnityEngine.Random.Range(300, 600));
 				if (isDead) return;
 			}
 
 			if (Time.frameCount % 3 == 0) Move();
 
-			if (Time.frameCount % 300 == 0)
+			if (Time.frameCount % 50 == 0)
 			{
 				var ray = new Ray(transform.position, _target.position - transform.position);
-				if (Physics.Raycast(ray, out var hit, _remainingDistance))
+				if (Physics.Raycast(ray, out var hit))
 				{
 					if (!hit.collider.CompareTag("Player")) return;
 					Attack();
