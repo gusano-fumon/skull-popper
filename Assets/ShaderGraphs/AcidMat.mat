@@ -23,6 +23,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _SampleTexture2D_d0e1ba20fc12495aac0578a379479c2c_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: e414e247e91f1e041a228d461210165f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 2800000, guid: e414e247e91f1e041a228d461210165f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_2b5330c4bcd648048892f99f0da39854_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 8e0d274b685538a4b8ac635916673463, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -37,9 +49,28 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AcidDepth: 1
+    - _FlutterHeight: 0.6
+    - _FlutterIntensity: -0.15
+    - _FlutterScale: 0.1
+    - _FlutterSpeed: 10
+    - _FoamAmount: 0.8
+    - _FoamCutout: 1.53
+    - _FoamScale: 5
+    - _FoamSpeed: 1.5
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    - _RefractionScale: 1
+    - _RefractionSpeed: 0.5
+    - _RefractionStrength: 1
+    - _TexturePower: 6
+    m_Colors:
+    - _DeepAcidColor: {r: 0.11182696, g: 0.509434, b: 0, a: 1}
+    - _FlutterSmoothness: {r: 10, g: 10, b: 0, a: 0}
+    - _FoamColor: {r: 0.98149204, g: 1, b: 0.5518868, a: 1}
+    - _ShallowAcidColor: {r: 0.69691634, g: 1, b: 0, a: 0.5019608}
+    - _TextureBaseColor: {r: 0.35747343, g: 0.5, b: 0, a: 1}
+    - _TextureSecondColor: {r: 1.5831127, g: 2, b: 0.5, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &6815558883510799437
 MonoBehaviour:
