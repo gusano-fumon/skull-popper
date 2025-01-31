@@ -16,6 +16,7 @@ public class GameMenu : Singleton<GameMenu>
 	[SerializeField] private GameObject _mainMenu;
 	[SerializeField] private GameObject _controlsPanel;
 	[SerializeField] private GameObject _retryPanel;
+	[SerializeField] private GameObject _tutorialPanel;
 	public PlayerUI playerUI;
 
 	public static bool inGame = false;
@@ -38,6 +39,7 @@ public class GameMenu : Singleton<GameMenu>
             await SceneController.LoadScene(1);
 			playerUI.Init();
             _mainMenu.SetActive(false);
+			_tutorialPanel.SetActive(true);
 
 			inGame = true;
 			ScoreController.Init();
@@ -47,6 +49,7 @@ public class GameMenu : Singleton<GameMenu>
 
 		OnVictory += Victory;
 		OnPlayerDeath += PlayerDeath;
+		GatedArea.OnTutorialComplete += TutorialComplete;
 	}
     
 	private void PlayerDeath()
@@ -71,6 +74,11 @@ public class GameMenu : Singleton<GameMenu>
 			playerUI.Init();
 			_retryPanel.SetActive(false);
 		});
+	}
+
+	private void TutorialComplete()
+	{
+		_tutorialPanel.SetActive(false);
 	}
 
 	private void ReturnToMainMenu()

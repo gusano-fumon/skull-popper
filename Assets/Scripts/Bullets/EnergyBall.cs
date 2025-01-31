@@ -7,7 +7,7 @@ public class EnergyBall : Bullet
 	[SerializeField] private int _damage = 5;
 	[SerializeField] private float _speed = 5;
 	[SerializeField] private Texture2D _collisionSprite;
-	private Sprite _spriteScript;
+	private SpriteLookAt _spriteScript;
 	private Vector3 _direction;
 
 	private void FixedUpdate()

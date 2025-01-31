@@ -25,8 +25,8 @@ public class Enemy : MonoBehaviour, ILife
 	[SerializeField] protected float _distanceToTarget;
 	[SerializeField] protected float _deadZone;
 
-	public static Action<int> OnDeath;
-	[SerializeField] private int _gatedAreaId = 0;
+	public static Action<GatedAreaEnum> OnDeath;
+	[SerializeField] private GatedAreaEnum _gatedAreaId;
 	
 
 	protected EnemyType enemyType;

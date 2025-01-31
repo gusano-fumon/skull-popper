@@ -4,7 +4,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 
 
-public class Sprite : MonoBehaviour
+public class SpriteLookAt : MonoBehaviour
 {
 	[SerializeField] private bool _isBullet;
 	private void Start()
