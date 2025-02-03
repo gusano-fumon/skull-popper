@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class FOVSlider : SliderBase
 {
-	[SerializeField] private float _defaultValue;
-
 	private void Awake()
 	{
-		DefaultValue = _defaultValue;
-		stringType = "000";
-		SliderType = SliderType.Sensitivity;
-		Load();
+		StringFormat = "000";
+		SliderType = SliderType.FOV;
+		OptionsPanel.OnResetToDefault += Load;
+	}
+
+	private void OnDestroy()
+	{
+		OptionsPanel.OnResetToDefault -= Load;
 	}
 
 	private void OnEnable()
@@ -25,12 +27,6 @@ public class FOVSlider : SliderBase
 
 	public override void SaveChanges()
 	{
-		base.SaveChanges();
-		Camera.main.fieldOfView = CurrentValue;
-	}
-
-	public override void ResetToDefault()
-	{
-		base.ResetToDefault();
+		PlayerSettings.FieldOfView = slider.value;
 	}
 }

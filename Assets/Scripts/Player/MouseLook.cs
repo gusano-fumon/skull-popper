@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -45,10 +46,13 @@ public class MouseLook : MonoBehaviour
 	private void Update()
 	{
 		if (PlayerController.GameEnd) return;
+		if (GameMenu.IsPaused) return;
 
 		if (Input.GetKeyDown(KeyCode.Escape)) // Pause Game
 		{
 			GameMenu.Instance.Pause();
+			player.DOTogglePause();
+			return;
 		}
 		
 		var scaledSesitivity = sensitivity * Time.deltaTime;

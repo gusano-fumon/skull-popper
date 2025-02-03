@@ -22,8 +22,9 @@ public class SpriteLookAt : MonoBehaviour
 	private void Update()
 	{
 		if (Time.frameCount < 50) return;
+		if (GameMenu.IsPaused) return;
 		if (!enabled) return;
 
-		transform.LookAt(PlayerController.CameraTransform);
+		transform.LookAt(PlayerController.PlayerCamera.transform);
 	}
 }

@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class SFXSlider : SliderBase
 {
-	[SerializeField] private int _defaultValue;
-
 	private void Awake()
 	{
-		DefaultValue = _defaultValue;
-		stringType = "000";
+		StringFormat = "000";
 		SliderType = SliderType.SFX;
-		Load();
+		OptionsPanel.OnResetToDefault += Load;
+	}
+
+	private void OnDestroy()
+	{
+		OptionsPanel.OnResetToDefault -= Load;
 	}
 
 	private void OnEnable()
@@ -25,12 +27,6 @@ public class SFXSlider : SliderBase
 
 	public override void SaveChanges()
 	{
-		base.SaveChanges();
-		AudioFactory.Instance.SetSFXVolume(CurrentValue);
-	}
-
-	public override void ResetToDefault()
-	{
-		base.ResetToDefault();
+		PlayerSettings.SFXVolume = slider.value;
 	}
 }

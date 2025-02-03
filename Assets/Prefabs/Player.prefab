@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1739465484594812716}
   - component: {fileID: 8971079509820256023}
   - component: {fileID: 914083471213553244}
-  - component: {fileID: 873220515353899763}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -47,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5faa603ca742748a2812d6829bb94e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerCamera: {fileID: 7252038624003267332}
   TotalHealth: 100
   _movementSpeed: 10
   _gravity: -9.81
@@ -55,7 +55,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _character: {fileID: 914083471213553244}
-  audioController: {fileID: 873220515353899763}
 --- !u!143 &914083471213553244
 CharacterController:
   m_ObjectHideFlags: 0
@@ -82,46 +81,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &873220515353899763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2857501442880099291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c2e43286e7e2414f9913a86ebe80b71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitClips:
-  - {fileID: 8300000, guid: fb0a10ea815cbee42876da4c74e8682d, type: 3}
-  - {fileID: 8300000, guid: 2dbe0497db2e2674e8378f59b3d0ed78, type: 3}
-  - {fileID: 8300000, guid: 8b1eaebd1d1799a489d914db382391f5, type: 3}
-  - {fileID: 8300000, guid: b473137ceb4df7441a8210d7d8a5d716, type: 3}
-  - {fileID: 8300000, guid: 8d48089cea0149f4cac786d60c943bea, type: 3}
-  - {fileID: 8300000, guid: f20de4e083655f1428ca51e928c42d25, type: 3}
-  shotClip: {fileID: 8300000, guid: 90c2300ab71a5cd4dba5023cfda9c4cc, type: 3}
-  enemyHitClips:
-  - {fileID: 8300000, guid: d45511669a18ed0469fdc30a25bef3d8, type: 3}
-  - {fileID: 8300000, guid: c706c8ffb546d934480a365775671e96, type: 3}
-  enemyDieClips:
-  - {fileID: 8300000, guid: d02117e2d596e9142a9e18e1033d8b1a, type: 3}
-  - {fileID: 8300000, guid: 351efb05b83ba1949b79628e6ffad9ef, type: 3}
-  recargaClip: {fileID: 8300000, guid: 125de8bf832734547b30e55812a8e0cd, type: 3}
-  jumpClip: {fileID: 8300000, guid: 96745cda5fc24744a8f86e155060715c, type: 3}
-  pocionClip: {fileID: 8300000, guid: 094826556da40af40ae91cf545bb9aa8, type: 3}
-  musicClip: {fileID: 8300000, guid: 44b4db53abe422043a5c5eb3004eb2b5, type: 3}
-  musicClip2: {fileID: 8300000, guid: ae5551130489e5b47aa18b22dd2447bb, type: 3}
-  openGateClip: {fileID: 8300000, guid: 9556e4910a6bbbb45b4918528b86cdc5, type: 3}
-  clickClip: {fileID: 0}
-  popBubbleClips:
-  - {fileID: 8300000, guid: 05ba7e85bd488c44b9b9659b26c95c20, type: 3}
-  - {fileID: 8300000, guid: 831a10e21f83c8c48b8e7144aec21f94, type: 3}
-  - {fileID: 8300000, guid: 7d10bf8117e25d54e8aaa1549e89c09f, type: 3}
-  - {fileID: 8300000, guid: a339813c52576e943948664a4391b53f, type: 3}
-  - {fileID: 8300000, guid: a3eb135a347f8dd4caee8d26a87fb46e, type: 3}
-  _prefab: {fileID: 7809965271467892392, guid: 7dc49f8c52e29854fb4411e2e3436380, type: 3}
 --- !u!1 &3346268301382314540
 GameObject:
   m_ObjectHideFlags: 0
