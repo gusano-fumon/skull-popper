@@ -1,23 +1,20 @@
-using UnityEngine;
-
-
 public class FOVSlider : SliderBase
 {
 	private void Awake()
 	{
 		StringFormat = "000";
 		SliderType = SliderType.FOV;
-		OptionsPanel.OnResetToDefault += Load;
+		OptionsPanel.OnResetToDefault += () => Load(PlayerSettings.FieldOfView);
 	}
 
 	private void OnDestroy()
 	{
-		OptionsPanel.OnResetToDefault -= Load;
+		OptionsPanel.OnResetToDefault -= () => Load(PlayerSettings.FieldOfView);
 	}
 
 	private void OnEnable()
 	{
-		Load();
+		Load(PlayerSettings.FieldOfView);
 	}
 
 	private void OnDisable()

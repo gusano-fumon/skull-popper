@@ -15,12 +15,13 @@ public abstract class SliderBase : MonoBehaviour, ISlider
 
 	public abstract void SaveChanges();
 
-	public void Load()
+	public virtual void Load(float value)
 	{
-		UpdateValue(PlayerSettings.FieldOfView);
+		slider.value = value;
+		UpdateValue(value);
 	}
 
-	public void UpdateValue(float value)
+	public virtual void UpdateValue(float value)
 	{
 		valueText.text = value.ToString(StringFormat);
 	}

@@ -7,17 +7,17 @@ public class SFXSlider : SliderBase
 	{
 		StringFormat = "000";
 		SliderType = SliderType.SFX;
-		OptionsPanel.OnResetToDefault += Load;
+		OptionsPanel.OnResetToDefault += () => Load(PlayerSettings.SFXVolume);
 	}
 
 	private void OnDestroy()
 	{
-		OptionsPanel.OnResetToDefault -= Load;
+		OptionsPanel.OnResetToDefault -= () => Load(PlayerSettings.SFXVolume);
 	}
 
 	private void OnEnable()
 	{
-		Load();
+		Load(PlayerSettings.SFXVolume);
 	}
 
 	private void OnDisable()
@@ -25,8 +25,27 @@ public class SFXSlider : SliderBase
 		SaveChanges();
 	}
 
+	public override void Load(float value)
+	{
+		slider.value = value * 100;
+		UpdateValue(slider.value);
+	}
+
+    public override void UpdateValue(float value)
+    {
+		if (value == 1)
+		{
+			valueText.SetText("OFF");
+			return;
+		}
+
+		valueText.SetText(value.ToString(StringFormat));
+    }
+
+
 	public override void SaveChanges()
 	{
-		PlayerSettings.SFXVolume = slider.value;
+		Debug.Log("SFXSlider: SaveChanges: slider.value = " + slider.value);
+		PlayerSettings.SFXVolume = slider.value / 100;
 	}
 }

@@ -1,13 +1,10 @@
 using System;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UI;
 
 
 public class MouseLook : MonoBehaviour
 {
-	private const string KEY = nameof(SliderType.Sensitivity);
 	public PlayerController player;
 	public PlayerUI playerUI;
 
@@ -33,14 +30,14 @@ public class MouseLook : MonoBehaviour
 	private void Awake()
 	{
 		_currentAmmo = _maxAmmo;
-		sensitivity = PlayerPrefs.GetFloat(KEY, 100);
-		SensitivitySlider.OnValueChanged += SetSensitivity;
+		sensitivity = PlayerSettings.Sensitivity;
+		PlayerSettings.OnSensitiveChanged += SetSensitivity;
 		Cursor.lockState = CursorLockMode.Locked;
 	}
 
 	private void OnDestroy()
 	{
-		SensitivitySlider.OnValueChanged -= SetSensitivity;
+		PlayerSettings.OnSensitiveChanged -= SetSensitivity;
 	}
 
 	private void Update()

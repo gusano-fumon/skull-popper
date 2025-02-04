@@ -7,8 +7,8 @@ public static class PlayerSettings
 {
 	public const float Sensitivity_Default = 100f;
 	public const float FOV_Default = 50f;
-	public const float Music_Default = 100f;
-	public const float SFX_Default = 100f; 
+	public const float Volume_Default = 1f;
+
 	public static Action<float> OnSensitiveChanged;
 	public static Action<float> OnFovChanged;
 	public static Action<float> OnMusicChanged;
@@ -37,7 +37,7 @@ public static class PlayerSettings
 	}
 	public static float MusicVolume
 	{
-		get => PlayerPrefs.GetFloat("Music", Music_Default);
+		get => PlayerPrefs.GetFloat("Music", Volume_Default);
 		set
 		{
 			OnMusicChanged?.Invoke(value);
@@ -48,7 +48,7 @@ public static class PlayerSettings
 
 	public static float SFXVolume
 	{
-		get => PlayerPrefs.GetFloat("SFX", SFX_Default);
+		get => PlayerPrefs.GetFloat("SFX", Volume_Default);
 		set
 		{
 			OnSfxChanged?.Invoke(value);
@@ -61,12 +61,12 @@ public static class PlayerSettings
 	{
 		PlayerPrefs.SetFloat("Sensitivity", Sensitivity_Default);
 		PlayerPrefs.SetFloat("FOV", FOV_Default);
-		PlayerPrefs.SetFloat("Music", Music_Default);
-		PlayerPrefs.SetFloat("SFX", SFX_Default);
+		PlayerPrefs.SetFloat("Music", Volume_Default);
+		PlayerPrefs.SetFloat("SFX", Volume_Default);
 		PlayerPrefs.Save();
 
-		OnSfxChanged?.Invoke(SFX_Default);
-		OnMusicChanged?.Invoke(Music_Default);
+		OnSfxChanged?.Invoke(Volume_Default);
+		OnMusicChanged?.Invoke(Volume_Default);
 		OnFovChanged?.Invoke(FOV_Default);
 		OnSensitiveChanged?.Invoke(Sensitivity_Default);
 	}

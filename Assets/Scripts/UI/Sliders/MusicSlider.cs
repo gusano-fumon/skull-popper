@@ -1,22 +1,21 @@
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 
 public class MusicSlider : SliderBase
 {
-	[SerializeField] private float _defaultValue;
-
 	private void Awake()
 	{
-		DefaultValue = _defaultValue;
-		stringType = "000";
+		StringFormat = "000";
 		SliderType = SliderType.Music;
-		Load();
+		OptionsPanel.OnResetToDefault += () => Load(PlayerSettings.MusicVolume);
+	}
+
+	private void OnDestroy()
+	{
+		OptionsPanel.OnResetToDefault -= () => Load(PlayerSettings.MusicVolume);
 	}
 
 	private void OnEnable()
 	{
-		Load();
+		Load(PlayerSettings.MusicVolume);
 	}
 
 	private void OnDisable()
@@ -24,14 +23,25 @@ public class MusicSlider : SliderBase
 		SaveChanges();
 	}
 
-	public override void SaveChanges()
+	public override void Load(float value)
 	{
-		base.SaveChanges();
-		AudioFactory.Instance.SetMusicVolume(CurrentValue*0.01f);
+		slider.value = value * 100;
+		UpdateValue(slider.value);
 	}
 
-	public override void ResetToDefault()
+    public override void UpdateValue(float value)
+    {
+		if (value == 1)
+		{
+			valueText.SetText("OFF");
+			return;
+		}
+
+		valueText.SetText(value.ToString(StringFormat));
+    }
+
+    public override void SaveChanges()
 	{
-		base.ResetToDefault();
+		PlayerSettings.MusicVolume = slider.value / 100;
 	}
 }

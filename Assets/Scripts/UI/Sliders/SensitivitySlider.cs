@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class SensitivitySlider : SliderBase
 {
-	[SerializeField] private float _defaultValue;
-	public static event Action<float> OnValueChanged;
-
 	private void Awake()
 	{
-		DefaultValue = _defaultValue;
-		stringType = "0.000";
+		StringFormat = "000";
 		SliderType = SliderType.Sensitivity;
-		Load();
+		OptionsPanel.OnResetToDefault += () => Load(PlayerSettings.Sensitivity);
+	}
+
+	private void OnDestroy()
+	{
+		OptionsPanel.OnResetToDefault -= () => Load(PlayerSettings.Sensitivity);
 	}
 
 	private void OnEnable()
 	{
-		Load();
+		Load(PlayerSettings.Sensitivity);
 	}
 
 	private void OnDisable()
@@ -27,12 +28,6 @@ public class SensitivitySlider : SliderBase
 
 	public override void SaveChanges()
 	{
-		base.SaveChanges();
-		OnValueChanged?.Invoke(CurrentValue);
-	}
-
-	public override void ResetToDefault()
-	{
-		base.ResetToDefault();
+		PlayerSettings.Sensitivity = slider.value;
 	}
 }

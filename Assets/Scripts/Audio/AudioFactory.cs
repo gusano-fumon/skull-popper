@@ -9,7 +9,6 @@ public class AudioFactory : Singleton<AudioFactory>
 
 	[SerializeField] private AudioSource _sfxPrefab, _musicPrefab;
 	[SerializeField] private AudioMixer _audioMixer;
-	[SerializeField] private AudioMixerGroup _musicMixerGroup, _sfxMixerGroup;
 
 #endregion
 
@@ -19,6 +18,15 @@ public class AudioFactory : Singleton<AudioFactory>
 	{
 		base.Awake();
 		DontDestroyOnLoad(gameObject);
+		SetVolume();
+		PlayerSettings.OnMusicChanged += SetMusicVolume;
+		PlayerSettings.OnSfxChanged += SetSFXVolume;
+	}
+
+	public void OnDestroy()
+	{
+		PlayerSettings.OnMusicChanged -= SetMusicVolume;
+		PlayerSettings.OnSfxChanged -= SetSFXVolume;
 	}
 
 #endregion
@@ -57,29 +65,22 @@ public class AudioFactory : Singleton<AudioFactory>
 			.Destroy(5f);
 	}
 
+	private void SetVolume()
+	{
+		SetMusicVolume(PlayerSettings.MusicVolume);
+		SetSFXVolume(PlayerSettings.SFXVolume);
+	}
+
 	public void SetMusicVolume(float value)
 	{
-		_musicMixerGroup.audioMixer
+		_audioMixer
 			.SetFloat("Music", Mathf.Log10(value) * 20);
-
-		PlayerPrefs.SetFloat("Music", value);
-		PlayerPrefs.Save();
 	}
 
 	public void SetSFXVolume(float value)
 	{
-		_sfxMixerGroup.audioMixer
+		_audioMixer
 			.SetFloat("SFX", Mathf.Log10(value) * 20);
-
-		PlayerPrefs.SetFloat("SFX", value);
-		PlayerPrefs.Save();
-	}
-
-	public void SetMasterVolume(float value)
-	{
-		PlayerPrefs.SetFloat("Master", value);
-		_audioMixer.SetFloat("Master", Mathf.Log10(value) * 20);
-		PlayerPrefs.Save();
 	}
 
 #endregion

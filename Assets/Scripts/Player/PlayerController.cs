@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, ILife
 {
 	[SerializeField] private Camera _playerCamera;
-	public static Camera PlayerCamera; 
+	public static Camera PlayerCamera;
 	public static Action<int> OnHit;
 	public static Action<int> OnPlayerHeal;
 	public int TotalHealth = 100;
@@ -47,17 +47,19 @@ public class PlayerController : MonoBehaviour, ILife
 	{
 		GameEnd = false;
 		PlayerCamera = _playerCamera;
-		PlayerCamera.fieldOfView = FieldOfView;
+		PlayerCamera.fieldOfView = PlayerSettings.FieldOfView;
 		AudioFactory.Instance.PlayMusic(AudioType.BackgroundMusic);
 		OnHit += TakeDamage;
 		OnPlayerHeal += RestoreHealth;
 		GameMenu.OnVictory += () => GameEnd = true;
+		PlayerSettings.OnFovChanged += SetFOV;
 	}
 
 	private void OnDestroy()
 	{
 		OnHit -= TakeDamage;
 		OnPlayerHeal -= RestoreHealth;
+		PlayerSettings.OnFovChanged -= SetFOV;
 		GameMenu.OnVictory -= () => GameEnd = true;
 	}
 
@@ -72,6 +74,11 @@ public class PlayerController : MonoBehaviour, ILife
 		if (GameMenu.IsPaused) return;
 
 		Movement();
+	}
+
+	private void SetFOV(float fov)
+	{
+		PlayerCamera.fieldOfView = fov;
 	}
 
 	void OnDrawGizmos()
