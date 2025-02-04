@@ -50,7 +50,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AcidDepth: 1
-    - _FlutterHeight: 0.6
+    - _FlutterHeight: -0.25
     - _FlutterIntensity: -0.15
     - _FlutterScale: 0.1
     - _FlutterSpeed: 10
