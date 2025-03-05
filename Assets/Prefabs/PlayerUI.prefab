@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 1930685101960171651}
   - component: {fileID: 4222544101412770252}
   - component: {fileID: 4501137189639107240}
+  - component: {fileID: 1824871125445548065}
   m_Layer: 5
   m_Name: Ammo
   m_TagString: Untagged
@@ -150,8 +151,26 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1824871125445548065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2268630325969595639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e7ba715f72485479c243c2d8523fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 0}
+  _image: {fileID: 4501137189639107240}
+  _sprites: []
+  _imageSprites:
+  - {fileID: 21300000, guid: a1d4e7b70ef9b9e4886523facb48c715, type: 3}
+  - {fileID: 21300000, guid: da6262dff8f57854a92d461c6f4b1862, type: 3}
 --- !u!1 &2355364134992819518
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +244,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3707294659540861729
 GameObject:
@@ -313,6 +332,7 @@ GameObject:
   - component: {fileID: 6737225938894862235}
   - component: {fileID: 4544985482733703474}
   - component: {fileID: 8180060548920202494}
+  - component: {fileID: 2947151216509356892}
   m_Layer: 5
   m_Name: Health_Overlay
   m_TagString: Untagged
@@ -375,8 +395,26 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2947151216509356892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3839364732935123956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e7ba715f72485479c243c2d8523fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 0}
+  _image: {fileID: 8180060548920202494}
+  _sprites: []
+  _imageSprites:
+  - {fileID: 21300000, guid: 2e7e9bbe73d96814a85fc385fc837476, type: 3}
+  - {fileID: 21300000, guid: 320137deda2c3a14c8e6ce543822977d, type: 3}
 --- !u!1 &4792398556695484945
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +540,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5026723689408905659
 GameObject:
@@ -784,6 +822,7 @@ GameObject:
   - component: {fileID: 1360400074895762732}
   - component: {fileID: 2529041199360233058}
   - component: {fileID: 6642693287899095605}
+  - component: {fileID: 6740536528754061123}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -849,8 +888,26 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6740536528754061123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7307893343819887584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e7ba715f72485479c243c2d8523fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 0}
+  _image: {fileID: 6642693287899095605}
+  _sprites: []
+  _imageSprites:
+  - {fileID: 21300000, guid: 1add76df42ed4564ba4e4448a9b751d2, type: 3}
+  - {fileID: 21300000, guid: 0f9255aa49b29494f9cb10a644d7d6d4, type: 3}
 --- !u!1 &7553932068391576785
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,6 +919,7 @@ GameObject:
   - component: {fileID: 3455585171434256013}
   - component: {fileID: 7295870494356347930}
   - component: {fileID: 4431754353002237561}
+  - component: {fileID: 2921593119516027255}
   m_Layer: 5
   m_Name: Health_Sprite
   m_TagString: Untagged
@@ -927,6 +985,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2921593119516027255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7553932068391576785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e7ba715f72485479c243c2d8523fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 0}
+  _image: {fileID: 4431754353002237561}
+  _sprites: []
+  _imageSprites:
+  - {fileID: 21300000, guid: a9868dd163c905f4889db076739dfcfe, type: 3}
+  - {fileID: 21300000, guid: 696ddb7c9cd98b847b3fb8d980f1b286, type: 3}
 --- !u!1 &7803605558872395056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,8 +1259,9 @@ GameObject:
   - component: {fileID: 690247206679874501}
   - component: {fileID: 7462455495646268596}
   - component: {fileID: 7032081598935586080}
+  - component: {fileID: 2524065463684896661}
   m_Layer: 5
-  m_Name: Health_Overlay
+  m_Name: Ammo_Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1245,8 +1322,26 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2524065463684896661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664605167056068036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e7ba715f72485479c243c2d8523fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 0}
+  _image: {fileID: 7032081598935586080}
+  _sprites: []
+  _imageSprites:
+  - {fileID: 21300000, guid: bd293e9f74273c243853785a59eb03cd, type: 3}
+  - {fileID: 21300000, guid: 02a9f66c855a06b47be7fdca52c3de9e, type: 3}
 --- !u!1001 &283993798953968489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1255,6 +1350,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1930685101960171651}
     m_Modifications:
+    - target: {fileID: 1569979812528251090, guid: d649bf979a387f647851ebcf0b7d4408, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569979812528251090, guid: d649bf979a387f647851ebcf0b7d4408, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2272933007666371634, guid: d649bf979a387f647851ebcf0b7d4408, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -1298,6 +1401,10 @@ PrefabInstance:
     - target: {fileID: 2874954580326742121, guid: d649bf979a387f647851ebcf0b7d4408, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374818398997025405, guid: d649bf979a387f647851ebcf0b7d4408, type: 3}
+      propertyPath: m_Value
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7007551970742498780, guid: d649bf979a387f647851ebcf0b7d4408, type: 3}
       propertyPath: m_Name
@@ -1394,8 +1501,22 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7238128162689977327, guid: d649bf979a387f647851ebcf0b7d4408, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2939752520288540285}
   m_SourcePrefab: {fileID: 100100000, guid: d649bf979a387f647851ebcf0b7d4408, type: 3}
+--- !u!114 &1601384299881776059 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1569979812528251090, guid: d649bf979a387f647851ebcf0b7d4408, type: 3}
+  m_PrefabInstance: {fileID: 283993798953968489}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458539248580536454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4559482291694285076 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4374818398997025405, guid: d649bf979a387f647851ebcf0b7d4408, type: 3}
@@ -1407,6 +1528,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7458539248580536454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7238128162689977327, guid: d649bf979a387f647851ebcf0b7d4408, type: 3}
+  m_PrefabInstance: {fileID: 283993798953968489}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2939752520288540285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458539248580536454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e7ba715f72485479c243c2d8523fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 0}
+  _image: {fileID: 1601384299881776059}
+  _sprites: []
+  _imageSprites:
+  - {fileID: 21300000, guid: ec56efc64e438c24884e55a6c1418262, type: 3}
+  - {fileID: 21300000, guid: b0a6c2885f222e041a58b354cf11352b, type: 3}
 --- !u!224 &7540846718548345611 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7734522208578314338, guid: d649bf979a387f647851ebcf0b7d4408, type: 3}
