@@ -96,8 +96,8 @@ public class MouseLook : MonoBehaviour
 		if (Input.GetMouseButtonDown(1))
 		{
 			_recharging = true;
-			GameMenu.Instance.playerUI.defaultState.gameObject.SetActive(false);
-			GameMenu.Instance.playerUI.reloadingState.gameObject.SetActive(true);
+			GameMenu.Instance.playerUI.defaultState.SetActive(false);
+			GameMenu.Instance.playerUI.reloadingStateUp.SetActive(true);
  		}
 
 		if (Input.GetMouseButtonUp(1))
@@ -105,7 +105,8 @@ public class MouseLook : MonoBehaviour
 			_recharging = false;
 			ResetRecharge();
 			GameMenu.Instance.playerUI.defaultState.gameObject.SetActive(true);
-			GameMenu.Instance.playerUI.reloadingState.gameObject.SetActive(false);
+			GameMenu.Instance.playerUI.reloadingStateUp.gameObject.SetActive(false);
+			GameMenu.Instance.playerUI.reloadingStateDown.gameObject.SetActive(false);
 		}
 
 		if (Input.GetMouseButtonDown(0))
@@ -120,11 +121,6 @@ public class MouseLook : MonoBehaviour
 			Invoke(nameof(Shoot), 0.2f);
 		}
 	}
-
-	private void CheckPause()
-	{
-
-	}	
 
 	private void UpdateMovementCount(bool isUpMovement)
 	{

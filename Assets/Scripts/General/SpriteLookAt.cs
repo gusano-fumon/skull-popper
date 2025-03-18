@@ -19,6 +19,7 @@ public class SpriteLookAt : MonoBehaviour
 			enabled = true;
 		});
 	}
+
 	private void Update()
 	{
 		if (Time.frameCount < 50) return;
