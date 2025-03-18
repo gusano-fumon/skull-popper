@@ -12,7 +12,7 @@ public class GatedArea : MonoBehaviour
 	[SerializeField] private GatedAreaEnum _gatedAreaId;
 
 	public static Action OnTutorialComplete;
-	
+
 	private void OnEnable()
 	{
 		Enemy.OnDeath += CheckEnemies;
@@ -22,7 +22,6 @@ public class GatedArea : MonoBehaviour
 	private void OnDisable()
 	{
 		Enemy.OnDeath -= CheckEnemies;
-		if (_gatedAreaId.AreaId == GatedAreaEnum.Tutorial) MouseLook.OnReload += CheckTutorial;
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -57,6 +56,7 @@ public class GatedArea : MonoBehaviour
 		{
 			OpenArea();
 			OnTutorialComplete?.Invoke();
+			MouseLook.OnReload -= CheckTutorial;
 		}
 	}   
 

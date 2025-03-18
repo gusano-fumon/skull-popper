@@ -12,7 +12,8 @@ public class MouseLook : MonoBehaviour
     public float sensitivity;
 
     [SerializeField] private Bubble _bubble;
-	[SerializeField] private Transform _initialPos; 
+	[SerializeField] private Transform _initialPos;
+	[SerializeField] private Transform _bubbleWandArm;
 	[SerializeField] private int _maxAmmo = 12;
 	[SerializeField] private int _currentAmmo; 
 	private float _rotationX;
@@ -151,7 +152,11 @@ public class MouseLook : MonoBehaviour
 
 	private void Shoot()
 	{
-		if (_recharging || _currentAmmo == 0) return;
+		if (_recharging) return;
+
+		// TODO: SHOOT ANIMATION
+
+		if (_currentAmmo == 0) return;
 
 		_currentAmmo--;
 		ResetRecharge();

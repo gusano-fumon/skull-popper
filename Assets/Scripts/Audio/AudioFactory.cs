@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.Audio;
+
 
 public class AudioFactory : Singleton<AudioFactory>
 {
@@ -34,6 +34,7 @@ public class AudioFactory : Singleton<AudioFactory>
 #region Methods
 
 	public MusicManager musicManager;
+	public SFXManager sfxManager;
 
 	public void PlayMusic(AudioType clipName, bool loop = true)
 	{
@@ -44,13 +45,18 @@ public class AudioFactory : Singleton<AudioFactory>
 
 	public void StopMusic()
 	{
-		Destroy(musicManager.AudioSource.gameObject);
+		musicManager.FadeOutMusic(.3f);
+	}
+
+	public void StopSFX()
+	{
+		sfxManager.Stop();
 	}
 
 	public void PlaySFX(AudioType clipName)
 	{
         var sfx = Instantiate(_sfxPrefab);
-		new SFXManager(sfx, transform)
+		sfxManager = new SFXManager(sfx, transform)
 			.SetRandomPitch()
 			.Play(clipName)
 			.Destroy(5f);

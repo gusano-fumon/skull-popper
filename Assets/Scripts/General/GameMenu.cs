@@ -136,6 +136,7 @@ public class GameMenu : Singleton<GameMenu>
 		_pauseMenu.SetActive(true);
 		playerUI.gameObject.SetActive(false);
 		AudioFactory.Instance.StopMusic();
+		AudioFactory.Instance.StopSFX();
 		Time.timeScale = 0;
 		Cursor.lockState = CursorLockMode.None;
 	}

@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -24,7 +25,7 @@ public class MusicManager : IAudio<MusicManager>
 			audioClip = clip;
 			AudioSource.clip = audioClip;
 			AudioSource.loop = loop;
-			FadeInMusic(1f);
+			FadeInMusic(.5f);
 		}
 
 		return this;
@@ -41,49 +42,29 @@ public class MusicManager : IAudio<MusicManager>
 		AudioSource.Stop();
 	}
 
-	public void Stop(float time)
+	public void Stop(float duration)
 	{
-		FadeOut(time).Forget();
+		AudioSource
+			.DOFade(0, duration)
+			.From(AudioSource.volume)
+			.OnComplete(() => {
+				AudioSource.Stop();
+				Destroy(0f);
+			});
 	}
 
 	public void FadeInMusic(float duration)
 	{
 		AudioSource.volume = 0;
 		AudioSource.Play();
-		FadeIn(duration).Forget();
-	}
-
-	private async UniTaskVoid FadeIn(float duration)
-	{
-		float startVolume = AudioSource.volume;
-		float elapsedTime = 0f;
-
-		while (AudioSource.volume < volume)
-		{
-			elapsedTime += Time.deltaTime;
-			AudioSource.volume = Mathf.Lerp(startVolume, volume, elapsedTime / duration);
-			await UniTask.Yield();
-		}
+		AudioSource.DOFade(volume, duration);
 	}
 
 	public void FadeOutMusic(float duration)
 	{
-		FadeOut(duration).Forget();
-	}
-
-	private async UniTaskVoid FadeOut(float duration)
-	{
-		float startVolume = AudioSource.volume;
-		float elapsedTime = 0f;
-
-		while (AudioSource.volume > 0)
-		{
-			elapsedTime += Time.deltaTime;
-			AudioSource.volume = Mathf.Lerp(startVolume, 0, elapsedTime / duration);
-			await UniTask.Yield();
-		}
-
-		AudioSource.Stop();
-		Destroy(0f);
+		AudioSource.DOFade(0f, duration).SetUpdate(true).OnComplete(() => {
+			AudioSource.Stop();
+			Destroy(0f);
+		});
 	}
 }

@@ -1,6 +1,7 @@
-using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Audio;
+
 
 public class SFXManager : IAudio<SFXManager>
 {
@@ -48,6 +49,9 @@ public class SFXManager : IAudio<SFXManager>
 
 	public void Stop()
 	{
-		AudioSource.Stop();
+		AudioSource.DOFade(0f, .3f).SetUpdate(true).OnComplete(() => {
+			AudioSource.Stop();
+			Destroy(0f);
+		});
 	}
 }
