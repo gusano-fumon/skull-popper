@@ -50,7 +50,7 @@ MonoBehaviour:
   TotalHealth: 100
   _movementSpeed: 10
   _gravity: -9.81
-  jumpForce: 1.5
+  jumpForce: 1.6
   groundMask:
     serializedVersion: 2
     m_Bits: 256
@@ -77,7 +77,7 @@ CharacterController:
   m_Height: 1.62
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.4
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
