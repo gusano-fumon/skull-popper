@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UISpriteAnimation : MonoBehaviour
 {
     [SerializeField] protected Image _image;
-	[SerializeField] private UnityEngine.Sprite[] _sprites;
+	[SerializeField] private Sprite[] _sprites;
 	private int _spriteCounter = 0;
 
 	protected virtual void Update()
@@ -19,5 +19,4 @@ public class UISpriteAnimation : MonoBehaviour
 		_spriteCounter++;
 		_image.sprite = _sprites[_spriteCounter % 2];
 	}
-
 }

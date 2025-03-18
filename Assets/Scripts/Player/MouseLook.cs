@@ -1,12 +1,13 @@
 using System;
-using DG.Tweening;
+
 using UnityEngine;
+
+using DG.Tweening;
 
 
 public class MouseLook : MonoBehaviour
 {
 	public PlayerController player;
-	public PlayerUI playerUI;
 
     public float sensitivity;
 
@@ -59,12 +60,12 @@ public class MouseLook : MonoBehaviour
 		{
 			var mouseX = Input.GetAxis("Mouse X") * scaledSesitivity;
 
-			player.transform.Rotate(mouseX * Vector3.up);
+			player.transform.Rotate(Vector3.up * mouseX);
 
 			_rotationX -= mouseY;
-			_rotationX = Math.Clamp(_rotationX, -90, 90);
+			_rotationX = Mathf.Clamp(_rotationX, -90f, 90f);
 
-			transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
+			transform.localRotation = Quaternion.Euler(_rotationX, 0f, 0f);
 		}
 		else
 		{
@@ -104,9 +105,9 @@ public class MouseLook : MonoBehaviour
 		{
 			_recharging = false;
 			ResetRecharge();
-			GameMenu.Instance.playerUI.defaultState.gameObject.SetActive(true);
-			GameMenu.Instance.playerUI.reloadingStateUp.gameObject.SetActive(false);
-			GameMenu.Instance.playerUI.reloadingStateDown.gameObject.SetActive(false);
+			GameMenu.Instance.playerUI.defaultState.SetActive(true);
+			GameMenu.Instance.playerUI.reloadingStateUp.SetActive(false);
+			GameMenu.Instance.playerUI.reloadingStateDown.SetActive(false);
 		}
 
 		if (Input.GetMouseButtonDown(0))
@@ -118,7 +119,7 @@ public class MouseLook : MonoBehaviour
 			}
 
 			// Efecto delay para el disparo de la burbuja
-			Invoke(nameof(Shoot), 0.2f);
+			Invoke(nameof(Shoot), .2f);
 		}
 	}
 
@@ -136,7 +137,9 @@ public class MouseLook : MonoBehaviour
 		// Check if recharge is complete
 		if (currentMovementCount >= requiredMovements * 2)
 		{
-			PerformRecharge();
+			_currentAmmo = _maxAmmo;
+			OnReload?.Invoke(_currentAmmo);
+			ResetRecharge();
 		}
 	}
 
@@ -144,13 +147,6 @@ public class MouseLook : MonoBehaviour
 	{
 		currentMovementCount = 0;
 		expectingUpMovement = true;
-	}
-
-	private void PerformRecharge()
-	{
-		_currentAmmo = _maxAmmo;
-		OnReload?.Invoke(_currentAmmo);
-		ResetRecharge();
 	}
 
 	private void Shoot()
