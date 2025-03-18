@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour, ILife
 		OnDeath?.Invoke(_gatedAreaId);
 		_meshRenderer.material.mainTexture = _deadSprite;
 
-		_meshRenderer.material.color = new (0.3f, 0.3f, 0.3f, 1); // Gray color for die enemy sprite
+		_meshRenderer.material.color = new (0.6f, 0.6f, 0.6f, 1); // Gray color for die enemy sprite
 		Destroy(GetComponent<CapsuleCollider>());
 		Destroy(_aiAgent);
 		Destroy(this);
