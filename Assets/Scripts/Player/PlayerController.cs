@@ -1,6 +1,6 @@
 
 using System;
-using Cysharp.Threading.Tasks;
+
 using UnityEngine;
 
 
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour, ILife
 
 	public int Health { get; set; }
 	public static bool GameEnd { get; private set; }
-	
+
 #endregion
 
 	private void Awake()
@@ -83,9 +83,8 @@ public class PlayerController : MonoBehaviour, ILife
 
 		if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
 		{
-			AudioFactory.Instance.PlaySFX(AudioType.Jump);
 			_isGrounded = false;
-			InitJumpSound().Forget();
+			AudioFactory.Instance.PlaySFX(AudioType.Jump);
 			velocity.y = Mathf.Sqrt(jumpForce * -2f * _gravity);
 		}
 
@@ -99,12 +98,6 @@ public class PlayerController : MonoBehaviour, ILife
 
 		velocity.y += _gravity * Time.deltaTime;
 		_character.Move(velocity * Time.deltaTime);
-
-	}
-
-	private async UniTaskVoid InitJumpSound()
-	{
-		await UniTask.WaitUntil(() => _isGrounded);
 	}
 
 	private void TiltCamera(float pos)
