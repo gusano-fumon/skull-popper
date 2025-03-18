@@ -1,12 +1,6 @@
 fileFormatVersion: 2
-<<<<<<<< Updated upstream:Assets/Samples.meta
-guid: df76300b981f5614d99a7eeff69e8b83
-folderAsset: yes
-DefaultImporter:
-========
 guid: 701f67c8b5cabf540bed6ab601877538
 TextScriptImporter:
->>>>>>>> Stashed changes:Assets/DoTween/DOTween.XML.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

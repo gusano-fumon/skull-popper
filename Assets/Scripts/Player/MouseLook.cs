@@ -122,11 +122,6 @@ public class MouseLook : MonoBehaviour
 		}
 	}
 
-	private void CheckPause()
-	{
-
-	}	
-
 	private void UpdateMovementCount(bool isUpMovement)
 	{
 		// Update last movement time

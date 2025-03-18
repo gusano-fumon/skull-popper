@@ -27,19 +27,6 @@ public class PlayerController : MonoBehaviour, ILife
 
 	public int Health { get; set; }
 	public static bool GameEnd { get; private set; }
-	private static float _fieldOfView;
-	public static float FieldOfView 
-	{
-		get => _fieldOfView;
-		set
-		{
-			_fieldOfView = value;
-			if (PlayerCamera != null)
-			{
-				PlayerCamera.fieldOfView = value;
-			}
-		}
-	}
 	
 #endregion
 
@@ -81,12 +68,6 @@ public class PlayerController : MonoBehaviour, ILife
 		PlayerCamera.fieldOfView = fov;
 	}
 
-	void OnDrawGizmos()
-	{
-		Gizmos.color = Color.red;
-		Gizmos.DrawRay(transform.position, Vector3.down * 0.9f);
-	}
-
 	private void Movement()
 	{
 		_isGrounded = Physics.Raycast(transform.position, Vector3.down, .9f, groundMask);
@@ -124,7 +105,6 @@ public class PlayerController : MonoBehaviour, ILife
 	private async UniTaskVoid InitJumpSound()
 	{
 		await UniTask.WaitUntil(() => _isGrounded);
-		// AudioFactory.Instance.PlaySFX(AudioType.Land);
 	}
 
 	private void TiltCamera(float pos)

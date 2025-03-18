@@ -29,5 +29,4 @@ public class SpriteAnimation : MonoBehaviour
 		if (_meshRenderer != null) _meshRenderer.sharedMaterial.mainTexture = _sprites[_spriteCounter % 2];
 		if (_image != null) _image.sprite = _imageSprites[_spriteCounter % 2];
 	}
-
 }
