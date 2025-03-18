@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using Cysharp.Threading.Tasks;
-using UnityEngine.SceneManagement;
-using UnityEditor.Search;
-using UnityEngine.Audio;
 
 
 public class GameMenu : Singleton<GameMenu>
@@ -14,6 +11,8 @@ public class GameMenu : Singleton<GameMenu>
     [SerializeField] private Image _endImage;
     [SerializeField] private UnityEngine.Sprite _winSprite;
     [SerializeField] private UnityEngine.Sprite _gameOverSprite;
+
+	public static bool IsPaused;
 	public static Action OnVictory;
 	public static Action OnPlayerDeath;
 	[SerializeField] private GameObject _mainMenu;
@@ -133,6 +132,7 @@ public class GameMenu : Singleton<GameMenu>
 
 	public void Pause()
 	{
+		IsPaused = true;
 		_pauseMenu.SetActive(true);
 		playerUI.gameObject.SetActive(false);
 		AudioFactory.Instance.StopMusic();
@@ -142,6 +142,7 @@ public class GameMenu : Singleton<GameMenu>
 
 	public void Resume()
 	{
+		IsPaused = false;
 		playerUI.gameObject.SetActive(true);
 		_pauseMenu.SetActive(false);
 		Time.timeScale = 1;

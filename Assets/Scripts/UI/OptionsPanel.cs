@@ -1,16 +1,14 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class OptionsPanel : MonoBehaviour
 {
-	[SerializeField] private SliderBase[] sliders;
+	public static Action OnResetToDefault;
 
-	public void RevertChanges()
+	public void ResetToDefault()
 	{
-		foreach (var slider in sliders)
-		{
-			slider.ResetToDefault();
-		}
+		PlayerSettings.SetDefault();
+		OnResetToDefault?.Invoke();
 	}
 }

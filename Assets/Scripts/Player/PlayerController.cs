@@ -2,19 +2,16 @@
 using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AI;
 
 
 public class PlayerController : MonoBehaviour, ILife
 {
-	private static Transform _cameraTransform;
-	public static Transform CameraTransform { get { return _cameraTransform; } } 
+	[SerializeField] private Camera _playerCamera;
+	public static Camera PlayerCamera;
 	public static Action<int> OnHit;
 	public static Action<int> OnPlayerHeal;
-	public static bool GameEnd { get; private set; }
 	public int TotalHealth = 100;
 
-	[Header("Properties")]
 	[SerializeField] private float _movementSpeed;
 	[SerializeField] private float _gravity;
 
@@ -26,22 +23,30 @@ public class PlayerController : MonoBehaviour, ILife
 	[Header("References")]
 	[SerializeField] private CharacterController _character;
 
+#region Properties
+
 	public int Health { get; set; }
+	public static bool GameEnd { get; private set; }
+	
+#endregion
 
 	private void Awake()
 	{
 		GameEnd = false;
-		_cameraTransform = Camera.main.transform;
+		PlayerCamera = _playerCamera;
+		PlayerCamera.fieldOfView = PlayerSettings.FieldOfView;
 		AudioFactory.Instance.PlayMusic(AudioType.BackgroundMusic);
 		OnHit += TakeDamage;
 		OnPlayerHeal += RestoreHealth;
 		GameMenu.OnVictory += () => GameEnd = true;
+		PlayerSettings.OnFovChanged += SetFOV;
 	}
 
 	private void OnDestroy()
 	{
 		OnHit -= TakeDamage;
 		OnPlayerHeal -= RestoreHealth;
+		PlayerSettings.OnFovChanged -= SetFOV;
 		GameMenu.OnVictory -= () => GameEnd = true;
 	}
 
@@ -53,14 +58,14 @@ public class PlayerController : MonoBehaviour, ILife
 	private void Update()
 	{
 		if (GameEnd) return;
+		if (GameMenu.IsPaused) return;
 
 		Movement();
 	}
 
-	void OnDrawGizmos()
+	private void SetFOV(float fov)
 	{
-		Gizmos.color = Color.red;
-		Gizmos.DrawRay(transform.position, Vector3.down * 0.9f);
+		PlayerCamera.fieldOfView = fov;
 	}
 
 	private void Movement()
@@ -100,14 +105,13 @@ public class PlayerController : MonoBehaviour, ILife
 	private async UniTaskVoid InitJumpSound()
 	{
 		await UniTask.WaitUntil(() => _isGrounded);
-		// AudioFactory.Instance.PlaySFX(AudioType.Land);
 	}
 
 	private void TiltCamera(float pos)
 	{
-		Vector3 euler = CameraTransform.localEulerAngles;
+		Vector3 euler = PlayerCamera.transform.localEulerAngles;
 		euler.z = pos;
-		CameraTransform.localEulerAngles = euler;
+		PlayerCamera.transform.localEulerAngles = euler;
 	}
 
 	public void TakeDamage(int damage)

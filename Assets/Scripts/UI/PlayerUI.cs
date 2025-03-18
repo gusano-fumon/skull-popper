@@ -27,8 +27,7 @@ public class PlayerUI : MonoBehaviour
 
 	private Sequence damageSequence;
 
-	public Image defaultState, reloadingState;
-	public UnityEngine.Sprite upReload, downReload;
+	public GameObject defaultState, reloadingStateUp, reloadingStateDown;
 
 	private void Awake()
 	{
@@ -89,6 +88,7 @@ public class PlayerUI : MonoBehaviour
 
 	public void ReloadDirection(bool up)
 	{
-		reloadingState.sprite = up ? upReload : downReload;
+		reloadingStateUp.SetActive(up);
+		reloadingStateDown.SetActive(!up);
 	}
 }

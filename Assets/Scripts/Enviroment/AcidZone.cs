@@ -13,7 +13,8 @@ public class AcidZone : MonoBehaviour
 		{
 			if (Time.frameCount % _damageDelayFrames == 0)
 			{
-				life.TakeDamage(_damage);
+				if (!PlayerController.GameEnd)
+					life.TakeDamage(_damage);
 			}
 		}
 	}

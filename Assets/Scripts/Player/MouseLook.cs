@@ -1,14 +1,13 @@
 using System;
+
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UI;
+
+using DG.Tweening;
 
 
 public class MouseLook : MonoBehaviour
 {
-	private const string KEY = nameof(SliderType.Sensitivity);
 	public PlayerController player;
-	public PlayerUI playerUI;
 
     public float sensitivity;
 
@@ -32,23 +31,26 @@ public class MouseLook : MonoBehaviour
 	private void Awake()
 	{
 		_currentAmmo = _maxAmmo;
-		sensitivity = PlayerPrefs.GetFloat(KEY, 100);
-		SensitivitySlider.OnValueChanged += SetSensitivity;
+		sensitivity = PlayerSettings.Sensitivity;
+		PlayerSettings.OnSensitiveChanged += SetSensitivity;
 		Cursor.lockState = CursorLockMode.Locked;
 	}
 
 	private void OnDestroy()
 	{
-		SensitivitySlider.OnValueChanged -= SetSensitivity;
+		PlayerSettings.OnSensitiveChanged -= SetSensitivity;
 	}
 
 	private void Update()
 	{
 		if (PlayerController.GameEnd) return;
+		if (GameMenu.IsPaused) return;
 
 		if (Input.GetKeyDown(KeyCode.Escape)) // Pause Game
 		{
 			GameMenu.Instance.Pause();
+			player.DOTogglePause();
+			return;
 		}
 		
 		var scaledSesitivity = sensitivity * Time.deltaTime;
@@ -58,12 +60,12 @@ public class MouseLook : MonoBehaviour
 		{
 			var mouseX = Input.GetAxis("Mouse X") * scaledSesitivity;
 
-			player.transform.Rotate(mouseX * Vector3.up);
+			player.transform.Rotate(Vector3.up * mouseX);
 
 			_rotationX -= mouseY;
-			_rotationX = Math.Clamp(_rotationX, -90, 90);
+			_rotationX = Mathf.Clamp(_rotationX, -90f, 90f);
 
-			transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
+			transform.localRotation = Quaternion.Euler(_rotationX, 0f, 0f);
 		}
 		else
 		{
@@ -95,16 +97,17 @@ public class MouseLook : MonoBehaviour
 		if (Input.GetMouseButtonDown(1))
 		{
 			_recharging = true;
-			GameMenu.Instance.playerUI.defaultState.gameObject.SetActive(false);
-			GameMenu.Instance.playerUI.reloadingState.gameObject.SetActive(true);
+			GameMenu.Instance.playerUI.defaultState.SetActive(false);
+			GameMenu.Instance.playerUI.reloadingStateUp.SetActive(true);
  		}
 
 		if (Input.GetMouseButtonUp(1))
 		{
 			_recharging = false;
 			ResetRecharge();
-			GameMenu.Instance.playerUI.defaultState.gameObject.SetActive(true);
-			GameMenu.Instance.playerUI.reloadingState.gameObject.SetActive(false);
+			GameMenu.Instance.playerUI.defaultState.SetActive(true);
+			GameMenu.Instance.playerUI.reloadingStateUp.SetActive(false);
+			GameMenu.Instance.playerUI.reloadingStateDown.SetActive(false);
 		}
 
 		if (Input.GetMouseButtonDown(0))
@@ -116,14 +119,9 @@ public class MouseLook : MonoBehaviour
 			}
 
 			// Efecto delay para el disparo de la burbuja
-			Invoke(nameof(Shoot), 0.2f);
+			Invoke(nameof(Shoot), .2f);
 		}
 	}
-
-	private void CheckPause()
-	{
-
-	}	
 
 	private void UpdateMovementCount(bool isUpMovement)
 	{
@@ -139,7 +137,9 @@ public class MouseLook : MonoBehaviour
 		// Check if recharge is complete
 		if (currentMovementCount >= requiredMovements * 2)
 		{
-			PerformRecharge();
+			_currentAmmo = _maxAmmo;
+			OnReload?.Invoke(_currentAmmo);
+			ResetRecharge();
 		}
 	}
 
@@ -147,13 +147,6 @@ public class MouseLook : MonoBehaviour
 	{
 		currentMovementCount = 0;
 		expectingUpMovement = true;
-	}
-
-	private void PerformRecharge()
-	{
-		_currentAmmo = _maxAmmo;
-		OnReload?.Invoke(_currentAmmo);
-		ResetRecharge();
 	}
 
 	private void Shoot()

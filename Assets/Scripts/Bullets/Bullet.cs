@@ -15,13 +15,7 @@ public class Bullet : SpriteAnimation
 
 	protected virtual void Awake()
 	{
-		GameMenu.OnPlayerDeath += InstantDestroy;
 		DeleteBullet().Forget();
-	}
-
-	private void OnDestroy()
-	{
-		GameMenu.OnPlayerDeath -= InstantDestroy;
 	}
 
 	private void OnTriggerEnter(Collider target)
@@ -37,10 +31,5 @@ public class Bullet : SpriteAnimation
 		_cts = new CancellationTokenSource();
 		await UniTask.Delay(_timeToDelete, cancellationToken: _cts.Token);
 		Destroy(gameObject, .5f);
-	}
-	private void InstantDestroy()
-	{
-		_cts.Cancel();
-		Destroy(gameObject);
 	}
 }

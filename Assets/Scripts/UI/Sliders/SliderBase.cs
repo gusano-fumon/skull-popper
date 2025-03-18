@@ -10,50 +10,19 @@ public abstract class SliderBase : MonoBehaviour, ISlider
 {
 	public Slider slider;
 	public TMP_Text valueText;
-	[HideInInspector] public string stringType;
-	public float DefaultValue { get; set; }
-	public float CurrentValue { get; set; }
+	public string StringFormat { get; set; }
     public SliderType SliderType { get; set; }
 
-	private float SavedValue 
-	{ 
-		get
-		{
-			return PlayerPrefs.GetFloat($"{SliderType}", DefaultValue);
-		}
-		set
-		{
-			PlayerPrefs.SetFloat($"{SliderType}", value);
-			PlayerPrefs.Save();
-		}
+	public abstract void SaveChanges();
+
+	public virtual void Load(float value)
+	{
+		slider.value = value;
+		UpdateValue(value);
 	}
 
-	public virtual void SaveChanges()
+	public virtual void UpdateValue(float value)
 	{
-		SavedValue = CurrentValue;
-	}
-
-	public void Load()
-	{
-		CurrentValue = SavedValue;
-		SetValues();
-	}
-
-	public void UpdateValue(float value)
-	{
-		CurrentValue = value;
-		valueText.text = value.ToString(stringType);
-	}
-
-	public virtual void ResetToDefault()
-	{
-		CurrentValue = DefaultValue;
-		SetValues();
-	}
-
-	private void SetValues()
-	{
-		slider.value = CurrentValue;
-		valueText.text = CurrentValue.ToString(stringType);
+		valueText.text = value.ToString(StringFormat);
 	}
 }
