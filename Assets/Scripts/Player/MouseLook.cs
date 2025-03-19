@@ -113,6 +113,7 @@ public class MouseLook : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0))
 		{
+			if (_recharging) return;
 			if (_currentAmmo == 0)
 			{
 				AudioFactory.Instance.PlaySFX(AudioType.NoAmmo);
@@ -120,6 +121,8 @@ public class MouseLook : MonoBehaviour
 			}
 
 			// Efecto delay para el disparo de la burbuja
+
+			GameMenu.Instance.playerUI.ShootAnimation().Forget();
 			Invoke(nameof(Shoot), .2f);
 		}
 	}
@@ -152,10 +155,6 @@ public class MouseLook : MonoBehaviour
 
 	private void Shoot()
 	{
-		if (_recharging) return;
-
-		// TODO: SHOOT ANIMATION
-
 		if (_currentAmmo == 0) return;
 
 		_currentAmmo--;

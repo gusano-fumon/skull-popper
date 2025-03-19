@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 
@@ -27,7 +28,7 @@ public class PlayerUI : MonoBehaviour
 
 	private Sequence damageSequence;
 
-	public GameObject defaultState, reloadingStateUp, reloadingStateDown;
+	public GameObject defaultState, bubbleWand, reloadingStateUp, reloadingStateDown;
 
 	private void Awake()
 	{
@@ -65,6 +66,13 @@ public class PlayerUI : MonoBehaviour
 	{
 		ammoSlider.value = ammo;
 		ammoText.text = ammo.ToString();
+	}
+
+	public async UniTaskVoid ShootAnimation()
+	{
+		bubbleWand.transform.DOScale(Vector3.one * 1.1f, .05f).SetEase(Ease.OutExpo);
+		await UniTask.Delay(100);
+		bubbleWand.transform.DOScale(Vector3.one, .01f).SetEase(Ease.OutQuad);
 	}
 
 	public void TakeDamage()
