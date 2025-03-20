@@ -56,6 +56,7 @@ SpriteAtlas:
     - 5f23b38022c8857498a297fd703d58ba: 21300000
     - 19f4f7a01e5a0ff449d5f42a8edce6a5: 21300000
     - 5ca613e0813011640952048cdc06ca80: 21300000
+    - 46f8e57185e2c0d409aca5e7e9725b6e: 21300000
     - ce9f0091f51523842a2e32fdd0cdf98a: 21300000
     - aba541a1c4f42314a8b1a1a95b7f2b83: 21300000
     - 32c6f0b1697114440a8dc74092dddf75: 21300000
@@ -72,6 +73,7 @@ SpriteAtlas:
     - cb82fde4963e0c94f8d3a7e4df4d720b: 21300000
     - 53052df48e4e4f2479808286107fd536: 21300000
     - 594c130500ed4f64fbbc786aeb038f4f: 21300000
+    - ed3469658e3be934ebba32e92eb2dc43: 21300000
     - 615389951d438e142b13af5743683b7a: 21300000
     - 356e0f9550484a8479b2a206d555cd36: 21300000
     - 63fdf9c5cc861cb4499142641058053b: 21300000
@@ -90,6 +92,7 @@ SpriteAtlas:
     - 7cccea38d1e2ec341b47814490543b7f: 21300000
     - 94fd4048be575174b85d235bb8677652: 21300000
     - aa181a5851db63f44ba77449f3f1f37c: 21300000
+    - eb157c583d7fae54b896735a5d99b1ea: 21300000
     - 3acc0768e86f7a14a99cce627e17c3d4: 21300000
     - b0a6c2885f222e041a58b354cf11352b: 21300000
     - 062f69f9e31f94c479ac9392fac8bcee: 21300000
@@ -119,7 +122,9 @@ SpriteAtlas:
     - ccdfed6ea12a95149bfc29ddf2471383: 21300000
     - d898477ecbb59d640b9d686d45d08dd5: 21300000
     - 3daeeb7ecc223bb45a704f2e8c376afc: 21300000
+    - 441867be1c35b584c9b96c5ad35d08b5: 21300000
     - 2e7e9bbe73d96814a85fc385fc837476: 21300000
+    - e7483fce8eb53924b896a1001cb39c3c: 21300000
     - 320137deda2c3a14c8e6ce543822977d: 21300000
     - 9e56700fb1c705f48b05ced4eb3532a1: 21300000
     - 4749e09fc6cbe614691b0982e7833dbb: 21300000
@@ -137,6 +142,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 5f23b38022c8857498a297fd703d58ba, type: 3}
   - {fileID: 21300000, guid: 19f4f7a01e5a0ff449d5f42a8edce6a5, type: 3}
   - {fileID: 21300000, guid: 5ca613e0813011640952048cdc06ca80, type: 3}
+  - {fileID: 21300000, guid: 46f8e57185e2c0d409aca5e7e9725b6e, type: 3}
   - {fileID: 21300000, guid: ce9f0091f51523842a2e32fdd0cdf98a, type: 3}
   - {fileID: 21300000, guid: aba541a1c4f42314a8b1a1a95b7f2b83, type: 3}
   - {fileID: 21300000, guid: 32c6f0b1697114440a8dc74092dddf75, type: 3}
@@ -153,6 +159,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: cb82fde4963e0c94f8d3a7e4df4d720b, type: 3}
   - {fileID: 21300000, guid: 53052df48e4e4f2479808286107fd536, type: 3}
   - {fileID: 21300000, guid: 594c130500ed4f64fbbc786aeb038f4f, type: 3}
+  - {fileID: 21300000, guid: ed3469658e3be934ebba32e92eb2dc43, type: 3}
   - {fileID: 21300000, guid: 615389951d438e142b13af5743683b7a, type: 3}
   - {fileID: 21300000, guid: 356e0f9550484a8479b2a206d555cd36, type: 3}
   - {fileID: 21300000, guid: 63fdf9c5cc861cb4499142641058053b, type: 3}
@@ -171,6 +178,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7cccea38d1e2ec341b47814490543b7f, type: 3}
   - {fileID: 21300000, guid: 94fd4048be575174b85d235bb8677652, type: 3}
   - {fileID: 21300000, guid: aa181a5851db63f44ba77449f3f1f37c, type: 3}
+  - {fileID: 21300000, guid: eb157c583d7fae54b896735a5d99b1ea, type: 3}
   - {fileID: 21300000, guid: 3acc0768e86f7a14a99cce627e17c3d4, type: 3}
   - {fileID: 21300000, guid: b0a6c2885f222e041a58b354cf11352b, type: 3}
   - {fileID: 21300000, guid: 062f69f9e31f94c479ac9392fac8bcee, type: 3}
@@ -200,7 +208,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ccdfed6ea12a95149bfc29ddf2471383, type: 3}
   - {fileID: 21300000, guid: d898477ecbb59d640b9d686d45d08dd5, type: 3}
   - {fileID: 21300000, guid: 3daeeb7ecc223bb45a704f2e8c376afc, type: 3}
+  - {fileID: 21300000, guid: 441867be1c35b584c9b96c5ad35d08b5, type: 3}
   - {fileID: 21300000, guid: 2e7e9bbe73d96814a85fc385fc837476, type: 3}
+  - {fileID: 21300000, guid: e7483fce8eb53924b896a1001cb39c3c, type: 3}
   - {fileID: 21300000, guid: 320137deda2c3a14c8e6ce543822977d, type: 3}
   - {fileID: 21300000, guid: 9e56700fb1c705f48b05ced4eb3532a1, type: 3}
   - {fileID: 21300000, guid: 4749e09fc6cbe614691b0982e7833dbb, type: 3}
@@ -217,6 +227,7 @@ SpriteAtlas:
   - Rock_0
   - ReloadHandDown_1
   - WinImage_1
+  - WallDisc
   - ShootHandPomper_0
   - EnergyBall_0
   - EnemyPart_3
@@ -233,6 +244,7 @@ SpriteAtlas:
   - Enemy_Dead
   - DamageBorder
   - Stalagmite_1
+  - Crystal_1
   - ReloadHandDown_0
   - WallTile_1024_Sprite
   - Worm_Dead
@@ -251,6 +263,7 @@ SpriteAtlas:
   - Rock_1
   - EnemyPart_1
   - EnergyBall_1
+  - Brick
   - Whorm_Attack
   - AmmoSlider2
   - Vase_2
@@ -280,7 +293,9 @@ SpriteAtlas:
   - Rock_3
   - HealthBarFill_0
   - Enemy_Walk_1
+  - Crystal_0
   - UIHealthBubbles_Overlay
+  - Crystal_2
   - UIHealthBubbles_Overlay2
   - Bubble_1
   - ShootHandStick_0
