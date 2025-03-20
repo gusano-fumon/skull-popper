@@ -139,7 +139,7 @@ public class MouseLook : MonoBehaviour
 		currentMovementCount++;
 
 		// Check if recharge is complete
-		if (currentMovementCount >= requiredMovements * 2)
+		if (currentMovementCount >= requiredMovements * 2 && _currentAmmo != _maxAmmo)
 		{
 			_currentAmmo = _maxAmmo;
 			OnReload?.Invoke(_currentAmmo);
