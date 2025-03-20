@@ -14,8 +14,8 @@ public class PlayerUI : MonoBehaviour
 	public static Action<int, bool> OnHit;
 	public Slider healthSlider;
 	public TMP_Text healthText, ammoChangeText, healthChangeText;
-	public Slider ammoSlider;
 	public TMP_Text ammoText;
+	public Slider ammoSlider;
 
 	[SerializeField] private Image _damageImage;
 	[SerializeField] private RectTransform _playerUI;
@@ -27,11 +27,8 @@ public class PlayerUI : MonoBehaviour
 	[SerializeField] private float _uiShake = 10f;
 	[SerializeField] private Vector3 _uiInitialPosition;
 
-	private Sequence damageSequence;
-
 	public GameObject defaultState, bubbleWand, reloadingStateUp, reloadingStateDown;
-	private CancellationTokenSource healthTokenSource = new();
-	private CancellationTokenSource ammoTokenSource = new();
+	private Sequence damageSequence;
 
 	private void Awake()
 	{
@@ -80,20 +77,18 @@ public class PlayerUI : MonoBehaviour
 	{
 		value = -value;
 
-		var text = isHealth ? healthChangeText : ammoChangeText;
+		var textGameObject = Instantiate(
+			isHealth ? healthChangeText.gameObject : ammoChangeText.gameObject,
+			isHealth ? healthText.transform.position : ammoText.transform.position,
+			isHealth ? healthText.transform.rotation : ammoText.transform.rotation,
+			isHealth ? healthText.transform : ammoText.transform
+		);
+
+		var text = textGameObject.GetComponent<TMP_Text>();
+
 		var endPos = isHealth ? new Vector3(88, 35, 0) : new Vector3(-160, 70, 0);
 		var endText = !isHealth && value > 0 ? "Max!" : value.ToString();
 
-		var tokenSource = isHealth ? healthTokenSource : ammoTokenSource;
-
-		tokenSource.Cancel();
-		tokenSource.Dispose();
-		tokenSource = new CancellationTokenSource();
-
-		if (isHealth) healthTokenSource = tokenSource;
-		else ammoTokenSource = tokenSource;
-
-		var token = tokenSource.Token;
 
 		text.DOKill();
 		text.color = value > 0 ? Color.green : Color.red;
@@ -105,17 +100,10 @@ public class PlayerUI : MonoBehaviour
 			.From(Vector3.zero)
 			.SetEase(Ease.OutSine);
 
-		try
-		{
-			await UniTask.Delay(500, cancellationToken: token);
-			text.DOFade(0f, .2f);
-			await UniTask.Delay(200, cancellationToken: token);
-		}
-		catch (OperationCanceledException)
-		{
-			text.DOKill();
-			text.color = Color.clear;
-		}
+		await UniTask.Delay(500);
+		text.DOFade(0f, .2f);
+		await UniTask.Delay(200);
+		Destroy(text.gameObject);
 	}
 
 	public void UpdateAmmo(int ammo)
