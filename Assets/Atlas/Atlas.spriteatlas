@@ -55,6 +55,7 @@ SpriteAtlas:
     - cb791c606e5d4bd4c890d361944b42b8: 21300000
     - 5f23b38022c8857498a297fd703d58ba: 21300000
     - 19f4f7a01e5a0ff449d5f42a8edce6a5: 21300000
+    - 5ca613e0813011640952048cdc06ca80: 21300000
     - ce9f0091f51523842a2e32fdd0cdf98a: 21300000
     - aba541a1c4f42314a8b1a1a95b7f2b83: 21300000
     - 32c6f0b1697114440a8dc74092dddf75: 21300000
@@ -65,7 +66,9 @@ SpriteAtlas:
     - 5830a78288ccee1428379bbe1d54b145: 21300000
     - 35c4a1e2566da4e41bff7c83bbc39cb6: 21300000
     - c77e5013958d21e4d8eb33a37bce5e4c: 21300000
+    - d23806a3aab0c3143a6600efba51717c: 21300000
     - 283d6764b47c92a4f81269d3dfc87472: 21300000
+    - 733233c47b7772048b7eaa151d911436: 21300000
     - cb82fde4963e0c94f8d3a7e4df4d720b: 21300000
     - 53052df48e4e4f2479808286107fd536: 21300000
     - 594c130500ed4f64fbbc786aeb038f4f: 21300000
@@ -82,6 +85,7 @@ SpriteAtlas:
     - 193a7ad6d52920f4aadbfd734fee96b5: 21300000
     - be5769273196f6a47a2c49e1b81467e4: 21300000
     - 9e8d1e57227363f46aaf1a09f7610ada: 21300000
+    - 1b9b4ca739aa3e64baf93c6d0d900563: 21300000
     - a1d4e7b70ef9b9e4886523facb48c715: 21300000
     - 7cccea38d1e2ec341b47814490543b7f: 21300000
     - 94fd4048be575174b85d235bb8677652: 21300000
@@ -106,11 +110,14 @@ SpriteAtlas:
     - 521b89bc35f57a341978e947a7ea255f: 21300000
     - b600e1fc7b5acd04f861f9bee705f640: 21300000
     - 5b80233da29f038449ec242f5d05f05b: 21300000
+    - 3d373c7d2f6b02c4d81add4fbb945730: 21300000
+    - 550e45ed701b04a41b2752d9656e0aad: 21300000
     - efaa27fd61a10354a979471320f759fa: 21300000
     - 34047dfd97ce603499194647e071a1d5: 21300000
     - f032990e6e4e2a34191c8bc922b754c6: 21300000
     - 1c75286e77636ad4184106316923b2f7: 21300000
     - ccdfed6ea12a95149bfc29ddf2471383: 21300000
+    - d898477ecbb59d640b9d686d45d08dd5: 21300000
     - 3daeeb7ecc223bb45a704f2e8c376afc: 21300000
     - 2e7e9bbe73d96814a85fc385fc837476: 21300000
     - 320137deda2c3a14c8e6ce543822977d: 21300000
@@ -118,6 +125,7 @@ SpriteAtlas:
     - 4749e09fc6cbe614691b0982e7833dbb: 21300000
     - bd293e9f74273c243853785a59eb03cd: 21300000
     - 408aa1afabf8d2c48be5333ac3370381: 21300000
+    - 1bcf23cf384531d42a952c2985c39cd8: 21300000
     - 69527ccf026a1ec428373d906e0716a2: 21300000
     - da6262dff8f57854a92d461c6f4b1862: 21300000
     - a5d925dfaf9f12c4c9e5a237657af5f8: 21300000
@@ -128,6 +136,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: cb791c606e5d4bd4c890d361944b42b8, type: 3}
   - {fileID: 21300000, guid: 5f23b38022c8857498a297fd703d58ba, type: 3}
   - {fileID: 21300000, guid: 19f4f7a01e5a0ff449d5f42a8edce6a5, type: 3}
+  - {fileID: 21300000, guid: 5ca613e0813011640952048cdc06ca80, type: 3}
   - {fileID: 21300000, guid: ce9f0091f51523842a2e32fdd0cdf98a, type: 3}
   - {fileID: 21300000, guid: aba541a1c4f42314a8b1a1a95b7f2b83, type: 3}
   - {fileID: 21300000, guid: 32c6f0b1697114440a8dc74092dddf75, type: 3}
@@ -138,7 +147,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 5830a78288ccee1428379bbe1d54b145, type: 3}
   - {fileID: 21300000, guid: 35c4a1e2566da4e41bff7c83bbc39cb6, type: 3}
   - {fileID: 21300000, guid: c77e5013958d21e4d8eb33a37bce5e4c, type: 3}
+  - {fileID: 21300000, guid: d23806a3aab0c3143a6600efba51717c, type: 3}
   - {fileID: 21300000, guid: 283d6764b47c92a4f81269d3dfc87472, type: 3}
+  - {fileID: 21300000, guid: 733233c47b7772048b7eaa151d911436, type: 3}
   - {fileID: 21300000, guid: cb82fde4963e0c94f8d3a7e4df4d720b, type: 3}
   - {fileID: 21300000, guid: 53052df48e4e4f2479808286107fd536, type: 3}
   - {fileID: 21300000, guid: 594c130500ed4f64fbbc786aeb038f4f, type: 3}
@@ -155,6 +166,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 193a7ad6d52920f4aadbfd734fee96b5, type: 3}
   - {fileID: 21300000, guid: be5769273196f6a47a2c49e1b81467e4, type: 3}
   - {fileID: 21300000, guid: 9e8d1e57227363f46aaf1a09f7610ada, type: 3}
+  - {fileID: 21300000, guid: 1b9b4ca739aa3e64baf93c6d0d900563, type: 3}
   - {fileID: 21300000, guid: a1d4e7b70ef9b9e4886523facb48c715, type: 3}
   - {fileID: 21300000, guid: 7cccea38d1e2ec341b47814490543b7f, type: 3}
   - {fileID: 21300000, guid: 94fd4048be575174b85d235bb8677652, type: 3}
@@ -179,11 +191,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 521b89bc35f57a341978e947a7ea255f, type: 3}
   - {fileID: 21300000, guid: b600e1fc7b5acd04f861f9bee705f640, type: 3}
   - {fileID: 21300000, guid: 5b80233da29f038449ec242f5d05f05b, type: 3}
+  - {fileID: 21300000, guid: 3d373c7d2f6b02c4d81add4fbb945730, type: 3}
+  - {fileID: 21300000, guid: 550e45ed701b04a41b2752d9656e0aad, type: 3}
   - {fileID: 21300000, guid: efaa27fd61a10354a979471320f759fa, type: 3}
   - {fileID: 21300000, guid: 34047dfd97ce603499194647e071a1d5, type: 3}
   - {fileID: 21300000, guid: f032990e6e4e2a34191c8bc922b754c6, type: 3}
   - {fileID: 21300000, guid: 1c75286e77636ad4184106316923b2f7, type: 3}
   - {fileID: 21300000, guid: ccdfed6ea12a95149bfc29ddf2471383, type: 3}
+  - {fileID: 21300000, guid: d898477ecbb59d640b9d686d45d08dd5, type: 3}
   - {fileID: 21300000, guid: 3daeeb7ecc223bb45a704f2e8c376afc, type: 3}
   - {fileID: 21300000, guid: 2e7e9bbe73d96814a85fc385fc837476, type: 3}
   - {fileID: 21300000, guid: 320137deda2c3a14c8e6ce543822977d, type: 3}
@@ -191,6 +206,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 4749e09fc6cbe614691b0982e7833dbb, type: 3}
   - {fileID: 21300000, guid: bd293e9f74273c243853785a59eb03cd, type: 3}
   - {fileID: 21300000, guid: 408aa1afabf8d2c48be5333ac3370381, type: 3}
+  - {fileID: 21300000, guid: 1bcf23cf384531d42a952c2985c39cd8, type: 3}
   - {fileID: 21300000, guid: 69527ccf026a1ec428373d906e0716a2, type: 3}
   - {fileID: 21300000, guid: da6262dff8f57854a92d461c6f4b1862, type: 3}
   - {fileID: 21300000, guid: a5d925dfaf9f12c4c9e5a237657af5f8, type: 3}
@@ -200,6 +216,7 @@ SpriteAtlas:
   - Enemy_Walk_0
   - Rock_0
   - ReloadHandDown_1
+  - WinImage_1
   - ShootHandPomper_0
   - EnergyBall_0
   - EnemyPart_3
@@ -210,7 +227,9 @@ SpriteAtlas:
   - ReloadHandUp_1
   - EnemyPart_2
   - Rock_2
+  - WinImage_0
   - Win_Image
+  - HealthBar_1
   - Enemy_Dead
   - DamageBorder
   - Stalagmite_1
@@ -227,6 +246,7 @@ SpriteAtlas:
   - MainMenuBG
   - Stalagmite_0
   - Vase_1
+  - HealthBarFill_1
   - UIAmmoBubbles_BG
   - Rock_1
   - EnemyPart_1
@@ -251,11 +271,14 @@ SpriteAtlas:
   - EnemyPart_0
   - Torch_1
   - Worm_Hurt
+  - HealthBar_0
+  - GameOverImage_1
   - GameOver_Image
   - AcidDamageBorder
   - ShootHandPomper_1
   - BloodSplashPlaceHolder
   - Rock_3
+  - HealthBarFill_0
   - Enemy_Walk_1
   - UIHealthBubbles_Overlay
   - UIHealthBubbles_Overlay2
@@ -263,6 +286,7 @@ SpriteAtlas:
   - ShootHandStick_0
   - UIAmmoBubbles_Overlay
   - Enemy_Shot
+  - GameOverImage_0
   - Cobweb_0
   - UIAmmoBubbles_BG2
   - Worm_Idle
