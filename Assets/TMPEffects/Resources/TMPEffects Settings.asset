@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultAnimationDatabase: {fileID: 11400000, guid: f0a33761ff6919d4a9979ee36980a29d, type: 2}
   defaultCommandDatabase: {fileID: 11400000, guid: 290ad04254a96934aa269d5b8d258008, type: 2}
-  defaultKeywordDatabase: {fileID: 0}
+  defaultKeywordDatabase: {fileID: 11400000, guid: ddbbf9c59e9c55949a3be80686d9ea59, type: 2}
   globalKeywordDatabase: {fileID: 11400000, guid: ddbbf9c59e9c55949a3be80686d9ea59, type: 2}

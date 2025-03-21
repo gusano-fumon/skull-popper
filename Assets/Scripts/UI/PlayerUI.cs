@@ -1,20 +1,18 @@
 using System;
-using System.Threading;
 
 using UnityEngine;
 using UnityEngine.UI;
 
 using Cysharp.Threading.Tasks;
+
 using DG.Tweening;
 using TMPro;
-
 
 public class PlayerUI : MonoBehaviour
 {
 	public static Action<int, bool> OnHit;
 	public Slider healthSlider;
-	public TMP_Text healthText, ammoChangeText, healthChangeText;
-	public TMP_Text ammoText;
+	public TMP_Text healthText, ammoChangeText, healthChangeText, ammoText;
 	public Slider ammoSlider;
 
 	[SerializeField] private Image _damageImage;
@@ -50,10 +48,10 @@ public class PlayerUI : MonoBehaviour
 
 	private void SetUI()
 	{
-		healthText.SetText("100");
+		healthText.SetText("<sketchy>100");
 		healthSlider.value = 100;
 
-		ammoText.SetText("12");
+		ammoText.SetText("<sketchy>12");
 		ammoSlider.value = 12;
 	}
 
@@ -66,11 +64,11 @@ public class PlayerUI : MonoBehaviour
 		healthSlider.value = health;
 		if (health <= 0)
 		{
-			healthText.SetText("DEAD");
+			healthText.SetText("<sketchy>DEAD");
 			return;
 		}
 
-		healthText.SetText(health.ToString());
+		healthText.SetText($"<sketchy>{health}");
 	}
 
 	private async UniTaskVoid AnimateTextChange(int value, bool isHealth)
@@ -92,7 +90,7 @@ public class PlayerUI : MonoBehaviour
 
 		text.DOKill();
 		text.color = value > 0 ? Color.green : Color.red;
-		text.SetText(endText);
+		text.SetText($"<sketchy>{endText}");
 		text.DOFade(1f, .2f);
 
 		text.transform
@@ -111,7 +109,7 @@ public class PlayerUI : MonoBehaviour
 		AnimateTextChange((int)ammoSlider.value - ammo, false).Forget();
 
 		ammoSlider.value = ammo;
-		ammoText.SetText(ammo.ToString());
+		ammoText.SetText($"<sketchy>{ammo}");
 	}
 
 	public async UniTaskVoid ShootAnimation()
