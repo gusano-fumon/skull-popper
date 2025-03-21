@@ -26,12 +26,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528501260860234634}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.3005488, y: 0.59323376, z: -0.6662031, w: 0.33751702}
-  m_LocalPosition: {x: 4.100001, y: -1.6253065, z: -1.5530593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1535982325147013042}
+  m_Father: {fileID: 4805635698710709320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &576521815612447432
 Light:
@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 8273173677796089532}
   - component: {fileID: 4341378647871638507}
   - component: {fileID: 6986689951863631014}
-  - component: {fileID: 5208292712298702544}
   m_Layer: 11
   m_Name: TorchSprite
   m_TagString: Untagged
@@ -146,13 +145,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3577228803086714560}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.02614049, y: -0.051597077, z: -0.8905562, w: 0.45118064}
+  m_LocalRotation: {x: 0.8433915, y: 0, z: 0, w: 0.53729963}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 500913740600230846}
   m_Father: {fileID: 1535982325147013042}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 115, y: 0, z: 0}
 --- !u!33 &8273173677796089532
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -221,19 +221,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: f214d0460b7d6f94895b0052557cb594, type: 3}
   - {fileID: 2800000, guid: b600e1fc7b5acd04f861f9bee705f640, type: 3}
   _imageSprites: []
---- !u!114 &5208292712298702544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3577228803086714560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8916476549696a4a980505bd0e29ff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isBullet: 0
 --- !u!1 &8716705899200752000
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1535982325147013042}
+  - component: {fileID: 2958557156262252376}
   m_Layer: 11
   m_Name: Torch
   m_TagString: Untagged
@@ -258,12 +246,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8716705899200752000}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.19, y: 1.916, z: -0.088}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.9, z: 0}
   m_LocalScale: {x: 0.1, y: 0.100000024, z: 0.100000024}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 500913740600230846}
   - {fileID: 4805635698710709320}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2958557156262252376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8716705899200752000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8916476549696a4a980505bd0e29ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isBullet: 0
