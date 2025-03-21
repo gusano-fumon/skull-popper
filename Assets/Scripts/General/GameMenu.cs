@@ -8,9 +8,7 @@ using Cysharp.Threading.Tasks;
 
 public class GameMenu : Singleton<GameMenu>
 {
-    [SerializeField] private Image _endImage;
-    [SerializeField] private UnityEngine.Sprite _winSprite;
-    [SerializeField] private UnityEngine.Sprite _gameOverSprite;
+    [SerializeField] private GameObject _winImage, _gameOverImage;
 
 	public static bool IsPaused;
 	public static Action OnVictory;
@@ -72,7 +70,8 @@ public class GameMenu : Singleton<GameMenu>
 		inGame = false;
         Cursor.lockState = CursorLockMode.None;
         _retryPanel.SetActive(true);
-        _endImage.sprite = _gameOverSprite;
+		_gameOverImage.SetActive(true);
+		_winImage.SetActive(false);
     }
 
     private void Victory()
@@ -80,6 +79,8 @@ public class GameMenu : Singleton<GameMenu>
 		inGame = false;
         Cursor.lockState = CursorLockMode.None;
         _retryPanel.SetActive(true);
+		_gameOverImage.SetActive(false);
+		_winImage.SetActive(true);
 	}
 
 	private void Retry()

@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: <sketchy>Shoot with left click
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9cad9ab1e3eacb24bad20f9ffe2d30e1, type: 2}
-  m_sharedMaterial: {fileID: 7174075998108806520, guid: 9cad9ab1e3eacb24bad20f9ffe2d30e1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: efbf70aea11cf644583f2f2b329b67a4, type: 2}
+  m_sharedMaterial: {fileID: 5678270596340398785, guid: efbf70aea11cf644583f2f2b329b67a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -476,8 +476,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: <sketchy>Reload holding right click and stroking it
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9cad9ab1e3eacb24bad20f9ffe2d30e1, type: 2}
-  m_sharedMaterial: {fileID: 7174075998108806520, guid: 9cad9ab1e3eacb24bad20f9ffe2d30e1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: efbf70aea11cf644583f2f2b329b67a4, type: 2}
+  m_sharedMaterial: {fileID: 5678270596340398785, guid: efbf70aea11cf644583f2f2b329b67a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
