@@ -33,11 +33,11 @@ public class MusicSlider : SliderBase
     {
 		if (value == 1)
 		{
-			valueText.SetText("OFF");
+			valueText.SetText("<sketchy>OFF");
 			return;
 		}
 
-		valueText.SetText(value.ToString(StringFormat));
+		valueText.SetText($"<sketchy>{value.ToString(StringFormat)}");
     }
 
     public override void SaveChanges()

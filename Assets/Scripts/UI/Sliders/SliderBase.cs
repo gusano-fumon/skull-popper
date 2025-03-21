@@ -1,7 +1,9 @@
-using System;
-using TMPro;
+
 using UnityEngine;
 using UnityEngine.UI;
+
+using TMPro;
+
 
 /// <summary>
 /// Base class for all sliders this class is responsible for handling the slider value and invoking the events
@@ -23,6 +25,6 @@ public abstract class SliderBase : MonoBehaviour, ISlider
 
 	public virtual void UpdateValue(float value)
 	{
-		valueText.text = value.ToString(StringFormat);
+		valueText.text = $"<sketchy>{value.ToString(StringFormat)}";
 	}
 }

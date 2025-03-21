@@ -1,5 +1,3 @@
-using UnityEngine;
-
 
 public class SFXSlider : SliderBase
 {
@@ -35,17 +33,16 @@ public class SFXSlider : SliderBase
     {
 		if (value == 1)
 		{
-			valueText.SetText("OFF");
+			valueText.SetText("<sketchy>OFF");
 			return;
 		}
 
-		valueText.SetText(value.ToString(StringFormat));
+		valueText.SetText($"<sketchy>{value.ToString(StringFormat)}");
     }
 
 
 	public override void SaveChanges()
 	{
-		Debug.Log("SFXSlider: SaveChanges: slider.value = " + slider.value);
 		PlayerSettings.SFXVolume = slider.value / 100;
 	}
 }
