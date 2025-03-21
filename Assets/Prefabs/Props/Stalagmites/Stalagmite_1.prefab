@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a3034531d8aebca49be59eb0248ae889, type: 2}
+    - target: {fileID: 4805635698710709320, guid: 5a2acb37329f365489b4bbed49c23caa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805635698710709320, guid: 5a2acb37329f365489b4bbed49c23caa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.93
+      objectReference: {fileID: 0}
     - target: {fileID: 8716705899200752000, guid: 5a2acb37329f365489b4bbed49c23caa, type: 3}
       propertyPath: m_Name
       value: Stalagmite_1

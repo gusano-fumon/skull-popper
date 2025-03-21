@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &500913740600230846
 Transform:
@@ -26,12 +26,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528501260860234634}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.1146863, y: 4.0593, z: -2.0354805}
+  m_LocalRotation: {x: -0.3005488, y: 0.59323376, z: -0.6662031, w: 0.33751702}
+  m_LocalPosition: {x: 4.100001, y: -1.6253065, z: -1.5530593}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4805635698710709320}
+  m_Father: {fileID: 1535982325147013042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &576521815612447432
 Light:
@@ -118,51 +118,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1 &2320629034894041056
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8227446004078154852}
-  - component: {fileID: 3316081394236601750}
-  m_Layer: 11
-  m_Name: TorchGO
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!4 &8227446004078154852
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2320629034894041056}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.30054882, y: 0.59323376, z: -0.666203, w: 0.33751702}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1535982325147013042}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &3316081394236601750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2320629034894041056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8916476549696a4a980505bd0e29ff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isBullet: 0
 --- !u!1 &3577228803086714560
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,12 +130,13 @@ GameObject:
   - component: {fileID: 8273173677796089532}
   - component: {fileID: 4341378647871638507}
   - component: {fileID: 6986689951863631014}
+  - component: {fileID: 5208292712298702544}
   m_Layer: 11
   m_Name: TorchSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4805635698710709320
 Transform:
@@ -194,8 +150,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 500913740600230846}
+  m_Children: []
   m_Father: {fileID: 1535982325147013042}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &8273173677796089532
@@ -261,9 +216,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshRenderer: {fileID: 4341378647871638507}
+  _image: {fileID: 0}
   _sprites:
   - {fileID: 2800000, guid: f214d0460b7d6f94895b0052557cb594, type: 3}
   - {fileID: 2800000, guid: b600e1fc7b5acd04f861f9bee705f640, type: 3}
+  _imageSprites: []
+--- !u!114 &5208292712298702544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577228803086714560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8916476549696a4a980505bd0e29ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isBullet: 0
 --- !u!1 &8716705899200752000
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +248,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1535982325147013042
 Transform:
@@ -293,7 +263,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.100000024, z: 0.100000024}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8227446004078154852}
+  - {fileID: 500913740600230846}
   - {fileID: 4805635698710709320}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}

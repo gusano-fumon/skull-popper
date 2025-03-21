@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &500913740600230846
 Transform:
   m_ObjectHideFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 528501260860234634}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.32, y: 2.81, z: 2.36}
+  m_LocalPosition: {x: -0.16, y: 2.19, z: 1.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,8 +45,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.96737516, g: 0.8924439, b: 0.990566, a: 1}
-  m_Intensity: 1
-  m_Range: 1
+  m_Intensity: 0.1
+  m_Range: 0.1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -87,7 +87,7 @@ Light:
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -174,7 +174,6 @@ GameObject:
   - component: {fileID: 4805635698710709320}
   - component: {fileID: 8273173677796089532}
   - component: {fileID: 4341378647871638507}
-  - component: {fileID: 6986689951863631014}
   m_Layer: 11
   m_Name: RockSprite
   m_TagString: Untagged
@@ -191,8 +190,8 @@ Transform:
   m_GameObject: {fileID: 3577228803086714560}
   serializedVersion: 2
   m_LocalRotation: {x: 0.02614049, y: -0.051597077, z: -0.8905562, w: 0.45118064}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0, z: -1.011}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 500913740600230846}
@@ -248,24 +247,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6986689951863631014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3577228803086714560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1e7ba715f72485479c243c2d8523fae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _meshRenderer: {fileID: 4341378647871638507}
-  _image: {fileID: 0}
-  _sprites:
-  - {fileID: 2800000, guid: f214d0460b7d6f94895b0052557cb594, type: 3}
-  - {fileID: 2800000, guid: b600e1fc7b5acd04f861f9bee705f640, type: 3}
-  _imageSprites: []
 --- !u!1 &8716705899200752000
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,9 +272,9 @@ Transform:
   m_GameObject: {fileID: 8716705899200752000}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.100000024, z: 0.100000024}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8227446004078154852}
   - {fileID: 4805635698710709320}
