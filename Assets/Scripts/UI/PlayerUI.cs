@@ -84,7 +84,7 @@ public class PlayerUI : MonoBehaviour
 
 		var text = textGameObject.GetComponent<TMP_Text>();
 
-		var endPos = isHealth ? new Vector3(88, 35, 0) : new Vector3(-160, 70, 0);
+		var endPos = isHealth ? new Vector3(88, 35, 0) : new Vector3(-120, 80, 0);
 		var endText = !isHealth && value > 0 ? "Max!" : value.ToString();
 
 

@@ -69,7 +69,7 @@ MonoBehaviour:
   m_text: <sketchy>-1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: efbf70aea11cf644583f2f2b329b67a4, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 066ed1fed276c334ea5c4cec2b384639, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: f53f84d85afa2e044a33808cacc21f34, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &2969890460193120190
