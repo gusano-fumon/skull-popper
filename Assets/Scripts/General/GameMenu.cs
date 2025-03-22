@@ -86,6 +86,7 @@ public class GameMenu : Singleton<GameMenu>
 	private void Retry()
 	{
 		UniTask.Void(async () => {
+			ScoreController.Init();
 			await SceneController.LoadScene(1);
 			playerUI.Init();
 			_retryPanel.SetActive(false);
