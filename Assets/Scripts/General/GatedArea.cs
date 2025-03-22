@@ -21,6 +21,7 @@ public class GatedArea : MonoBehaviour
 
 	private void OnDisable()
 	{
+		MouseLook.OnReload -= CheckTutorial;
 		Enemy.OnDeath -= CheckEnemies;
 	}
 
