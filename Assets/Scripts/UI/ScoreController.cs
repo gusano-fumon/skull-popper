@@ -11,6 +11,7 @@ public class ScoreController : MonoBehaviour
 	public static void Init()
 	{
 		_score = 0;
+		GameMenu.Instance.playerUI.scoreText.SetText($"<sketchy>Score:\n{_score}");
 
 		UniTask.Void(async () =>
 		{
