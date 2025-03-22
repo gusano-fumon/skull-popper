@@ -193,10 +193,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshRenderer: {fileID: 7756806509988849409}
+  _image: {fileID: 0}
   _sprites:
   - {fileID: 2800000, guid: 18fb132687527ee449df0451dcc8c77d, type: 3}
   - {fileID: 2800000, guid: 9e56700fb1c705f48b05ced4eb3532a1, type: 3}
-  _forwardSpeed: 7
+  _imageSprites: []
+  _forwardSpeed: 7.5
   _sineSpeed: 5
   _sineMultiplier: 0.2
   _collisionSprite: {fileID: 2800000, guid: 520a8b463b68ba14c91c953ce51e7406, type: 3}
