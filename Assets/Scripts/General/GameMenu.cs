@@ -91,6 +91,7 @@ public class GameMenu : Singleton<GameMenu>
 		UniTask.Void(async () => {
 			ScoreController.Init();
 			await SceneController.LoadScene(1);
+			inGame = true;
 			playerUI.Init();
 			_retryPanel.SetActive(false);
 		});
