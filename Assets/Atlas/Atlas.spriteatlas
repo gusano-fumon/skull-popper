@@ -95,6 +95,7 @@ SpriteAtlas:
     - eb157c583d7fae54b896735a5d99b1ea: 21300000
     - 3acc0768e86f7a14a99cce627e17c3d4: 21300000
     - b0a6c2885f222e041a58b354cf11352b: 21300000
+    - 66ce48899ac03dd4d952d41e44388690: 21300000
     - 062f69f9e31f94c479ac9392fac8bcee: 21300000
     - 7ee9f01a679a39f47af10c92bc2d27ef: 21300000
     - 8b7c7d6adf1612a4d9bbbadccf165979: 21300000
@@ -181,6 +182,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: eb157c583d7fae54b896735a5d99b1ea, type: 3}
   - {fileID: 21300000, guid: 3acc0768e86f7a14a99cce627e17c3d4, type: 3}
   - {fileID: 21300000, guid: b0a6c2885f222e041a58b354cf11352b, type: 3}
+  - {fileID: 21300000, guid: 66ce48899ac03dd4d952d41e44388690, type: 3}
   - {fileID: 21300000, guid: 062f69f9e31f94c479ac9392fac8bcee, type: 3}
   - {fileID: 21300000, guid: 7ee9f01a679a39f47af10c92bc2d27ef, type: 3}
   - {fileID: 21300000, guid: 8b7c7d6adf1612a4d9bbbadccf165979, type: 3}
@@ -266,6 +268,7 @@ SpriteAtlas:
   - Brick
   - Whorm_Attack
   - AmmoSlider2
+  - FinalHexagon
   - Vase_2
   - SkullPopper_Logo
   - HealthPickup

@@ -12,7 +12,7 @@ public class PlayerUI : MonoBehaviour
 {
 	public static Action<int, bool> OnHit;
 	public Slider healthSlider;
-	public TMP_Text healthText, ammoChangeText, healthChangeText, ammoText;
+	public TMP_Text healthText, ammoChangeText, healthChangeText, ammoText, scoreText;
 	public Slider ammoSlider;
 
 	[SerializeField] private Image _damageImage;

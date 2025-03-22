@@ -25,11 +25,13 @@ public class ScoreController : MonoBehaviour
 	public static void AddScore(int score)
 	{
 		_score += score;
+		GameMenu.Instance.playerUI.scoreText.SetText($"<sketchy>Score:\n{_score}");
 	}
 
 	public static void RemoveScore(int score)
 	{
 		_score -= score;
 		if (_score < 0) _score = 0;
+		GameMenu.Instance.playerUI.scoreText.SetText($"<sketchy>Score:\n{_score}");
 	}
 }
