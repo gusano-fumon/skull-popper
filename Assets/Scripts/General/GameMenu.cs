@@ -68,10 +68,13 @@ public class GameMenu : Singleton<GameMenu>
 	private void PlayerDeath()
     {
 		inGame = false;
-        Cursor.lockState = CursorLockMode.None;
         _retryPanel.SetActive(true);
 		_gameOverImage.SetActive(true);
 		_winImage.SetActive(false);
+
+		UniTask.Delay(1000).ContinueWith(() => {
+        	Cursor.lockState = CursorLockMode.None;
+		});
     }
 
     private void Victory()
